@@ -1,252 +1,157 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Admin Dashboard</title>
-    <!-- Bootstrap CSS -->
-    <link href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.0/css/bootstrap.min.css" rel="stylesheet">
-    <!-- Google Fonts -->
-    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=swap" rel="stylesheet">
-    <!-- Custom CSS -->
-    <style>
-        body {
-            font-family: 'Roboto', sans-serif;
-            background-color: #f4f6f9;
-        }
-
-        .navbar {
-            background-color: #4b77a9;
-        }
-
-        .navbar h4 {
-            color: #fff;
-        }
-
-        .card {
-            border: none;
-            border-radius: 10px;
-            box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
-        }
-
-        .card-header {
-            border-bottom: none;
-            font-weight: bold;
-            font-size: 1rem;
-        }
-
-        .card-header.bg-primary {
-            border-radius: 10px 10px 0 0;
-        }
-
-        .btn {
-            border-radius: 20px;
-        }
-
-        .badge {
-            font-size: 0.9rem;
-        }
-
-        .stats-card {
-            text-align: center;
-            padding: 2rem 1rem;
-            border-radius: 10px;
-        }
-
-        .stats-card h3 {
-            font-weight: bold;
-        }
-
-        .stats-card p {
-            color: #777;
-        }
-
-        .recent-applications .row {
-            border-bottom: 1px solid #eaeaea;
-            padding: 1rem 0;
-        }
-
-        .recent-applications .row:last-child {
-            border-bottom: none;
-        }
-
-        .view-details {
-            background-color: #6c757d;
-            color: #fff;
-        }
-
-        .footer {
-            text-align: center;
-            margin-top: 2rem;
-            padding: 1rem;
-            background-color: #4b77a9;
-            color: #fff;
-        }
-
-        .hover-effect:hover {
-            transform: scale(1.05);
-            transition: all 0.3s ease;
-        }
-
-        .tooltip-btn {
-            position: relative;
-        }
-
-        .tooltip-btn:hover::after {
-            content: attr(data-tooltip);
-            position: absolute;
-            bottom: -30px;
-            left: 50%;
-            transform: translateX(-50%);
-            background-color: rgba(0, 0, 0, 0.75);
-            color: white;
-            padding: 5px 10px;
-            border-radius: 5px;
-            font-size: 0.8rem;
-            white-space: nowrap;
-        }
-    </style>
+    <title>Public Welfare Schemes</title>
+    <link rel="stylesheet" href="styles.css">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
 </head>
-
 <body>
-    <div class="container-fluid py-3">
-        <!-- Top Navbar -->
-        <nav class="navbar navbar-expand-lg navbar-light shadow-sm py-3">
-            <div class="container-fluid">
-                <h4 class="m-0">Admin Dashboard</h4>
-                <div>
-                    <button class="btn btn-light rounded-circle tooltip-btn" data-tooltip="Notifications">
-                        <i class="bi bi-bell"></i>
-                    </button>
-                    <button class="btn btn-light rounded-circle tooltip-btn" data-tooltip="Settings">
-                        <i class="bi bi-gear"></i>
-                    </button>
-                </div>
-            </div>
-        </nav>
+    <header class="bg-primary text-white text-center py-4">
+        <h1>Public Welfare Schemes</h1>
+        <p>Empowering Communities Through Initiatives</p>
+    </header>
 
-        <!-- Welcome Section -->
-        <div class="my-4 text-center">
-            <h5 class="fw-bold">Welcome, Officer Singh</h5>
-            <p class="text-muted">District Administrator, Delhi Region</p>
-        </div>
-
-        <!-- Statistics Section -->
-        <div class="row text-center my-4">
-            <div class="col-md-4 mb-3">
-                <div class="card stats-card bg-white hover-effect">
-                    <h3 class="text-primary">256</h3>
-                    <p>Pending Applications</p>
-                </div>
-            </div>
-            <div class="col-md-4 mb-3">
-                <div class="card stats-card bg-white hover-effect">
-                    <h3 class="text-danger">1,432</h3>
-                    <p>Active Beneficiaries</p>
-                </div>
-            </div>
-            <div class="col-md-4 mb-3">
-                <div class="card stats-card bg-white hover-effect">
-                    <h3 class="text-success">89%</h3>
-                    <p>Approval Rate</p>
-                </div>
+    <nav class="navbar navbar-expand-lg navbar-light bg-light">
+        <div class="container">
+            <a class="navbar-brand" href="#">WelfareApp</a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item">
+                        <a class="nav-link" href="#education">Education</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#health">Health</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#employment">Employment</a>
+                    </li>
+                </ul>
             </div>
         </div>
+    </nav>
 
-        <!-- Recent Applications -->
-        <div class="card shadow mb-4 bg-white recent-applications">
-            <div class="card-header bg-primary text-white">
-                Recent Applications
-            </div>
-            <div class="card-body">
-                <div class="row d-flex justify-content-between align-items-center">
-                    <div class="col-8">
-                        <h6 class="m-0">Rajesh Kumar</h6>
-                        <small class="text-muted">PM Kisan Samman Nidhi</small>
-                    </div>
-                    <div class="col-4 text-end">
-                        <span class="badge bg-warning">Pending Review</span>
-                        <button class="btn btn-primary btn-sm ms-2">Review</button>
-                    </div>
-                </div>
-                <div class="row d-flex justify-content-between align-items-center mt-3">
-                    <div class="col-8">
-                        <h6 class="m-0">Priya Sharma</h6>
-                        <small class="text-muted">PM Awas Yojana</small>
-                    </div>
-                    <div class="col-4 text-end">
-                        <span class="badge bg-success">Documents Verified</span>
-                        <button class="btn btn-primary btn-sm ms-2">Approve</button>
+    <main class="container py-5">
+        <section id="education" class="my-5">
+            <h2 class="text-primary">Education Schemes</h2>
+            <p>Discover various initiatives to promote education for all, including scholarships, free education programs, and skill development courses.</p>
+            <div class="row g-4">
+                <div class="col-md-4">
+                    <div class="card">
+                        <img src="education.jpg" class="card-img-top" alt="Education">
+                        <div class="card-body">
+                            <h5 class="card-title">Scholarship Program</h5>
+                            <p class="card-text">Providing financial aid to deserving students for higher education.</p>
+                            <a href="#" class="btn btn-primary">Learn More</a>
+                        </div>
                     </div>
                 </div>
+                <div class="col-md-4">
+                    <div class="card">
+                        <img src="school.jpg" class="card-img-top" alt="School">
+                        <div class="card-body">
+                            <h5 class="card-title">Free Education</h5>
+                            <p class="card-text">Ensuring access to free primary education for underprivileged children.</p>
+                            <a href="#" class="btn btn-primary">Learn More</a>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="card">
+                        <img src="skills.jpg" class="card-img-top" alt="Skills">
+                        <div class="card-body">
+                            <h5 class="card-title">Skill Development</h5>
+                            <p class="card-text">Offering training programs to enhance job-oriented skills.</p>
+                            <a href="#" class="btn btn-primary">Learn More</a>
+                        </div>
+                    </div>
+                </div>
             </div>
-        </div>
+        </section>
 
-        <!-- Active Schemes Section -->
-        <div class="card shadow mb-4 bg-white">
-            <div class="card-header bg-primary text-white">
-                Active Schemes
-            </div>
-            <div class="card-body">
-                <div class="row d-flex justify-content-between align-items-center">
-                    <div class="col-8">
-                        <h6 class="m-0">PM Kisan Samman Nidhi</h6>
-                        <small class="text-muted">1245 Active &bull; 89% Success Rate</small>
-                    </div>
-                    <div class="col-4 text-end">
-                        <button class="btn btn-primary btn-sm">View Details</button>
-                    </div>
-                </div>
-                <div class="row d-flex justify-content-between align-items-center mt-3">
-                    <div class="col-8">
-                        <h6 class="m-0">PM Awas Yojana</h6>
-                        <small class="text-muted">950 Active &bull; 85% Success Rate</small>
-                    </div>
-                    <div class="col-4 text-end">
-                        <button class="btn btn-primary btn-sm">View Details</button>
+        <section id="health" class="my-5">
+            <h2 class="text-success">Health Schemes</h2>
+            <p>Explore healthcare initiatives like free check-ups, affordable medicines, and health insurance plans for all.</p>
+            <div class="row g-4">
+                <div class="col-md-4">
+                    <div class="card">
+                        <img src="healthcare.jpg" class="card-img-top" alt="Healthcare">
+                        <div class="card-body">
+                            <h5 class="card-title">Free Health Check-ups</h5>
+                            <p class="card-text">Access to regular free health check-ups in rural and urban areas.</p>
+                            <a href="#" class="btn btn-success">Learn More</a>
+                        </div>
                     </div>
                 </div>
+                <div class="col-md-4">
+                    <div class="card">
+                        <img src="medicine.jpg" class="card-img-top" alt="Medicine">
+                        <div class="card-body">
+                            <h5 class="card-title">Affordable Medicines</h5>
+                            <p class="card-text">Providing essential medicines at subsidized rates for the needy.</p>
+                            <a href="#" class="btn btn-success">Learn More</a>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="card">
+                        <img src="insurance.jpg" class="card-img-top" alt="Insurance">
+                        <div class="card-body">
+                            <h5 class="card-title">Health Insurance</h5>
+                            <p class="card-text">Affordable health insurance plans for low-income families.</p>
+                            <a href="#" class="btn btn-success">Learn More</a>
+                        </div>
+                    </div>
+                </div>
             </div>
-        </div>
+        </section>
 
-        <!-- Officers Section -->
-        <div class="card shadow bg-white mb-4">
-            <div class="card-header bg-primary text-white">
-                Officers Handling Applications
-            </div>
-            <div class="card-body">
-                <div class="row d-flex justify-content-between align-items-center">
-                    <div class="col-6">
-                        <h6 class="m-0">Officer A</h6>
-                        <small class="text-muted">15 Applications Pending</small>
-                    </div>
-                    <div class="col-6 text-end">
-                        <button class="btn btn-secondary btn-sm">View Details</button>
-                    </div>
-                </div>
-                <div class="row d-flex justify-content-between align-items-center mt-3">
-                    <div class="col-6">
-                        <h6 class="m-0">Officer B</h6>
-                        <small class="text-muted">20 Applications Pending</small>
-                    </div>
-                    <div class="col-6 text-end">
-                        <button class="btn btn-secondary btn-sm">View Details</button>
+        <section id="employment" class="my-5">
+            <h2 class="text-warning">Employment Schemes</h2>
+            <p>Find initiatives aimed at creating job opportunities and supporting self-employment ventures.</p>
+            <div class="row g-4">
+                <div class="col-md-4">
+                    <div class="card">
+                        <img src="jobs.jpg" class="card-img-top" alt="Jobs">
+                        <div class="card-body">
+                            <h5 class="card-title">Job Fairs</h5>
+                            <p class="card-text">Connecting job seekers with employers through regular job fairs.</p>
+                            <a href="#" class="btn btn-warning">Learn More</a>
+                        </div>
                     </div>
                 </div>
+                <div class="col-md-4">
+                    <div class="card">
+                        <img src="startup.jpg" class="card-img-top" alt="Startup">
+                        <div class="card-body">
+                            <h5 class="card-title">Startup Support</h5>
+                            <p class="card-text">Encouraging entrepreneurship with financial and mentorship support.</p>
+                            <a href="#" class="btn btn-warning">Learn More</a>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="card">
+                        <img src="training.jpg" class="card-img-top" alt="Training">
+                        <div class="card-body">
+                            <h5 class="card-title">Training Programs</h5>
+                            <p class="card-text">Providing vocational training for various job roles.</p>
+                            <a href="#" class="btn btn-warning">Learn More</a>
+                        </div>
+                    </div>
+                </div>
             </div>
-        </div>
+        </section>
+    </main>
 
-        <!-- Footer -->
-        <div class="footer">
-            &copy; 2025 Admin Dashboard | All Rights Reserved
-        </div>
-    </div>
+    <footer class="bg-dark text-white text-center py-3">
+        <p>&copy; 2025 WelfareApp. All Rights Reserved.</p>
+    </footer>
 
-    <!-- Bootstrap Bundle with Popper -->
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.0/js/bootstrap.bundle.min.js"></script>
-    <!-- Bootstrap Icons -->
-    <link href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-icons/1.10.5/font/bootstrap-icons.min.css" rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
 </body>
-
 </html>
