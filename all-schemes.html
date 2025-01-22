@@ -1,0 +1,457 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>All Welfare Schemes</title>
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.0/css/bootstrap.min.css">
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500&family=Raleway:wght@700&display=swap" rel="stylesheet">
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <!-- Animate.css -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css">
+    <style>
+        body {
+            font-family: 'Roboto', sans-serif;
+        }
+        .navbar {
+            background-color: #4A90E2;
+        }
+        .header {
+            background-color: #4A90E2;
+            color: white;
+            padding: 2rem 1rem;
+            text-align: center;
+        }
+        .card {
+            border-radius: 10px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            margin-bottom: 20px;
+            transition: transform 0.3s ease;
+        }
+        .card:hover {
+            transform: translateY(-5px);
+        }
+        .btn-primary {
+            background-color: #4A90E2;
+            border: none;
+        }
+        .scheme-icon {
+            font-size: 2rem;
+            color: #4A90E2;
+            margin-bottom: 1rem;
+        }
+        .modal-header {
+            background-color: #4A90E2;
+            color: white;
+        }
+        .document-list {
+            list-style-type: none;
+            padding-left: 0;
+        }
+        .document-list li {
+            padding: 8px 0;
+            border-bottom: 1px solid #eee;
+        }
+        .document-list li:last-child {
+            border-bottom: none;
+        }
+        .eligibility-criteria {
+            background-color: #f8f9fa;
+            padding: 15px;
+            border-radius: 5px;
+            margin-bottom: 15px;
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Navbar -->
+    <nav class="navbar navbar-expand-lg navbar-dark">
+        <div class="container-fluid">
+            <a class="navbar-brand" href="index.html">Welfare Schemes</a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav">
+                    <li class="nav-item">
+                        <a class="nav-link" href="index.html">Home</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link active" href="all-schemes.html">All Schemes</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="contact.html">Contact Us</a>
+                    </li>
+                    <li class="nav-item">
+                        <button class="btn btn-success me-2" type="button"><a href="login.html">login</a></button>
+                        <button class="btn btn-success me-2" type="button"><a href="sign-up.html">sign-up</a></button>
+
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Header -->
+    <header class="header animate__animated animate__fadeInDown">
+        <h1>Government Welfare Schemes</h1>
+        <p>Explore various welfare schemes offered by the Government of India</p>
+    </header>
+
+    <!-- Schemes Section -->
+    <div class="container my-5">
+        <div class="row">
+            <!-- PM Kisan -->
+            <div class="col-md-4 animate__animated animate__fadeIn">
+                <div class="card">
+                    <div class="card-body text-center">
+                        <i class="fas fa-tractor scheme-icon"></i>
+                        <h5 class="card-title">PM Kisan Samman Nidhi</h5>
+                        <p class="card-text">Financial assistance of ₹6,000 per year to farmer families</p>
+                        <button class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#pmKisanModal">
+                            View Details
+                        </button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- PM Awas Yojana -->
+            <div class="col-md-4 animate__animated animate__fadeIn">
+                <div class="card">
+                    <div class="card-body text-center">
+                        <i class="fas fa-home scheme-icon"></i>
+                        <h5 class="card-title">PM Awas Yojana</h5>
+                        <p class="card-text">Housing for All - Urban and Rural housing scheme</p>
+                        <button class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#pmAwasModal">
+                            View Details
+                        </button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Ayushman Bharat -->
+            <div class="col-md-4 animate__animated animate__fadeIn">
+                <div class="card">
+                    <div class="card-body text-center">
+                        <i class="fas fa-heartbeat scheme-icon"></i>
+                        <h5 class="card-title">Ayushman Bharat</h5>
+                        <p class="card-text">Health insurance coverage up to ₹5 lakhs per family per year</p>
+                        <button class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#ayushmanModal">
+                            View Details
+                        </button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- PM Ujjwala Yojana -->
+            <div class="col-md-4 animate__animated animate__fadeIn">
+                <div class="card">
+                    <div class="card-body text-center">
+                        <i class="fas fa-fire scheme-icon"></i>
+                        <h5 class="card-title">PM Ujjwala Yojana</h5>
+                        <p class="card-text">Free LPG connections to women from BPL households</p>
+                        <button class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#ujjwalaModal">
+                            View Details
+                        </button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Sukanya Samriddhi Yojana -->
+            <div class="col-md-4 animate__animated animate__fadeIn">
+                <div class="card">
+                    <div class="card-body text-center">
+                        <i class="fas fa-child scheme-icon"></i>
+                        <h5 class="card-title">Sukanya Samriddhi Yojana</h5>
+                        <p class="card-text">Savings scheme for girl child education and marriage</p>
+                        <button class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#sukanyaModal">
+                            View Details
+                        </button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- PM Mudra Yojana -->
+            <div class="col-md-4 animate__animated animate__fadeIn">
+                <div class="card">
+                    <div class="card-body text-center">
+                        <i class="fas fa-store scheme-icon"></i>
+                        <h5 class="card-title">PM Mudra Yojana</h5>
+                        <p class="card-text">Loans up to ₹10 lakhs for small business ventures</p>
+                        <button class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#mudraModal">
+                            View Details
+                        </button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- PM Jan Dhan Yojana -->
+            <div class="col-md-4 animate__animated animate__fadeIn">
+                <div class="card">
+                    <div class="card-body text-center">
+                        <i class="fas fa-piggy-bank scheme-icon"></i>
+                        <h5 class="card-title">PM Jan Dhan Yojana</h5>
+                        <p class="card-text">Financial inclusion program with zero balance accounts</p>
+                        <button class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#janDhanModal">
+                            View Details
+                        </button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Add more scheme cards following the same pattern -->
+            <!-- Additional schemes will be listed here -->
+        </div>
+    </div>
+
+    <!-- PM Kisan Modal -->
+    <div class="modal fade" id="pmKisanModal" tabindex="-1">
+        <div class="modal-dialog modal-lg">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title">PM Kisan Samman Nidhi</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <div class="eligibility-criteria">
+                        <h6>Eligibility Criteria:</h6>
+                        <ul>
+                            <li>All landholding farmer families</li>
+                            <li>Family must have cultivable landholding</li>
+                            <li>Both rural and urban farmers are eligible</li>
+                        </ul>
+                    </div>
+                    <h6>Required Documents:</h6>
+                    <ul class="document-list">
+                        <li><i class="fas fa-file-alt"></i> Aadhaar Card</li>
+                        <li><i class="fas fa-file-alt"></i> Land Records</li>
+                        <li><i class="fas fa-file-alt"></i> Bank Account Details</li>
+                        <li><i class="fas fa-file-alt"></i> Recent Passport Size Photograph</li>
+                    </ul>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                    <button type="button" class="btn btn-primary"><a href="register.html">Apply Now</a></button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- PM Awas Modal -->
+    <div class="modal fade" id="pmAwasModal" tabindex="-1">
+        <div class="modal-dialog modal-lg">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title">PM Awas Yojana</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <div class="eligibility-criteria">
+                        <h6>Eligibility Criteria:</h6>
+                        <ul>
+                            <li>Family should not own a pucca house</li>
+                            <li>Annual income should be within specified limits</li>
+                            <li>Should not have availed housing benefit before</li>
+                        </ul>
+                    </div>
+                    <h6>Required Documents:</h6>
+                    <ul class="document-list">
+                        <li><i class="fas fa-file-alt"></i> Aadhaar Card</li>
+                        <li><i class="fas fa-file-alt"></i> Income Certificate</li>
+                        <li><i class="fas fa-file-alt"></i> Bank Account Details</li>
+                        <li><i class="fas fa-file-alt"></i> Property Documents (if any)</li>
+                    </ul>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                    <button type="button" class="btn btn-primary"><a href="register.html">Apply Now</a></button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- PM Ujjwala Modal -->
+    <div class="modal fade" id="ujjwalaModal" tabindex="-1">
+        <div class="modal-dialog modal-lg">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title">PM Ujjwala Yojana</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <div class="eligibility-criteria">
+                        <h6>Eligibility Criteria:</h6>
+                        <ul>
+                            <li>Woman of BPL household aged 18 and above</li>
+                            <li>No LPG connection in the household</li>
+                            <li>Must be a resident of India</li>
+                        </ul>
+                    </div>
+                    <h6>Required Documents:</h6>
+                    <ul class="document-list">
+                        <li><i class="fas fa-file-alt"></i> Aadhaar Card</li>
+                        <li><i class="fas fa-file-alt"></i> BPL Certificate</li>
+                        <li><i class="fas fa-file-alt"></i> Bank Account Details</li>
+                        <li><i class="fas fa-file-alt"></i> Proof of Address</li>
+                    </ul>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                    <button type="button" class="btn btn-primary"><a href="register.html">Apply Now</a></button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Sukanya Samriddhi Modal -->
+    <div class="modal fade" id="sukanyaModal" tabindex="-1">
+        <div class="modal-dialog modal-lg">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title">Sukanya Samriddhi Yojana</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <div class="eligibility-criteria">
+                        <h6>Eligibility Criteria:</h6>
+                        <ul>
+                            <li>Girl child below 10 years of age</li>
+                            <li>Account can be opened by parents/legal guardian</li>
+                            <li>Only one account per girl child (maximum two accounts in case of twins)</li>
+                        </ul>
+                    </div>
+                    <h6>Required Documents:</h6>
+                    <ul class="document-list">
+                        <li><i class="fas fa-file-alt"></i> Birth Certificate of Girl Child</li>
+                        <li><i class="fas fa-file-alt"></i> Parent's/Guardian's ID Proof</li>
+                        <li><i class="fas fa-file-alt"></i> Address Proof</li>
+                        <li><i class="fas fa-file-alt"></i> Passport Size Photograph</li>
+                    </ul>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                    <button type="button" class="btn btn-primary"><a href="register.html">Apply Now</a></button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- PM Mudra Modal -->
+    <div class="modal fade" id="mudraModal" tabindex="-1">
+        <div class="modal-dialog modal-lg">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title">PM Mudra Yojana</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <div class="eligibility-criteria">
+                        <h6>Eligibility Criteria:</h6>
+                        <ul>
+                            <li>Any Indian citizen with a business plan</li>
+                            <li>Age 18 years and above</li>
+                            <li>Non-defaulter to any bank/financial institution</li>
+                        </ul>
+                    </div>
+                    <h6>Required Documents:</h6>
+                    <ul class="document-list">
+                        <li><i class="fas fa-file-alt"></i> Identity Proof (Aadhaar/PAN)</li>
+                        <li><i class="fas fa-file-alt"></i> Business Plan/Proposal</li>
+                        <li><i class="fas fa-file-alt"></i> Address Proof</li>
+                        <li><i class="fas fa-file-alt"></i> Bank Account Statement</li>
+                        <li><i class="fas fa-file-alt"></i> Business Registration (if applicable)</li>
+                    </ul>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                    <button type="button" class="btn btn-primary"><a href="register.html">Apply Now</a></button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Ayushman Bharat Modal -->
+    <div class="modal fade" id="ayushmanModal" tabindex="-1">
+        <div class="modal-dialog modal-lg">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title">Ayushman Bharat</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <div class="eligibility-criteria">
+                        <h6>Eligibility Criteria:</h6>
+                        <ul>
+                            <li>Families included in SECC database</li>
+                            <li>Previously covered under RSBY</li>
+                            <li>No regular formal employment in family</li>
+                            <li>Belongs to identified deprivation categories</li>
+                        </ul>
+                    </div>
+                    <h6>Required Documents:</h6>
+                    <ul class="document-list">
+                        <li><i class="fas fa-file-alt"></i> Aadhaar Card</li>
+                        <li><i class="fas fa-file-alt"></i> Ration Card/PDS Document</li>
+                        <li><i class="fas fa-file-alt"></i> Income Certificate (if applicable)</li>
+                        <li><i class="fas fa-file-alt"></i> Proof of Address</li>
+                        <li><i class="fas fa-file-alt"></i> Family Member Details</li>
+                    </ul>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                    <button type="button" class="btn btn-primary"><a href="register.html">Apply Now</a></button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- PM Jan Dhan Modal -->
+    <div class="modal fade" id="janDhanModal" tabindex="-1">
+        <div class="modal-dialog modal-lg">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title">PM Jan Dhan Yojana</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <div class="eligibility-criteria">
+                        <h6>Eligibility Criteria:</h6>
+                        <ul>
+                            <li>Indian citizen aged 10 years and above</li>
+                            <li>No other bank account (for zero balance account)</li>
+                            <li>Valid KYC documents</li>
+                            <li>Both rural and urban residents eligible</li>
+                        </ul>
+                    </div>
+                    <h6>Required Documents:</h6>
+                    <ul class="document-list">
+                        <li><i class="fas fa-file-alt"></i> Aadhaar Card</li>
+                        <li><i class="fas fa-file-alt"></i> PAN Card (if available)</li>
+                        <li><i class="fas fa-file-alt"></i> Proof of Address (Voter ID/Driving License/NREGA Card)</li>
+                        <li><i class="fas fa-file-alt"></i> Recent Passport Size Photograph</li>
+                        <li><i class="fas fa-file-alt"></i> Mobile Number (for SMS alerts)</li>
+                    </ul>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                    <button type="button" class="btn btn-primary"><a href="register.html">Apply Now</a></button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer class="bg-light py-4">
+        <div class="container text-center">
+            <p>&copy; 2025 Government Welfare Schemes Portal. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <!-- Bootstrap JS -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.0/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>

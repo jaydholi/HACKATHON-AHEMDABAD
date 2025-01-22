@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Register - Welfare Schemes Portal</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.0/css/bootstrap.min.css">
+    <link rel="stylesheet" href="CSS/style.css">
+</head>
+<body>
+
+    <!-- Navbar -->
+    <nav class="navbar navbar-expand-lg navbar-dark">
+        <div class="container-fluid">
+            <a class="navbar-brand" href="index.html">Welfare Schemes</a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav">
+                    <li class="nav-item">
+                        <a class="nav-link" href="index.html">Home</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="all-schemes.html">All Schemes</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="contact.html">Contact Us</a>
+                    </li>
+                    <li class="nav-item">
+                        <button class="btn btn-success me-2" type="button"><a href="login.html">Login</a></button>
+                        <button class="btn btn-outline-success me-2" type="button"><a href="register.html">Register</a></button>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Register Section -->
+    <div class="container mt-5">
+        <h2>Register</h2>
+        <form id="register-form">
+            <div class="mb-3">
+                <label for="first-name" class="form-label">First Name</label>
+                <input type="text" class="form-control" id="first-name" placeholder="Enter your first name" required>
+            </div>
+            <div class="mb-3">
+                <label for="middle-name" class="form-label">Middle Name</label>
+                <input type="text" class="form-control" id="middle-name" placeholder="Enter your middle name">
+            </div>
+            <div class="mb-3">
+                <label for="last-name" class="form-label">Last Name</label>
+                <input type="text" class="form-control" id="last-name" placeholder="Enter your last name" required>
+            </div>
+            <div class="mb-3">
+                <label for="phone-number" class="form-label">Phone Number</label>
+                <input type="tel" class="form-control" id="phone-number" placeholder="Enter your phone number" required>
+            </div>
+            <div class="mb-3">
+                <label for="email" class="form-label">Email</label>
+                <input type="email" class="form-control" id="email" placeholder="Enter your email" required>
+            </div>
+            <div class="mb-3">
+                <label for="scheme" class="form-label">Select Scheme</label>
+                <select class="form-control" id="scheme" required>
+                    <option value="">Select a scheme</option>
+                    <option value="pm-kisan">PM Kisan Samman Nidhi</option>
+                    <option value="pm-awas">PM Awas Yojana</option>
+                    <option value="ayushman-bharat">Ayushman Bharat</option>
+                    <option value="pm-ujjwala">PM Ujjwala Yojana</option>
+                    <option value="sukanya-samriddhi">Sukanya Samriddhi Yojana</option>
+                    <option value="pm-mudra">PM Mudra Yojana</option>
+                    <option value="pm-jan-dhan">PM Jan Dhan Yojana</option>
+                </select>
+            </div>
+            <div id="document-upload-section" class="mb-3" style="display: none;">
+                <label class="form-label">Upload Required Documents</label>
+                <div id="document-upload-fields"></div>
+            </div>
+            <button type="submit" class="btn btn-primary">Register</button>
+        </form>
+    </div>
+
+    <!-- Footer -->
+    <footer class="text-center mt-5">
+        <p>&copy; 2025 Welfare Schemes Portal. All rights reserved.</p>
+    </footer>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.0/js/bootstrap.bundle.min.js"></script>
+    <script>
+        const schemeDocuments = {
+            "pm-kisan": ["Aadhaar Card", "Land Records", "Bank Account Details", "Recent Passport Size Photograph"],
+            "pm-awas": ["Aadhaar Card", "Income Certificate", "Bank Account Details", "Property Documents (if any)"],
+            "ayushman-bharat": ["Aadhaar Card", "Ration Card/PDS Document", "Income Certificate (if applicable)", "Proof of Address", "Family Member Details"],
+            "pm-ujjwala": ["Aadhaar Card", "BPL Certificate", "Bank Account Details", "Proof of Address"],
+            "sukanya-samriddhi": ["Birth Certificate of Girl Child", "Parent's/Guardian's ID Proof", "Address Proof", "Passport Size Photograph"],
+            "pm-mudra": ["Identity Proof (Aadhaar/PAN)", "Business Plan/Proposal", "Address Proof", "Bank Account Statement", "Business Registration (if applicable)"],
+            "pm-jan-dhan": ["Aadhaar Card", "PAN Card (if available)", "Proof of Address (Voter ID/Driving License/NREGA Card)", "Recent Passport Size Photograph", "Mobile Number (for SMS alerts)"]
+        };
+
+        document.getElementById('scheme').addEventListener('change', function() {
+            const selectedScheme = this.value;
+            const documentUploadSection = document.getElementById('document-upload-section');
+            const documentUploadFields = document.getElementById('document-upload-fields');
+            documentUploadFields.innerHTML = '';
+
+            if (selectedScheme && schemeDocuments[selectedScheme]) {
+                schemeDocuments[selectedScheme].forEach(doc => {
+                    const div = document.createElement('div');
+                    div.className = 'mb-3';
+                    div.innerHTML = `
+                        <label class="form-label">${doc}</label>
+                        <input type="file" class="form-control" required>
+                    `;
+                    documentUploadFields.appendChild(div);
+                });
+                documentUploadSection.style.display = 'block';
+            } else {
+                documentUploadSection.style.display = 'none';
+            }
+        });
+
+        document.getElementById('register-form').addEventListener('submit', function(e) {
+            e.preventDefault();
+            const firstName = document.getElementById('first-name').value;
+            const middleName = document.getElementById('middle-name').value;
+            const lastName = document.getElementById('last-name').value;
+            const phoneNumber = document.getElementById('phone-number').value;
+            const email = document.getElementById('email').value;
+            const scheme = document.getElementById('scheme').value;
+
+            // Here you can add your code to handle the form submission, e.g., send the data to your server
+            alert(`Registered with: \nFirst Name: ${firstName}\nMiddle Name: ${middleName}\nLast Name: ${lastName}\nPhone Number: ${phoneNumber}\nEmail: ${email}\nScheme: ${scheme}`);
+        });
+    </script>
+</body>
+</html>
