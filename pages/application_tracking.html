@@ -1,0 +1,241 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Application Tracking</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/css/bootstrap.min.css" rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/js/bootstrap.bundle.min.js" defer></script>
+    <style>
+        body {
+            background-color: #f4f4f9;
+            font-family: 'Arial', sans-serif;
+            margin: 0;
+        }
+
+        /* Header Style */
+        header {
+            background-color: #003366;
+            color: white;
+            padding: 20px 0;
+        }
+
+        header .container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        header h1 {
+            font-size: 1.75rem;
+            margin: 0;
+        }
+
+        header nav a {
+            color: white;
+            text-decoration: none;
+            margin-left: 15px;
+            font-size: 1rem;
+            transition: color 0.3s ease;
+        }
+
+        header nav a:hover {
+            color: #ffcc00;
+        }
+
+        /* Footer Style */
+        footer {
+            background-color: #343a40;
+            color: white;
+            padding: 30px 20px;
+            text-align: center;
+        }
+
+        footer a {
+            color: #ffcc00;
+            text-decoration: none;
+            transition: color 0.3s ease;
+        }
+
+        footer a:hover {
+            color: #ff9f00;
+        }
+
+        /* Card and Form Styling */
+        .card {
+            border-radius: 10px;
+            border: none;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            background-color: #ffffff;
+        }
+
+        .form-label {
+            font-size: 1rem;
+        }
+
+        .status-indicator {
+            height: 20px;
+            width: 20px;
+            border-radius: 50%;
+            display: inline-block;
+        }
+
+        /* Improved Tracking Bar and Status Styling */
+        .progress-bar {
+            border-radius: 10px;
+        }
+
+        .status-pending {
+            background-color: #ffcc00;
+        }
+
+        .status-review {
+            background-color: #0044cc;
+        }
+
+        .status-approved {
+            background-color: #28a745;
+        }
+
+        .status-rejected {
+            background-color: #dc3545;
+        }
+
+        /* Timeline Progress */
+        .timeline-step {
+            font-size: 1.1rem;
+            padding: 10px;
+            background-color: #e7f3fe;
+            border-left: 5px solid #0044cc;
+            margin-bottom: 20px;
+        }
+
+        .timeline-step .progress {
+            height: 8px;
+            border-radius: 5px;
+        }
+
+        /* Button Styling */
+        .btn-primary {
+            background-color: #003366;
+            border-color: #003366;
+            transition: background-color 0.3s ease, border-color 0.3s ease;
+        }
+
+        .btn-primary:hover {
+            background-color: #ffcc00;
+            border-color: #ffcc00;
+        }
+
+        /* Centered Heading for Main Section */
+        .section-heading {
+            text-align: center;
+            font-size: 2rem;
+            font-weight: bold;
+            color: #003366;
+        }
+    </style>
+</head>
+
+<body>
+    <!-- Header -->
+    <header>
+        <div class="container">
+            <h1>Government Application Tracking</h1>
+            <nav>
+                <a href="#">Home</a>
+                <a href="#">Contact Us</a>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Main Container -->
+    <div class="container my-5">
+        <div class="section-heading mb-4">Track Your Application</div>
+
+        <!-- Search Form -->
+        <div class="card mb-4 shadow-sm">
+            <div class="card-body">
+                <form id="trackingForm">
+                    <div class="row g-3 align-items-center">
+                        <div class="col-md-9">
+                            <label for="applicationId" class="form-label">Enter Application ID</label>
+                            <input type="text" id="applicationId" class="form-control" placeholder="e.g., APP12345678" required>
+                        </div>
+                        <div class="col-md-3">
+                            <button type="submit" class="btn btn-primary w-100">Track</button>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+
+        <!-- Application Status -->
+        <div id="applicationStatus" class="card shadow-sm mb-4" style="display: none;">
+            <div class="card-header bg-primary text-white">Application Status</div>
+            <div class="card-body">
+                <h5>Status: <span id="statusText" class="fw-bold"></span></h5>
+                <div id="statusIndicator" class="status-indicator"></div>
+            </div>
+        </div>
+
+        <!-- Timeline -->
+        <div id="timeline" class="card shadow-sm" style="display: none;">
+            <div class="card-header bg-info text-white">Estimated Timeline</div>
+            <div class="card-body">
+                <div class="timeline-step">
+                    <strong>Step 1: Submission</strong>
+                    <div class="progress">
+                        <div class="progress-bar bg-success" role="progressbar" style="width: 100%;">Completed</div>
+                    </div>
+                </div>
+                <div class="timeline-step">
+                    <strong>Step 2: Under Review</strong>
+                    <div class="progress">
+                        <div class="progress-bar bg-info" role="progressbar" style="width: 75%;">75%</div>
+                    </div>
+                </div>
+                <div class="timeline-step">
+                    <strong>Step 3: Approval</strong>
+                    <div class="progress">
+                        <div class="progress-bar bg-warning" role="progressbar" style="width: 50%;">50%</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer>
+        <p>&copy; 2025 <a href="#">Government Welfare Portal</a>. All rights reserved.</p>
+    </footer>
+
+    <script>
+        const trackingForm = document.getElementById('trackingForm');
+        const applicationStatus = document.getElementById('applicationStatus');
+        const timeline = document.getElementById('timeline');
+        const statusText = document.getElementById('statusText');
+        const statusIndicator = document.getElementById('statusIndicator');
+
+        trackingForm.addEventListener('submit', function (e) {
+            e.preventDefault();
+            const appId = document.getElementById('applicationId').value.trim();
+
+            if (appId) {
+                // Mock data for application status
+                const status = "Under Review"; // Mock status
+
+                // Update status display
+                statusText.textContent = status;
+                statusIndicator.className = `status-indicator status-${status.toLowerCase().replace(' ', '-')}`;
+
+                // Show sections
+                applicationStatus.style.display = 'block';
+                timeline.style.display = 'block';
+            }
+        });
+    </script>
+</body>
+
+</html>
