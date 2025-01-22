@@ -1,0 +1,270 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Notifications Page</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet" />
+    <!-- Font Awesome for Icons -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" rel="stylesheet" />
+    <style>
+        /* General Styles */
+        body {
+            font-family: 'Roboto', sans-serif;
+            background-color: #f4f6f9;
+            margin: 0;
+            color: #333;
+        }
+
+        h2 {
+            color: #1a73e8;
+            font-size: 2.5rem;
+            margin-top: 100px;
+            font-weight: bold;
+        }
+
+        .alert {
+            font-size: 1.2rem;
+            font-weight: 600;
+            background-color: #eaf4f7;
+            border-color: #b6e0f2;
+            color: #0a58ca;
+            border-radius: 10px;
+        }
+
+        .alert .marquee {
+            font-size: 1.1rem;
+            font-weight: 700;
+            color: #007bff;
+        }
+
+        /* Header Styles */
+        .navbar {
+            background-color: #1a73e8;
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        }
+
+        .navbar-brand {
+            color: white;
+            font-size: 1.8rem;
+            font-weight: bold;
+        }
+
+        .navbar-nav .nav-item .nav-link {
+            color: white !important;
+            font-size: 1.1rem;
+        }
+
+        .navbar-nav .nav-item .nav-link:hover {
+            color: #f5a623 !important;
+        }
+
+        /* Card Styles */
+        .card {
+            border-radius: 15px;
+            border: none;
+            margin-bottom: 30px;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s ease-in-out;
+        }
+
+        .card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 15px rgba(0, 0, 0, 0.1);
+        }
+
+        .card-header {
+            border-radius: 15px 15px 0 0;
+            padding: 20px;
+            color: white;
+            font-size: 1.3rem;
+            font-weight: bold;
+        }
+
+        .card-body {
+            padding: 1.5rem;
+        }
+
+        .list-group-item {
+            border: 0;
+            padding: 20px;
+            font-size: 1.1rem;
+            background-color: #fff;
+            border-radius: 10px;
+            transition: transform 0.3s ease-in-out;
+        }
+
+        .list-group-item:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        }
+
+        /* Footer Styles */
+        .footer {
+            background-color: #1a73e8;
+            color: white;
+            padding: 20px;
+            position: fixed;
+            width: 100%;
+            bottom: 0;
+            text-align: center;
+        }
+
+        .footer a {
+            color: #f5a623;
+            text-decoration: none;
+        }
+
+        .footer a:hover {
+            text-decoration: underline;
+        }
+
+        /* Notification Icons */
+        .notification-icon {
+            font-size: 1.7rem;
+            margin-right: 15px;
+            color: #333;
+            transition: color 0.3s ease-in-out;
+        }
+
+        .notification-icon:hover {
+            color: #1a73e8;
+        }
+
+        /* Notification Header Colors */
+        .card-header.bg-primary { background: linear-gradient(to right, #1a73e8, #3367d6); }
+        .card-header.bg-success { background: linear-gradient(to right, #28a745, #218838); }
+        .card-header.bg-warning { background: linear-gradient(to right, #ffc107, #ff9800); }
+
+        /* Marquee Styling */
+        .alert {
+            font-size: 1.3rem;
+            font-weight: 600;
+        }
+
+        .alert .marquee {
+            font-size: 1.2rem;
+            font-weight: 700;
+            color: #007bff;
+        }
+
+    </style>
+</head>
+<body>
+
+    <!-- Header Section -->
+    <nav class="navbar navbar-expand-lg navbar-light">
+        <div class="container-fluid">
+            <a class="navbar-brand" href="#">AppName</a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item">
+                        <a class="nav-link active" href="#">Home</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#">Features</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#">Pricing</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#">Contact</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Main Content -->
+    <div class="container my-5">
+        <h2 class="text-center mb-5">Notifications</h2>
+
+        <!-- Marquee Section for Scrolling Text -->
+        <div class="alert alert-info d-flex justify-content-between align-items-center mb-4">
+            <marquee class="text-dark" direction="left" scrollamount="6">
+                Stay updated with the latest news and announcements! Don’t miss any important updates.
+            </marquee>
+        </div>
+
+        <div class="row">
+            <!-- Application Updates Section -->
+            <div class="col-lg-4 col-md-6 col-sm-12 mb-4">
+                <div class="card shadow-lg border-primary rounded-3">
+                    <div class="card-header bg-primary">
+                        <h5><i class="fas fa-cogs notification-icon"></i>Application Updates</h5>
+                    </div>
+                    <div class="card-body">
+                        <ul class="list-group">
+                            <li class="list-group-item">
+                                <i class="fas fa-check-circle notification-icon text-success"></i>
+                                <span><strong>Version 2.0.1 Released</strong><p>We’ve released a new update with bug fixes and performance improvements.</p></span>
+                            </li>
+                            <li class="list-group-item">
+                                <i class="fas fa-moon notification-icon text-dark"></i>
+                                <span><strong>Dark Mode Enabled</strong><p>We’ve added a new dark mode for a better user experience.</p></span>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+
+            <!-- New Schemes Section -->
+            <div class="col-lg-4 col-md-6 col-sm-12 mb-4">
+                <div class="card shadow-lg border-success rounded-3">
+                    <div class="card-header bg-success">
+                        <h5><i class="fas fa-hand-holding-usd notification-icon"></i>New Schemes</h5>
+                    </div>
+                    <div class="card-body">
+                        <ul class="list-group">
+                            <li class="list-group-item">
+                                <i class="fas fa-credit-card notification-icon text-success"></i>
+                                <span><strong>Student Loan Scheme</strong><p>We’ve launched a new student loan scheme with low interest rates.</p></span>
+                            </li>
+                            <li class="list-group-item">
+                                <i class="fas fa-home notification-icon text-warning"></i>
+                                <span><strong>Home Loan Scheme</strong><p>Get access to our new home loan scheme with flexible repayment options.</p></span>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Important Announcements Section -->
+            <div class="col-lg-4 col-md-6 col-sm-12 mb-4">
+                <div class="card shadow-lg border-warning rounded-3">
+                    <div class="card-header bg-warning">
+                        <h5><i class="fas fa-bell notification-icon"></i>Important Announcements</h5>
+                    </div>
+                    <div class="card-body">
+                        <ul class="list-group">
+                            <li class="list-group-item">
+                                <i class="fas fa-tools notification-icon text-danger"></i>
+                                <span><strong>Maintenance Schedule</strong><p>We will be performing scheduled maintenance from 12:00 AM to 4:00 AM.</p></span>
+                            </li>
+                            <li class="list-group-item">
+                                <i class="fas fa-building notification-icon text-info"></i>
+                                <span><strong>New Office Opening</strong><p>We are opening a new office in the city center. Visit us soon!</p></span>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Footer Section -->
+    <div class="footer">
+        <p>&copy; 2025 Your Company. All rights reserved. <a href="#">Privacy Policy</a> | <a href="#">Terms of Service</a></p>
+    </div>
+
+    <!-- Bootstrap JS and Dependencies -->
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.6/dist/umd/popper.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.min.js"></script>
+</body>
+</html>
