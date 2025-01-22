@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Application Details</title>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500&display=swap" rel="stylesheet">
+    <style>
+       
+    body {
+        font-family: 'Roboto', sans-serif;
+        margin: 0;
+        padding: 0;
+        background-color: #f4f7fa;
+    }
+
+    .main-content {
+        padding: 40px;
+        background-color: #fff;
+        width: 80%;
+        margin: 40px auto;
+        border-radius: 8px;
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    }
+
+    h2 {
+        text-align: center;
+        color: #2c3e50;
+        margin-bottom: 30px;
+    }
+
+    #applicationDetails {
+        font-size: 18px;
+        color: #555;
+    }
+
+    .status {
+        padding: 5px 10px;
+        border-radius: 5px;
+        font-weight: bold;
+    }
+
+    .approved {
+        background-color: #27ae60;
+        color: #fff;
+    }
+
+    .pending {
+        background-color: #f39c12;
+        color: #fff;
+    }
+
+    .rejected {
+        background-color: #e74c3c;
+        color: #fff;
+    }
+
+    .btn {
+        display: inline-block;
+        padding: 10px 20px;
+        background-color: #3498db;
+        color: white;
+        border: none;
+        border-radius: 4px;
+        text-decoration: none;
+        text-align: center;
+        margin-top: 20px;
+    }
+
+    .btn:hover {
+        background-color: #2980b9;
+    }
+</style>
+
+    
+</head>
+<body>
+    <div class="main-content">
+        <h2>Application Details</h2>
+        <div id="applicationDetails"></div>
+        <a href="index.html" class="btn">Back to Dashboard</a>
+    </div>
+
+    <script>
+        const applications = [
+            { id: 1, name: 'John Doe', status: 'Approved', type: 'Water Supply', officer: 'Officer 1' },
+            { id: 2, name: 'Jane Smith', status: 'Pending', type: 'Public Health', officer: 'Officer 2' },
+            { id: 3, name: 'Tom Harris', status: 'Rejected', type: 'Water Supply', officer: 'Officer 3' },
+            // Add more sample data as needed
+        ];
+
+        const params = new URLSearchParams(window.location.search);
+        const appId = parseInt(params.get('id'));
+
+        const application = applications.find(app => app.id === appId);
+
+        const detailsContainer = document.getElementById('applicationDetails');
+        if (application) {
+            detailsContainer.innerHTML = `
+                <p><strong>Name:</strong> ${application.name}</p>
+                <p><strong>Status:</strong> <span class="status ${application.status.toLowerCase()}">${application.status}</span></p>
+                <p><strong>Type:</strong> ${application.type}</p>
+                <p><strong>Officer:</strong> ${application.officer}</p>
+            `;
+        } else {
+            detailsContainer.innerHTML = '<p>Application not found.</p>';
+        }
+    </script>
+</body>
+</html>
