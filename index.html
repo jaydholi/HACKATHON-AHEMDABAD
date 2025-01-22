@@ -1,389 +1,320 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Welfare Schemes</title>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.0/css/bootstrap.min.css">
-    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500&family=Raleway:wght@700&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>India Government Services</title>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+    <script src="script.js" defer></script>
+</head>
+
+<body>
     <style>
-        body {
-            background-color: #f7f9fb;
-            font-family: 'Roboto', sans-serif;
+        /* General Reset */
+        * {
             margin: 0;
             padding: 0;
+            box-sizing: border-box;
+            font-family: 'Roboto', sans-serif;
+        }
+
+        /* Body */
+        body {
+            background-color: #f5f5f5;
+            color: #333;
+            font-size: 16px;
+            line-height: 1.6;
         }
 
         /* Header */
-        header {
-            background: linear-gradient(45deg, #6a11cb, #2575fc);
+        .header {
+            background-color: #003366;
+            padding: 20px 0;
             color: #fff;
-            padding: 100px 20px;
-            text-align: center;
-            border-bottom: 6px solid #fff;
-            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
         }
 
-        header h1 {
-            font-size: 3.5rem;
+        .header-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .logo-img {
+            height: 60px;
+        }
+
+        .nav ul {
+            list-style: none;
+            display: flex;
+            gap: 25px;
+        }
+
+        .nav ul li {
+            display: inline-block;
+        }
+
+        .nav ul li a {
+            color: #fff;
+            text-decoration: none;
+            font-weight: 500;
+            font-size: 18px;
+            transition: color 0.3s;
+        }
+
+        .nav ul li a:hover {
+            color: #ffb84d;
+        }
+
+        /* Hero Section */
+        .hero {
+            background-color: #003366;
+            color: #fff;
+            text-align: center;
+            padding: 120px 20px;
+            background-image: linear-gradient(45deg, rgba(0, 51, 102, 0.8), rgba(51, 102, 153, 0.8)),
+                url('https://via.placeholder.com/1500x800');
+            background-size: cover;
+            background-position: center;
+        }
+
+        .hero h2 {
+            font-size: 48px;
+            margin-bottom: 20px;
             font-weight: 700;
-            text-shadow: 2px 2px 6px rgba(0, 0, 0, 0.3);
-            margin-bottom: 20px;
+            text-transform: uppercase;
+            letter-spacing: 3px;
         }
 
-        /* Welcome Section */
-        .welcome-section {
+        .hero p {
+            font-size: 20px;
+            margin-bottom: 40px;
+            font-weight: 300;
+        }
+
+        .cta-button {
+            background-color: #ffb84d;
+            color: #003366;
+            padding: 18px 40px;
+            text-decoration: none;
+            font-weight: 500;
+            border-radius: 30px;
+            transition: background-color 0.3s ease, transform 0.3s ease;
+            font-size: 18px;
+        }
+
+        .cta-button:hover {
+            background-color: #ffb84d;
+            transform: translateY(-5px);
+        }
+
+        /* Services Section */
+        .services {
+            background-color: #fff;
+            padding: 80px 20px;
             text-align: center;
-            padding: 60px 20px;
-            margin-top: -50px;
-            background: #fff;
-            box-shadow: 0 8px 15px rgba(0, 0, 0, 0.1);
-            border-radius: 10px;
-            transition: all 0.3s ease;
         }
 
-        .welcome-section:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.2);
-        }
-
-        .welcome-section h2 {
-            font-size: 2.5rem;
+        .services h2 {
+            font-size: 36px;
+            margin-bottom: 60px;
+            color: #003366;
             font-weight: 600;
-            color: #333;
-            margin-bottom: 20px;
         }
 
-        .welcome-section p {
-            font-size: 1.1rem;
-            color: #555;
+        .service-list {
+            display: flex;
+            justify-content: space-between;
+            gap: 40px;
+            flex-wrap: wrap;
+            max-width: 1200px;
+            margin: 0 auto;
         }
 
-        /* Search Bar */
-        .search-bar {
-            max-width: 800px;
-            margin: 40px auto;
-            position: relative;
-        }
-
-        .search-bar input {
-            width: 100%;
-            padding: 15px 30px;
-            border-radius: 40px;
-            border: 1px solid #ddd;
-            font-size: 1.1rem;
-            transition: all 0.3s ease;
-        }
-
-        .search-bar input:focus {
-            outline: none;
-            border-color: #2575fc;
-            box-shadow: 0 5px 15px rgba(37, 117, 252, 0.3);
-        }
-
-        .search-bar button {
-            position: absolute;
-            top: 50%;
-            right: 20px;
-            transform: translateY(-50%);
-            background-color: transparent;
-            border: none;
-            color: #2575fc;
-            font-size: 1.6rem;
-            cursor: pointer;
-        }
-
-        /* Card Styles */
-        .card {
-            border: none;
+        .service-item {
+            background-color: #f9f9f9;
+            width: 30%;
+            padding: 30px;
             border-radius: 15px;
-            box-shadow: 0 12px 24px rgba(0, 0, 0, 0.1);
-            transition: all 0.3s ease;
-            background: #fff;
-            margin-bottom: 30px;
+            text-align: center;
+            box-shadow: 0 12px 20px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
         }
 
-        .card:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.2);
+        .service-item:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.15);
         }
 
-        .card h5 {
-            font-size: 1.3rem;
-            font-weight: 600;
-            color: #333;
-        }
-
-        .card p {
-            font-size: 1rem;
-            color: #555;
+        .service-item img {
+            width: 120px;
+            height: 120px;
+            object-fit: cover;
             margin-bottom: 20px;
+            border-radius: 50%;
+            transition: transform 0.3s ease;
         }
 
-        .card .badge {
-            font-size: 0.9rem;
-            border-radius: 50px;
-            padding: 5px 12px;
+        .service-item:hover img {
+            transform: scale(1.1);
         }
 
-        .btn-primary {
-            background-color: #2575fc;
-            border: none;
-            padding: 10px 18px;
-            border-radius: 30px;
-            font-weight: 600;
-            transition: all 0.3s ease;
+        .service-item h3 {
+            font-size: 24px;
+            margin-bottom: 15px;
+            font-weight: 500;
         }
 
-        .btn-primary:hover {
-            background-color: #6a11cb;
-            box-shadow: 0 5px 10px rgba(0, 0, 0, 0.1);
-        }
-
-        .btn-outline-primary {
-            border: 2px solid #2575fc;
-            color: #2575fc;
-            padding: 10px 18px;
-            border-radius: 30px;
-            font-weight: 600;
-            transition: all 0.3s ease;
-        }
-
-        .btn-outline-primary:hover {
-            background-color: #2575fc;
-            color: #fff;
-            box-shadow: 0 5px 10px rgba(0, 0, 0, 0.1);
+        .service-item p {
+            font-size: 16px;
+            color: #666;
         }
 
         /* Footer */
-        footer {
-            background-color: #2575fc;
+        .footer {
+            background-color: #003366;
             color: #fff;
+            padding: 40px 20px;
             text-align: center;
-            padding: 30px 20px;
-            font-size: 1.2rem;
-            margin-top: 50px;
-            border-top: 4px solid #fff;
+            font-size: 14px;
         }
 
-        /* Additional Sections */
-        .how-it-works, .faq-section, .contact-us {
-            padding: 60px 20px;
-            background-color: #fff;
-            border-radius: 10px;
-            box-shadow: 0 8px 15px rgba(0, 0, 0, 0.1);
-            margin-bottom: 40px;
+        .footer .footer-links ul {
+            list-style: none;
+            margin-bottom: 20px;
         }
 
-        .how-it-works h2, .faq-section h2, .contact-us h2 {
-            font-size: 2.2rem;
-            font-weight: 600;
-            color: #333;
-            margin-bottom: 30px;
-            text-align: center;
+        .footer .footer-links ul li {
+            display: inline-block;
+            margin: 0 15px;
         }
 
-        .how-it-works .step, .faq-section .faq-item, .contact-us form {
-            background: #f0f4f8;
-            padding: 20px;
-            border-radius: 10px;
-            margin-bottom: 15px;
+        .footer .footer-links ul li a {
+            color: #fff;
+            text-decoration: none;
+            transition: color 0.3s;
         }
 
-        .how-it-works .step i, .faq-section .faq-item i, .contact-us form i {
-            font-size: 1.6rem;
-            margin-right: 15px;
-            color: #2575fc;
+        .footer .footer-links ul li a:hover {
+            color: #ffb84d;
         }
 
-        .how-it-works .step h5, .faq-section .faq-item h5, .contact-us form h5 {
-            font-size: 1.2rem;
-            font-weight: 600;
-            color: #333;
+        .footer .social-media a {
+            color: #fff;
+            margin: 0 15px;
+            font-size: 20px;
+            text-decoration: none;
+            transition: color 0.3s;
         }
 
-        .how-it-works .step p, .faq-section .faq-item p, .contact-us form p {
-            font-size: 1rem;
-            color: #555;
+        .footer .social-media a:hover {
+            color: #ffb84d;
         }
 
-        /* Responsive Grid */
-        .card-columns {
-            column-count: 2;
+        /* Smooth Scroll */
+        html {
+            scroll-behavior: smooth;
         }
 
-        /* Mobile Specific */
-        @media (max-width: 1200px) {
-            .card-columns {
-                column-count: 2;
-            }
-
-            .btn-primary, .btn-outline-primary {
-                padding: 8px 14px;
-            }
-
-            header h1 {
-                font-size: 2.8rem;
-            }
-        }
-
+        /* Media Queries */
         @media (max-width: 768px) {
-            .card-columns {
-                column-count: 1;
+            .service-list {
+                flex-direction: column;
+                gap: 30px;
             }
 
-            .welcome-section h2 {
-                font-size: 2rem;
+            .service-item {
+                width: 100%;
             }
 
-            .search-bar input {
-                padding: 12px 25px;
+            .header-container {
+                flex-direction: column;
+                text-align: center;
             }
 
-            .btn-primary, .btn-outline-primary {
-                padding: 8px 14px;
-            }
-
-            footer {
-                font-size: 1rem;
-            }
-        }
-
-        @media (max-width: 576px) {
-            .welcome-section h2 {
-                font-size: 1.8rem;
-            }
-
-            .card h5 {
-                font-size: 1.1rem;
-            }
-
-            .card p {
-                font-size: 0.9rem;
-            }
-
-            .search-bar input {
-                padding: 10px 20px;
-            }
-
-            .btn-primary, .btn-outline-primary {
-                padding: 6px 12px;
-            }
-
-            footer {
-                font-size: 0.9rem;
-            }
-
-            header h1 {
-                font-size: 2.2rem;
+            .nav ul {
+                display: flex;
+                flex-direction: column;
+                gap: 15px;
             }
         }
     </style>
-</head>
-<body>
 
     <!-- Header -->
-    <header>
-        <h1>Welfare Schemes Portal</h1>
+    <header class="header">
+        <div class="header-container">
+            <div class="logo">
+                <img src="https://services.india.gov.in/images/govt-india-logo.png" alt="Govt of India Logo"
+                    class="logo-img">
+            </div>
+            <nav class="nav">
+                <ul>
+                    <li><a href="#">Home</a></li>
+                    <li><a href="#">About</a></li>
+                    <li><a href="#">Services</a></li>
+                    <li><a href="#">Contact</a></li>
+                </ul>
+            </nav>
+        </div>
     </header>
 
-    <!-- Welcome Section -->
-    <div class="container welcome-section">
-        <h2>Welcome to the Welfare Schemes Portal</h2>
-        <p>Explore the various welfare schemes and apply online for assistance.</p>
-    </div>
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="hero-content">
+            <h2>Access All Government Services in India</h2>
+            <p>Your one-stop portal for all online government services</p>
+            <a href="#services" class="cta-button">Explore Services</a>
+        </div>
+    </section>
 
-    <!-- Search Bar -->
-    <div class="search-bar">
-        <input type="text" id="searchInput" placeholder="Search Schemes...">
-        <button onclick="searchScheme()"><i class="fas fa-search"></i></button>
-    </div>
-
-    <!-- Schemes Cards -->
-    <div class="container">
-        <div class="card-columns">
-            <!-- Scheme Cards -->
-            <div class="card p-4">
-                <h5><i class="fas fa-home"></i> PM Awas Yojana <span class="badge bg-primary float-end">New</span></h5>
-                <p>Affordable housing scheme for underprivileged families.</p>
-                <a href="#" class="btn btn-primary">Learn More</a>
+    <!-- Services Section -->
+    <section id="services" class="services">
+        <div class="container">
+            <h2>Popular Services</h2>
+            <div class="service-list">
+                <div class="service-item">
+                    <img src="https://via.placeholder.com/150" alt="Service 1">
+                    <h3>Service 1</h3>
+                    <p>Description of Service 1</p>
+                </div>
+                <div class="service-item">
+                    <img src="https://via.placeholder.com/150" alt="Service 2">
+                    <h3>Service 2</h3>
+                    <p>Description of Service 2</p>
+                </div>
+                <div class="service-item">
+                    <img src="https://via.placeholder.com/150" alt="Service 3">
+                    <h3>Service 3</h3>
+                    <p>Description of Service 3</p>
+                </div>
             </div>
-            <div class="card p-4">
-                <h5><i class="fas fa-graduation-cap"></i> Scholarship Scheme</h5>
-                <p>Financial assistance for students pursuing higher education.</p>
-                <a href="#" class="btn btn-primary">Learn More</a>
-            </div>
-            <!-- More Cards Can Be Added Here -->
         </div>
-    </div>
-
-    <!-- How It Works Section -->
-    <div class="container how-it-works">
-        <h2>How It Works</h2>
-        <div class="step">
-            <i class="fas fa-search"></i>
-            <h5>Step 1: Find the Right Scheme</h5>
-            <p>Search for schemes based on your needs.</p>
-        </div>
-        <div class="step">
-            <i class="fas fa-file-alt"></i>
-            <h5>Step 2: Apply Online</h5>
-            <p>Submit your application directly on the portal.</p>
-        </div>
-        <div class="step">
-            <i class="fas fa-thumbs-up"></i>
-            <h5>Step 3: Get Approved</h5>
-            <p>Your application will be reviewed and approved.</p>
-        </div>
-    </div>
-
-    <!-- FAQ Section -->
-    <div class="container faq-section">
-        <h2>Frequently Asked Questions</h2>
-        <div class="faq-item">
-            <i class="fas fa-question-circle"></i>
-            <h5>How do I apply for a scheme?</h5>
-            <p>You can apply by searching the scheme and submitting the application online.</p>
-        </div>
-        <div class="faq-item">
-            <i class="fas fa-question-circle"></i>
-            <h5>Can I track my application status?</h5>
-            <p>Yes, you can track the status of your application from the portal.</p>
-        </div>
-    </div>
-
-    <!-- Contact Us Section -->
-    <div class="container contact-us">
-        <h2>Contact Us</h2>
-        <form>
-            <div class="mb-3">
-                <label for="name" class="form-label">Name</label>
-                <input type="text" class="form-control" id="name" placeholder="Enter your name">
-            </div>
-            <div class="mb-3">
-                <label for="email" class="form-label">Email</label>
-                <input type="email" class="form-control" id="email" placeholder="Enter your email">
-            </div>
-            <div class="mb-3">
-                <label for="message" class="form-label">Message</label>
-                <textarea class="form-control" id="message" rows="3" placeholder="Enter your message"></textarea>
-            </div>
-            <button type="submit" class="btn btn-primary">Submit</button>
-        </form>
-    </div>
+    </section>
 
     <!-- Footer -->
-    <footer>
-        <p>&copy; 2025 Welfare Schemes Portal. All rights reserved.</p>
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-links">
+                <ul>
+                    <li><a href="#">Privacy Policy</a></li>
+                    <li><a href="#">Terms of Service</a></li>
+                    <li><a href="#">FAQ</a></li>
+                </ul>
+            </div>
+            <div class="social-media">
+                <a href="#" class="social-icon">FB</a>
+                <a href="#" class="social-icon">TW</a>
+                <a href="#" class="social-icon">IN</a>
+            </div>
+            <p>&copy; 2025 India Government Services. All rights reserved.</p>
+        </div>
     </footer>
 
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.0/js/bootstrap.bundle.min.js"></script>
-    <script>
-        function searchScheme() {
-            const query = document.getElementById("searchInput").value.toLowerCase();
-            console.log("Searching for schemes related to:", query);
-        }
-    </script>
 </body>
+
 </html>
