@@ -115,7 +115,8 @@
             border-collapse: collapse;
         }
 
-        table th, table td {
+        table th,
+        table td {
             padding: 15px;
             text-align: left;
             border-bottom: 1px solid #ecf0f1;
@@ -177,7 +178,8 @@
             font-weight: 500;
         }
 
-        .filter-box select, .filter-box input {
+        .filter-box select,
+        .filter-box input {
             padding: 10px;
             font-size: 14px;
             border-radius: 5px;
@@ -185,7 +187,8 @@
             outline: none;
         }
 
-        .filter-box select:focus, .filter-box input:focus {
+        .filter-box select:focus,
+        .filter-box input:focus {
             border-color: #3498db;
         }
 
@@ -266,10 +269,10 @@
 
     <div class="sidebar">
         <div class="sidebar-header">Govt Admin</div>
-        <a href="#">Dashboard</a>
-        <a href="#">Applications</a>
-        <a href="#">Reports</a>
-        <a href="#">Settings</a>
+        <a href="/pages/officerdashboard.html">Dashboard</a>
+        <a href="/pages/application-details.html">Applications</a>
+        <a href="/pages/report.html">Reports</a>
+        <a href="/pages/setting.html">Settings</a>
     </div>
 
     <div class="main-content">
@@ -286,120 +289,126 @@
 
             <div class="filter-box">
                 <label for="searchFilter">Search:</label>
-                <input type="text" id="searchFilter" placeholder="Search by ID">
+                <input type="text" id="searchFilter" placeholder="Search by name or ID">
             </div>
 
-            <button class="btn" id="applyFilterBtn">Apply Filter</button>
+            <button class="btn" onclick="applyFilters()">Apply Filters</button>
         </div>
 
-        <!-- Dashboard Stats -->
         <div class="stats-cards">
             <div class="card">
                 <h3>Total Applications</h3>
-                <p>1234</p>
+                <p>125</p>
             </div>
             <div class="card">
-                <h3>Pending</h3>
-                <p>300</p>
+                <h3>Approved Applications</h3>
+                <p>85</p>
             </div>
             <div class="card">
-                <h3>Approved</h3>
-                <p>800</p>
+                <h3>Pending Applications</h3>
+                <p>30</p>
             </div>
             <div class="card">
-                <h3>Rejected</h3>
-                <p>134</p>
+                <h3>Rejected Applications</h3>
+                <p>10</p>
             </div>
         </div>
 
-        <!-- Application Table -->
         <div class="table-container">
-            <table id="applicationTable">
+            <table>
                 <thead>
                     <tr>
                         <th>Application ID</th>
-                        <th>Name</th>
-                        <th>Status</th>
+                        <th>Applicant Name</th>
                         <th>Type</th>
-                        <th>Officer</th>
+                        <th>Status</th>
                         <th>Actions</th>
                     </tr>
                 </thead>
-                <tbody id="applicationTableBody">
-                    <!-- Data rows will be populated here -->
+                <tbody id="applicationTable">
+                    <tr>
+                        <td>AP001</td>
+                        <td>John Doe</td>
+                        <td>Water Supply</td>
+                        <td><span class="status approved">Approved</span></td>
+                        <td><button class="btn" onclick="openModal('AP001')">View</button></td>
+                    </tr>
+                    <tr>
+                        <td>AP002</td>
+                        <td>Jane Smith</td>
+                        <td>Sanitation</td>
+                        <td><span class="status pending">Pending</span></td>
+                        <td><button class="btn" onclick="openModal('AP002')">View</button></td>
+                    </tr>
+                    <tr>
+                        <td>AP003</td>
+                        <td>Mark Johnson</td>
+                        <td>Public Health</td>
+                        <td><span class="status rejected">Rejected</span></td>
+                        <td><button class="btn" onclick="openModal('AP003')">View</button></td>
+                    </tr>
                 </tbody>
             </table>
+            <!-- View All Applications Button -->
+            <div style="margin-top: 20px; text-align: center;">
+                <a href="/pages/application-details.html" class="btn">View All Applications</a>
+            </div>
         </div>
+        
     </div>
 
-    <!-- Application Details Modal -->
-    <div id="applicationModal" class="modal">
+    <!-- Modal -->
+    <div class="modal" id="applicationModal">
         <div class="modal-content">
-            <span id="closeModal" class="close">&times;</span>
-            <div id="applicationDetails"></div>
+            <span class="close" onclick="closeModal()">&times;</span>
+            <h2>Application Details</h2>
+            <div id="modalContent">
+                <!-- Application details will be loaded here -->
+            </div>
         </div>
     </div>
 
     <script>
-        const applications = [
-            { id: 1, name: 'John Doe', status: 'Approved', type: 'Water Supply', officer: 'Officer 1' },
-            { id: 2, name: 'Jane Smith', status: 'Pending', type: 'Public Health', officer: 'Officer 2' },
-            { id: 3, name: 'Tom Harris', status: 'Rejected', type: 'Water Supply', officer: 'Officer 3' },
-            // Add more sample data as needed
-        ];
+        // Function to open modal with application details
+        function openModal(applicationId) {
+            const modal = document.getElementById('applicationModal');
+            const modalContent = document.getElementById('modalContent');
+            modal.style.display = 'flex';
 
-        const populateTable = (apps) => {
-            const tableBody = document.getElementById('applicationTableBody');
-            tableBody.innerHTML = '';
-            apps.forEach(app => {
-                const row = document.createElement('tr');
-                row.innerHTML = `
-                    <td>${app.id}</td>
-                    <td>${app.name}</td>
-                    <td><span class="status ${app.status.toLowerCase()}">${app.status}</span></td>
-                    <td>${app.type}</td>
-                    <td>${app.officer}</td>
-                    <td><button class="btn" onclick="viewDetails(${app.id})">View</button></td>
-                `;
-                tableBody.appendChild(row);
-            });
-        };
+            // Example data - replace with dynamic content fetching logic
+            const details = {
+                AP001: 'Details of Application ID: AP001 - John Doe, Water Supply, Approved.',
+                AP002: 'Details of Application ID: AP002 - Jane Smith, Sanitation, Pending.',
+                AP003: 'Details of Application ID: AP003 - Mark Johnson, Public Health, Rejected.'
+            };
 
-        const filterApplications = () => {
+            modalContent.innerHTML = details[applicationId] || 'No details available.';
+        }
+
+        // Function to close modal
+        function closeModal() {
+            const modal = document.getElementById('applicationModal');
+            modal.style.display = 'none';
+        }
+
+        // Function to apply filters
+        function applyFilters() {
             const typeFilter = document.getElementById('applicationFilter').value;
             const searchFilter = document.getElementById('searchFilter').value.toLowerCase();
+            const tableRows = document.querySelectorAll('#applicationTable tr');
 
-            let filteredApplications = applications.filter(app => {
-                const typeMatch = typeFilter === 'all' || app.type === typeFilter;
-                const searchMatch = app.id.toString().includes(searchFilter);
-                return typeMatch && searchMatch;
+            tableRows.forEach(row => {
+                const type = row.cells[2].innerText.toLowerCase();
+                const nameOrId = row.cells[0].innerText.toLowerCase() + row.cells[1].innerText.toLowerCase();
+
+                if ((typeFilter === 'all' || type === typeFilter.toLowerCase()) &&
+                    nameOrId.includes(searchFilter)) {
+                    row.style.display = '';
+                } else {
+                    row.style.display = 'none';
+                }
             });
-
-            populateTable(filteredApplications);
-        };
-
-        const viewDetails = (id) => {
-            const app = applications.find(app => app.id === id);
-            const modal = document.getElementById('applicationModal');
-            const details = document.getElementById('applicationDetails');
-            details.innerHTML = `
-                <h2>Application Details</h2>
-                <p><strong>ID:</strong> ${app.id}</p>
-                <p><strong>Name:</strong> ${app.name}</p>
-                <p><strong>Status:</strong> ${app.status}</p>
-                <p><strong>Type:</strong> ${app.type}</p>
-                <p><strong>Officer:</strong> ${app.officer}</p>
-            `;
-            modal.style.display = 'flex';
-        };
-
-        document.getElementById('applyFilterBtn').addEventListener('click', filterApplications);
-        document.getElementById('closeModal').addEventListener('click', () => {
-            document.getElementById('applicationModal').style.display = 'none';
-        });
-
-        // Initialize table with all applications
-        populateTable(applications);
+        }
     </script>
 </body>
 
