@@ -1,0 +1,216 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Citizen Details</title>
+  <!-- Bootstrap CSS -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+  <style>
+    body {
+      background: #1a1a1a;
+      color: #fff;
+      font-family: 'Arial', sans-serif;
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      transition: background 0.5s, color 0.5s;
+    }
+
+    .card {
+      box-shadow: 0 8px 20px rgba(0, 0, 0, 0.5);
+      border: none;
+      border-radius: 10px;
+      overflow: hidden;
+      background-color: #2c2c2c;
+      color: #fff;
+      max-width: 800px;
+      display: flex;
+      transition: background 0.5s, color 0.5s;
+    }
+
+    .profile-section {
+      background-color: #007bff;
+      padding: 20px;
+      text-align: center;
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .profile-img {
+      width: 120px;
+      height: 120px;
+      object-fit: cover;
+      border-radius: 50%;
+      border: 3px solid #fff;
+      margin-bottom: 15px;
+    }
+
+    .details-section {
+      flex: 2;
+      padding: 30px;
+    }
+
+    .badge {
+      font-size: 1rem;
+      padding: 0.5em 1em;
+      border-radius: 20px;
+    }
+
+    .info-section {
+      margin-top: 20px;
+      padding: 20px;
+      background-color: #3a3a3a;
+      border-radius: 10px;
+      box-shadow: 0 2px 5px rgba(0, 0, 0, 0.5);
+    }
+
+    .info-section h5 {
+      color: #adb5bd;
+      font-weight: bold;
+    }
+
+    .btn-primary {
+      background-color: #007bff;
+      border: none;
+      padding: 10px 20px;
+      border-radius: 20px;
+    }
+
+    .btn-primary:hover {
+      background-color: #0056b3;
+    }
+
+    .mode-toggle {
+      position: absolute;
+      top: 20px;
+      right: 20px;
+      background: none;
+      border: none;
+      font-size: 1.5rem;
+      color: #fff;
+      cursor: pointer;
+      transition: color 0.5s;
+    }
+
+    .light-mode {
+      background: #f8f9fa;
+      color: #212529;
+    }
+
+    .light-mode .card {
+      background-color: #fff;
+      color: #212529;
+    }
+
+    .light-mode .profile-section {
+      background-color: #007bff;
+    }
+
+    .light-mode .info-section {
+      background-color: #f1f1f1;
+    }
+
+    .light-mode .mode-toggle {
+      color: #212529;
+    }
+  </style>
+</head>
+
+<body>
+  <button id="modeToggle" class="mode-toggle" title="Toggle Mode">🌙</button>
+  <div class="card">
+    <div class="profile-section">
+      <img id="citizenImage" src="" alt="Citizen Profile" class="profile-img">
+      <h3 id="citizenName">Loading...</h3>
+    </div>
+    <div class="details-section">
+      <div id="citizenDetails">
+        <!-- Citizen Details Will Be Populated Here -->
+        <p><strong>Citizen ID:</strong> <span id="citizenId">Loading...</span></p>
+        <p><strong>Applications:</strong> <span id="citizenApplications">Loading...</span></p>
+        <p><strong>Status:</strong> <span id="citizenStatus" class="badge">Loading...</span></p>
+      </div>
+      <div class="info-section">
+        <h5>Additional Information</h5>
+        <p id="citizenDescription" class="mt-3">Loading details...</p>
+      </div>
+      <div class="text-end mt-4">
+        <a href="index.html" class="btn btn-primary">Back to Dashboard</a>
+      </div>
+    </div>
+  </div>
+
+  <!-- Bootstrap JS -->
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+  <script>
+    // Function to fetch query parameter
+    function getQueryParam(param) {
+      const urlParams = new URLSearchParams(window.location.search);
+      return urlParams.get(param);
+    }
+
+    // Citizen Data (Mock Data)
+    const citizens = {
+      "123456789": {
+        name: "John Doe",
+        id: "123456789",
+        applications: 10,
+        status: "Active",
+        profile: "https://via.placeholder.com/150",
+        description: "John has submitted 10 applications, and all are active. He is a model citizen with excellent contributions."
+      },
+      "987654321": {
+        name: "Jane Smith",
+        id: "987654321",
+        applications: 8,
+        status: "Pending",
+        profile: "https://via.placeholder.com/150",
+        description: "Jane's 8 applications are currently pending review. She has been proactive in following up on her applications."
+      },
+      "564738291": {
+        name: "Michael Brown",
+        id: "564738291",
+        applications: 15,
+        status: "Inactive",
+        profile: "https://via.placeholder.com/150",
+        description: "Michael has 15 applications, but they are inactive. Further review is needed for his account."
+      }
+    };
+
+    // Get Citizen ID from URL
+    const citizenId = getQueryParam("id");
+
+    // Populate Citizen Details
+    const citizen = citizens[citizenId];
+    if (citizen) {
+      document.getElementById("citizenImage").src = citizen.profile;
+      document.getElementById("citizenName").textContent = citizen.name;
+      document.getElementById("citizenId").textContent = citizen.id;
+      document.getElementById("citizenApplications").textContent = citizen.applications;
+      document.getElementById("citizenStatus").textContent = citizen.status;
+      document.getElementById("citizenStatus").className = `badge bg-${citizen.status === "Active" ? "success" : citizen.status === "Pending" ? "warning" : "danger"}`;
+      document.getElementById("citizenDescription").textContent = citizen.description;
+    } else {
+      document.getElementById("citizenDetails").innerHTML = `
+        <h3 class="text-danger">Citizen not found!</h3>
+      `;
+
+      document.getElementById("citizenDescription").textContent = "No details available for the selected citizen.";
+    }
+
+    // Dark/Light Mode Toggle
+    const modeToggle = document.getElementById('modeToggle');
+    modeToggle.addEventListener('click', () => {
+      document.body.classList.toggle('light-mode');
+      modeToggle.textContent = document.body.classList.contains('light-mode') ? '🌙' : '☀️';
+    });
+  </script>
+</body>
+
+</html>
