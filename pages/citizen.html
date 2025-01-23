@@ -9,7 +9,7 @@
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
   <style>
     body {
-      background-color: #f8f9fa;
+      /* background-color: #f8f9fa; */
       transition: background-color 0.3s, color 0.3s;
     }
 
@@ -18,10 +18,10 @@
       border: none;
     }
 
-    .nav-link.active {
+    /* .nav-link.active {
       background-color: #007bff !important;
       color: white !important;
-    }
+    } */
 
     .profile-img {
       width: 70px;
@@ -85,25 +85,27 @@
 
 <body>
   <!-- Navbar -->
-  <nav class="navbar navbar-expand-lg navbar-dark bg-primary">
-    <div class="container">
-      <a class="navbar-brand" href="#">Citizen Dashboard</a>
-      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
-        <span class="navbar-toggler-icon"></span>
-      </button>
-      <div class="collapse navbar-collapse" id="navbarNav">
-        <ul class="navbar-nav ms-auto">
-          <li class="nav-item"><a class="nav-link active" href="#">Home</a></li>
-          <li class="nav-item"><a class="nav-link" href="#">Citizens</a></li>
-          <li class="nav-item"><a class="nav-link" href="#">Reports</a></li>
-          <li class="nav-item"><a class="nav-link" href="#">Settings</a></li>
-        </ul>
-      </div>
-      <button class="mode-toggle-btn" id="mode-toggle">
-        <i id="mode-icon" class="bi bi-sun"></i> <!-- Sun icon -->
-      </button>
+  <nav class="navbar navbar-expand-lg navbar-dark" onmousemove="myFunction()" style="background-color: blue;">
+    <div class="container-fluid">
+        <a class="navbar-brand" href="index.html">Welfare Schemes</a>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarNav">
+            <ul class="navbar-nav">
+                <li class="nav-item">
+                    <a class="nav-link active" href="index.html">Home</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link active" href="/pages/all-schemes.html">All Schemes</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link active" href="/pages/contact.html">Contact Us</a>
+                </li>
+            </ul>
+        </div>
     </div>
-  </nav>
+</nav>
 
   <!-- Main Content -->
   <div class="container mt-5">
