@@ -11,8 +11,8 @@ document.addEventListener('DOMContentLoaded', function() {
 
 document.addEventListener('DOMContentLoaded', function() {
     const welcomeSpan = document.getElementById('Welcome_span');
-    const loginButton = document.getElementById('login_page');
-    const signUpButton = document.getElementById('sign-up_page');
+    const loginButton = document.getElementById('login_page').parentElement;
+    const signUpButton = document.getElementById('sign-up_page').parentElement;
 
     if (welcomeSpan.textContent.trim() !== 'GUEST') {
         loginButton.style.display = 'none';
