@@ -53,7 +53,7 @@
 <body>
 
     <!-- Navbar -->
-    <nav class="navbar navbar-expand-lg navbar-dark" onmousemove="myFunction()">
+    <nav class="navbar navbar-expand-lg navbar-dark">
         <div class="container-fluid">
             <a class="navbar-brand" href="index.html">Welfare Schemes</a>
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
@@ -80,7 +80,7 @@
         </div>
     </nav>
     <!-- Header -->
-    <header class="header animate__animated animate__fadeInDown" onmousemove="myFunction()">
+    <header class="header animate__animated animate__fadeInDown">
         <h1>Welcome,<sxpan id="Welcome_span"> GUEST</span></h1>
         <p>Discover and apply for government welfare schemes you may be eligible for.</p>
     </header>
@@ -195,18 +195,7 @@
     </script>
     <script src="js/script.js"></script>
     <!-- diable login and sign-up button if user is logged in -->
-    <script>
-        document.addEventListener('DOMContentLoaded', function() {
-            const welcomeSpan = document.getElementById('Welcome_span');
-            const loginButton = document.querySelector('a[href="/pages/login.html"]').parentElement;
-            const signUpButton = document.querySelector('a[href="/pages/sign-up.html"]').parentElement;
-    
-            if (welcomeSpan.textContent.trim() !== 'GUEST') {
-                loginButton.style.display = 'none';
-                signUpButton.style.display = 'none';
-            }
-        });
-    </script>
+
     <!-- Bootstrap JS -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.0/js/bootstrap.bundle.min.js"></script>
 </body>
