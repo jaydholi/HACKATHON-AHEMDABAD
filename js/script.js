@@ -11,8 +11,8 @@ document.addEventListener('DOMContentLoaded', function() {
 
 document.addEventListener('DOMContentLoaded', function() {
     const welcomeSpan = document.getElementById('Welcome_span');
-    const loginButton = document.querySelector('a[href="/pages/login.html"]').parentElement;
-    const signUpButton = document.querySelector('a[href="/pages/sign-up.html"]').parentElement;
+    const loginButton = document.querySelector('a[href="../pages/login.html"]').parentElement;
+    const signUpButton = document.querySelector('a[href="../pages/sign-up.html"]').parentElement;
 
     if (welcomeSpan.textContent.trim() !== 'GUEST') {
         loginButton.style.display = 'none';
