@@ -3,76 +3,150 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Applications Report</title>
+    <title>Government Applications Report</title>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/xlsx/0.17.4/xlsx.full.min.js"></script>
+    <link href="https://cdn.jsdelivr.net/npm/font-awesome/css/font-awesome.min.css" rel="stylesheet">
     <style>
         body {
-            font-family: Arial, sans-serif;
+            font-family: 'Arial', sans-serif;
             margin: 0;
             padding: 0;
+            background-color: #001f3f;
+            color: white;
         }
 
         .header {
             text-align: center;
-            background-color: #2c3e50;
-            color: white;
-            padding: 15px;
+            background-color: #ffc107;
+            color: #001f3f;
+            padding: 25px;
             border-radius: 8px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+
+        .header img {
+            width: 80px;
+            height: 80px;
+            border-radius: 50%;
+        }
+
+        .header h1 {
+            margin-top: 20px;
+            font-size: 2.5em;
+            animation: fadeIn 2s;
         }
 
         .main-content {
             padding: 40px;
-            background-color: #fff;
+            background-color: #001a35;
             width: 90%;
             margin: 40px auto;
             border-radius: 8px;
-            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+            animation: fadeIn 3s;
         }
 
         table {
             width: 100%;
             border-collapse: collapse;
             margin-top: 20px;
+            animation: fadeIn 2s;
         }
 
         table, th, td {
-            border: 1px solid #ddd;
+            border: 1px solid #ffc107;
         }
 
         th, td {
             padding: 12px;
             text-align: left;
+            color: white;
         }
 
         th {
-            background-color: #3498db;
-            color: white;
+            background-color: #ffc107;
+            color: #001f3f;
         }
 
         .btn {
             padding: 10px 15px;
-            background-color: #3498db;
-            color: white;
+            background-color: #ffc107;
+            color: #001f3f;
             border: none;
             border-radius: 4px;
             text-decoration: none;
             text-align: center;
             cursor: pointer;
+            transition: background-color 0.3s;
         }
 
         .btn:hover {
-            background-color: #2980b9;
+            background-color: #e0a800;
         }
 
         .btn.download {
             background-color: #27ae60;
+            color: white;
+        }
+
+        .btn.download:hover {
+            background-color: #2ecc71;
+        }
+
+        .icons {
+            display: flex;
+            justify-content: center;
+            gap: 15px;
+            margin-top: 20px;
+        }
+
+        .icons img {
+            width: 50px;
+            height: 50px;
+            border-radius: 5px;
+            transition: transform 0.3s;
+        }
+
+        .icons img:hover {
+            transform: scale(1.1);
+        }
+
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+            }
+            to {
+                opacity: 1;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .main-content {
+                width: 95%;
+                margin: 20px auto;
+            }
+
+            .header h1 {
+                font-size: 2em;
+            }
+
+            .icons {
+                flex-direction: column;
+                align-items: center;
+            }
         }
     </style>
 </head>
 <body>
 
     <div class="header">
+        <img src="https://upload.wikimedia.org/wikipedia/commons/5/5b/Prime_Minister_of_India.jpg" alt="PM Image">
         <h1>Government Applications Report</h1>
+        <p>By the Hon'ble Prime Minister and Chief Minister</p>
+        <div class="icons">
+            <img src="https://upload.wikimedia.org/wikipedia/commons/e/e9/G20_logo.svg" alt="G20 Logo">
+            <img src="https://upload.wikimedia.org/wikipedia/commons/6/64/Chief_Minister_of_Gujarat.jpg" alt="CM Image">
+        </div>
     </div>
 
     <div class="main-content">
@@ -134,54 +208,12 @@
             // Create the worksheet
             const ws = XLSX.utils.aoa_to_sheet(worksheetData);
 
-            // Apply styles for the headers
-            const headerStyle = {
-                font: { bold: true, color: { rgb: 'FFFFFF' } },
-                fill: { fgColor: { rgb: '3498DB' } },
-                alignment: { horizontal: 'center', vertical: 'center' },
-                border: { top: { style: 'thin' }, bottom: { style: 'thin' }, left: { style: 'thin' }, right: { style: 'thin' } }
-            };
-
-            // Apply header style
-            const range = XLSX.utils.decode_range(ws['!ref']);
-            for (let col = range.s.c; col <= range.e.c; col++) {
-                const cell = ws[XLSX.utils.encode_cell({ r: 0, c: col })];
-                if (cell) {
-                    cell.s = headerStyle;
-                }
-            }
-
-            // Apply border styling to all cells
-            const cellStyle = {
-                border: { top: { style: 'thin' }, bottom: { style: 'thin' }, left: { style: 'thin' }, right: { style: 'thin' } }
-            };
-
-            for (let row = range.s.r; row <= range.e.r; row++) {
-                for (let col = range.s.c; col <= range.e.c; col++) {
-                    const cell = ws[XLSX.utils.encode_cell({ r: row, c: col })];
-                    if (cell) {
-                        cell.s = cellStyle;
-                    }
-                }
-            }
-
-            // Set column widths (auto-adjust based on content)
-            const colWidths = [
-                { wpx: 120 }, // Application ID
-                { wpx: 180 }, // Name
-                { wpx: 120 }, // Date
-                { wpx: 160 }, // Type
-                { wpx: 250 }, // Required Documents
-            ];
-
-            ws['!cols'] = colWidths;
-
             // Create a new workbook and append the sheet
             const wb = XLSX.utils.book_new();
             XLSX.utils.book_append_sheet(wb, ws, 'Applications');
 
             // Download the Excel file
-            XLSX.writeFile(wb, 'Applications_Report_Styled.xlsx');
+            XLSX.writeFile(wb, 'Applications_Report.xlsx');
         }
     </script>
 </body>

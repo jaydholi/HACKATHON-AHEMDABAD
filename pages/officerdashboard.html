@@ -6,106 +6,110 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Admin Dashboard</title>
     <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500&display=swap" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-KyZXEJv3X4H6tM6w28eQx82ca7f+3+rxB2q58MDoaR5a5n9jhfH9I1TyDq+7vS8m" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
     <style>
-        /* Resetting styles */
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
-
         body {
             font-family: 'Roboto', sans-serif;
-            background-color: #f4f7fb;
+            background: linear-gradient(145deg, #f3f4f7, #e0e7ef);
             color: #333;
             display: flex;
             min-height: 100vh;
             transition: background-color 0.3s;
+            overflow-x: hidden;
         }
 
-        /* Sidebar */
         .sidebar {
             width: 250px;
             background-color: #2c3e50;
             color: #fff;
             height: 100%;
-            padding-top: 20px;
             position: fixed;
             top: 0;
             left: 0;
-            box-shadow: 2px 0px 5px rgba(0, 0, 0, 0.2);
-            transition: all 0.3s;
+            box-shadow: 2px 0px 15px rgba(0, 0, 0, 0.3);
+            transition: all 0.3s ease;
         }
 
         .sidebar .sidebar-header {
-            font-size: 24px;
-            font-weight: 500;
+            font-size: 26px;
+            font-weight: 700;
             text-align: center;
-            margin-bottom: 30px;
+            padding: 25px 0;
+            background: #34495e;
             color: #fff;
+            letter-spacing: 2px;
         }
 
         .sidebar a {
-            padding: 15px 20px;
+            padding: 18px 25px;
             display: block;
-            color: #ecf0f1;
+            color: #b8c1c8;
             text-decoration: none;
-            font-size: 16px;
+            font-size: 17px;
+            font-weight: 500;
             transition: background-color 0.3s ease;
         }
 
         .sidebar a:hover {
-            background-color: #34495e;
+            background-color: #2980b9;
+            color: #fff;
         }
 
-        /* Main Content */
         .main-content {
             margin-left: 250px;
             width: 100%;
-            padding: 30px;
+            padding: 50px;
             overflow-x: hidden;
+            transition: margin-left 0.3s ease;
         }
 
         .stats-cards {
             display: flex;
             justify-content: space-between;
-            gap: 20px;
+            gap: 25px;
             flex-wrap: wrap;
             margin-bottom: 40px;
         }
 
         .card {
             background-color: #fff;
-            border-radius: 8px;
-            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
-            padding: 20px;
+            border-radius: 12px;
+            box-shadow: 0 6px 25px rgba(0, 0, 0, 0.1);
+            padding: 25px;
             flex: 1;
-            min-width: 230px;
+            min-width: 220px;
             text-align: center;
-            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            transition: transform 0.3s ease, box-shadow 0.3s ease, background-color 0.3s;
         }
 
         .card:hover {
-            transform: translateY(-8px);
-            box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+            transform: translateY(-10px);
+            box-shadow: 0 12px 30px rgba(0, 0, 0, 0.15);
+            background-color: #f0f1f6;
         }
 
         .card h3 {
-            font-size: 20px;
-            color: #2c3e50;
-            margin-bottom: 10px;
+            font-size: 24px;
+            color: #34495e;
+            margin-bottom: 15px;
+            transition: color 0.3s ease;
+        }
+
+        .card:hover h3 {
+            color: #2980b9;
         }
 
         .card p {
-            font-size: 16px;
+            font-size: 20px;
             color: #7f8c8d;
         }
 
         .table-container {
             background-color: #fff;
-            border-radius: 8px;
-            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
-            padding: 20px;
+            border-radius: 12px;
+            box-shadow: 0 6px 25px rgba(0, 0, 0, 0.1);
+            padding: 25px;
             overflow-x: auto;
             margin-top: 30px;
         }
@@ -113,31 +117,32 @@
         table {
             width: 100%;
             border-collapse: collapse;
+            transition: all 0.3s ease;
         }
 
         table th,
         table td {
-            padding: 15px;
+            padding: 18px;
             text-align: left;
-            border-bottom: 1px solid #ecf0f1;
-            font-size: 16px;
+            border-bottom: 2px solid #ecf0f1;
+            font-size: 17px;
+            font-weight: 500;
         }
 
         table th {
-            background-color: #ecf0f1;
-            color: #2c3e50;
+            background-color: #3498db;
+            color: #fff;
         }
 
         table tr:hover {
-            background-color: #f9f9f9;
+            background-color: #f4f4f4;
         }
 
-        /* Status Badge Colors */
         .status {
             display: inline-block;
-            padding: 6px 12px;
-            border-radius: 4px;
-            font-size: 14px;
+            padding: 8px 15px;
+            border-radius: 5px;
+            font-size: 15px;
             font-weight: 600;
             text-transform: uppercase;
         }
@@ -157,7 +162,6 @@
             color: #fff;
         }
 
-        /* Filters */
         .filters {
             margin-bottom: 20px;
             display: flex;
@@ -168,21 +172,21 @@
 
         .filter-box {
             display: flex;
-            gap: 10px;
+            gap: 12px;
             align-items: center;
-            margin-right: 20px;
         }
 
         .filter-box label {
-            font-size: 16px;
-            font-weight: 500;
+            font-size: 18px;
+            font-weight: 600;
+            color: #2c3e50;
         }
 
         .filter-box select,
         .filter-box input {
-            padding: 10px;
-            font-size: 14px;
-            border-radius: 5px;
+            padding: 12px;
+            font-size: 16px;
+            border-radius: 8px;
             border: 1px solid #ccc;
             outline: none;
         }
@@ -195,11 +199,12 @@
         .btn {
             background-color: #3498db;
             color: #fff;
-            padding: 12px 20px;
-            border-radius: 5px;
+            padding: 15px 25px;
+            border-radius: 8px;
             border: none;
             cursor: pointer;
-            font-size: 16px;
+            font-size: 17px;
+            font-weight: 600;
             transition: background-color 0.3s;
         }
 
@@ -207,7 +212,7 @@
             background-color: #2980b9;
         }
 
-        /* Modal Styling */
+        /* Modal styles */
         .modal {
             display: none;
             position: fixed;
@@ -219,27 +224,37 @@
             justify-content: center;
             align-items: center;
             z-index: 1000;
+            animation: fadeIn 0.4s;
         }
 
         .modal-content {
             background: #fff;
-            border-radius: 8px;
+            border-radius: 15px;
             padding: 30px;
             width: 80%;
-            max-width: 600px;
-            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+            max-width: 650px;
+            box-shadow: 0 10px 35px rgba(0, 0, 0, 0.1);
         }
 
         .close {
             position: absolute;
             top: 10px;
             right: 20px;
-            font-size: 30px;
+            font-size: 35px;
             color: #888;
             cursor: pointer;
         }
 
-        /* Responsive Design */
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+            }
+
+            to {
+                opacity: 1;
+            }
+        }
+
         @media (max-width: 768px) {
             .sidebar {
                 width: 220px;
@@ -268,11 +283,13 @@
 <body>
 
     <div class="sidebar">
-        <div class="sidebar-header">Govt Admin</div>
-        <a href="/pages/officerdashboard.html">Dashboard</a>
-        <a href="/pages/application-details.html">Applications</a>
-        <a href="/pages/report.html">Reports</a>
-        <a href="/pages/setting.html">Settings</a>
+        <div class="sidebar-header">
+            <i class="fas fa-cogs"></i> Govt Admin
+        </div>
+        <a href="/pages/officerdashboard.html"><i class="fas fa-tachometer-alt"></i> Dashboard</a>
+        <a href="/pages/application-details.html"><i class="fas fa-list"></i> Applications</a>
+        <a href="/pages/report.html"><i class="fas fa-chart-line"></i> Reports</a>
+        <a href="/pages/setting.html"><i class="fas fa-cogs"></i> Settings</a>
     </div>
 
     <div class="main-content">
@@ -288,126 +305,92 @@
             </div>
 
             <div class="filter-box">
-                <label for="searchFilter">Search:</label>
-                <input type="text" id="searchFilter" placeholder="Search by name or ID">
+                <label for="statusFilter">Status:</label>
+                <select id="statusFilter">
+                    <option value="all">All</option>
+                    <option value="Approved">Approved</option>
+                    <option value="Pending">Pending</option>
+                    <option value="Rejected">Rejected</option>
+                </select>
             </div>
 
-            <button class="btn" onclick="applyFilters()">Apply Filters</button>
+            <div class="filter-box">
+                <button class="btn" onclick="applyFilters()">Apply Filters</button>
+            </div>
         </div>
 
         <div class="stats-cards">
             <div class="card">
-                <h3>Total Applications</h3>
-                <p>125</p>
+                <h3>Applications</h3>
+                <p>1200</p>
             </div>
             <div class="card">
-                <h3>Approved Applications</h3>
-                <p>85</p>
+                <h3>Approved</h3>
+                <p>800</p>
             </div>
             <div class="card">
-                <h3>Pending Applications</h3>
-                <p>30</p>
+                <h3>Pending</h3>
+                <p>250</p>
             </div>
             <div class="card">
-                <h3>Rejected Applications</h3>
-                <p>10</p>
+                <h3>Rejected</h3>
+                <p>150</p>
             </div>
         </div>
 
         <div class="table-container">
-            <table>
+            <table id="applicationsTable">
                 <thead>
                     <tr>
                         <th>Application ID</th>
-                        <th>Applicant Name</th>
-                        <th>Type</th>
+                        <th>Name</th>
+                        <th>Department</th>
                         <th>Status</th>
-                        <th>Actions</th>
+                        <th>Action</th>
                     </tr>
                 </thead>
-                <tbody id="applicationTable">
+                <tbody>
                     <tr>
-                        <td>AP001</td>
+                        <td>001</td>
                         <td>John Doe</td>
                         <td>Water Supply</td>
                         <td><span class="status approved">Approved</span></td>
-                        <td><button class="btn" onclick="openModal('AP001')">View</button></td>
+                        <td><button class="btn btn-sm" onclick="viewDetails('001')">View</button></td>
                     </tr>
                     <tr>
-                        <td>AP002</td>
+                        <td>002</td>
                         <td>Jane Smith</td>
-                        <td>Sanitation</td>
-                        <td><span class="status pending">Pending</span></td>
-                        <td><button class="btn" onclick="openModal('AP002')">View</button></td>
-                    </tr>
-                    <tr>
-                        <td>AP003</td>
-                        <td>Mark Johnson</td>
                         <td>Public Health</td>
-                        <td><span class="status rejected">Rejected</span></td>
-                        <td><button class="btn" onclick="openModal('AP003')">View</button></td>
+                        <td><span class="status pending">Pending</span></td>
+                        <td><button class="btn btn-sm" onclick="viewDetails('002')">View</button></td>
                     </tr>
                 </tbody>
             </table>
-            <!-- View All Applications Button -->
-            <div style="margin-top: 20px; text-align: center;">
-                <a href="/pages/application-details.html" class="btn">View All Applications</a>
-            </div>
         </div>
-        
     </div>
 
     <!-- Modal -->
-    <div class="modal" id="applicationModal">
+    <div class="modal" id="detailsModal">
         <div class="modal-content">
             <span class="close" onclick="closeModal()">&times;</span>
-            <h2>Application Details</h2>
-            <div id="modalContent">
-                <!-- Application details will be loaded here -->
-            </div>
+            <h3>Application Details</h3>
+            <p id="applicationDetailsText"></p>
         </div>
     </div>
 
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
     <script>
-        // Function to open modal with application details
-        function openModal(applicationId) {
-            const modal = document.getElementById('applicationModal');
-            const modalContent = document.getElementById('modalContent');
-            modal.style.display = 'flex';
-
-            // Example data - replace with dynamic content fetching logic
-            const details = {
-                AP001: 'Details of Application ID: AP001 - John Doe, Water Supply, Approved.',
-                AP002: 'Details of Application ID: AP002 - Jane Smith, Sanitation, Pending.',
-                AP003: 'Details of Application ID: AP003 - Mark Johnson, Public Health, Rejected.'
-            };
-
-            modalContent.innerHTML = details[applicationId] || 'No details available.';
-        }
-
-        // Function to close modal
-        function closeModal() {
-            const modal = document.getElementById('applicationModal');
-            modal.style.display = 'none';
-        }
-
-        // Function to apply filters
         function applyFilters() {
-            const typeFilter = document.getElementById('applicationFilter').value;
-            const searchFilter = document.getElementById('searchFilter').value.toLowerCase();
-            const tableRows = document.querySelectorAll('#applicationTable tr');
+            alert('Filters applied!');
+        }
 
-            tableRows.forEach(row => {
-                const type = row.cells[2].innerText.toLowerCase();
-                const nameOrId = row.cells[0].innerText.toLowerCase() + row.cells[1].innerText.toLowerCase();
+        function viewDetails(applicationId) {
+            document.getElementById('applicationDetailsText').textContent = 'Details for Application ID ' + applicationId;
+            document.getElementById('detailsModal').style.display = 'flex';
+        }
 
-                if ((typeFilter === 'all' || type === typeFilter.toLowerCase()) &&
-                    nameOrId.includes(searchFilter)) {
-                    row.style.display = '';
-                } else {
-                    row.style.display = 'none';
-                }
-            });
+        function closeModal() {
+            document.getElementById('detailsModal').style.display = 'none';
         }
     </script>
 </body>

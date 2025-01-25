@@ -1,241 +1,241 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Application Tracking</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/css/bootstrap.min.css" rel="stylesheet">
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/js/bootstrap.bundle.min.js" defer></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&display=swap" rel="stylesheet">
     <style>
         body {
-            background-color: #f4f4f9;
-            font-family: 'Arial', sans-serif;
+            font-family: 'Inter', sans-serif;
+            background-color: #001f3f;
             margin: 0;
-        }
-
-        /* Header Style */
-        header {
-            background-color: #003366;
+            padding: 0;
             color: white;
-            padding: 20px 0;
         }
 
-        header .container {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
+        .navbar {
+            border-bottom: 2px solid #ffc107;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+            background-color: #001f3f;
         }
 
-        header h1 {
-            font-size: 1.75rem;
-            margin: 0;
+        .navbar-brand {
+            font-weight: 600;
+            color: #ffc107;
         }
 
-        header nav a {
+        .navbar-brand:hover {
+            color: #fff;
+        }
+
+        .nav-link {
             color: white;
-            text-decoration: none;
-            margin-left: 15px;
-            font-size: 1rem;
-            transition: color 0.3s ease;
         }
 
-        header nav a:hover {
-            color: #ffcc00;
+        .nav-link:hover {
+            color: #ffc107;
         }
 
-        /* Footer Style */
-        footer {
-            background-color: #343a40;
-            color: white;
-            padding: 30px 20px;
+        .content {
+            padding: 2rem;
+        }
+
+        .status-overview {
             text-align: center;
+            margin-bottom: 2rem;
         }
 
-        footer a {
-            color: #ffcc00;
-            text-decoration: none;
-            transition: color 0.3s ease;
+        .status-overview h2 {
+            font-size: 1.8rem;
+            font-weight: 600;
+            margin-bottom: 0.5rem;
+            color: #ffc107;
         }
 
-        footer a:hover {
-            color: #ff9f00;
-        }
-
-        /* Card and Form Styling */
-        .card {
-            border-radius: 10px;
-            border: none;
-            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-            background-color: #ffffff;
-        }
-
-        .form-label {
+        .status-overview p {
             font-size: 1rem;
+            color: #f8f9fa;
         }
 
-        .status-indicator {
-            height: 20px;
-            width: 20px;
-            border-radius: 50%;
-            display: inline-block;
-        }
-
-        /* Improved Tracking Bar and Status Styling */
-        .progress-bar {
+        .documents-table {
+            background: #001a35;
+            border: 1px solid #ffc107;
             border-radius: 10px;
+            padding: 1.5rem;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.3);
         }
 
-        .status-pending {
-            background-color: #ffcc00;
+        .documents-table h5 {
+            font-size: 1.25rem;
+            font-weight: 600;
+            color: #ffc107;
         }
 
-        .status-review {
-            background-color: #0044cc;
+        table {
+            margin-top: 1rem;
         }
 
-        .status-approved {
-            background-color: #28a745;
+        table th {
+            background-color: #ffc107;
+            color: #001f3f;
+            font-weight: 600;
         }
 
-        .status-rejected {
-            background-color: #dc3545;
+        table td {
+            vertical-align: middle;
+            color: white;
         }
 
-        /* Timeline Progress */
-        .timeline-step {
-            font-size: 1.1rem;
-            padding: 10px;
-            background-color: #e7f3fe;
-            border-left: 5px solid #0044cc;
-            margin-bottom: 20px;
+        table th:first-child,
+        table th:nth-child(2),
+        table th:nth-child(3),
+        table th:nth-child(4) {
+            color: yellow;
         }
 
-        .timeline-step .progress {
-            height: 8px;
-            border-radius: 5px;
-        }
-
-        /* Button Styling */
         .btn-primary {
-            background-color: #003366;
-            border-color: #003366;
-            transition: background-color 0.3s ease, border-color 0.3s ease;
+            background-color: #ffc107;
+            border-color: #ffc107;
+            color: #001f3f;
+            transition: background-color 0.3s, transform 0.2s;
         }
 
         .btn-primary:hover {
-            background-color: #ffcc00;
-            border-color: #ffcc00;
+            background-color: #e0a800;
+            border-color: #e0a800;
+            transform: scale(1.05);
         }
 
-        /* Centered Heading for Main Section */
-        .section-heading {
+        .notifications {
             text-align: center;
-            font-size: 2rem;
-            font-weight: bold;
-            color: #003366;
+            margin-top: 2rem;
+        }
+
+        .notifications h5 {
+            font-weight: 600;
+            color: #ffc107;
+        }
+
+        .notifications p {
+            color: white;
+        }
+
+        .notifications .col-md-4 {
+            padding: 1rem;
+            background: #ffc107;
+            border: 1px solid #001f3f;
+            border-radius: 8px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.3);
+            margin: 0.5rem;
+            color: #001f3f;
+        }
+
+        .notifications .col-md-4:hover {
+            box-shadow: 0 6px 10px rgba(0, 0, 0, 0.5);
+        }
+
+        .icon {
+            font-size: 1.5rem;
+            color: white;
+            margin-right: 0.5rem;
         }
     </style>
 </head>
-
 <body>
-    <!-- Header -->
-    <header>
+    <nav class="navbar navbar-expand-lg">
         <div class="container">
-            <h1>Government Application Tracking</h1>
-            <nav>
-                <a href="#">Home</a>
-                <a href="#">Contact Us</a>
-            </nav>
-        </div>
-    </header>
-
-    <!-- Main Container -->
-    <div class="container my-5">
-        <div class="section-heading mb-4">Track Your Application</div>
-
-        <!-- Search Form -->
-        <div class="card mb-4 shadow-sm">
-            <div class="card-body">
-                <form id="trackingForm">
-                    <div class="row g-3 align-items-center">
-                        <div class="col-md-9">
-                            <label for="applicationId" class="form-label">Enter Application ID</label>
-                            <input type="text" id="applicationId" class="form-control" placeholder="e.g., APP12345678" required>
-                        </div>
-                        <div class="col-md-3">
-                            <button type="submit" class="btn btn-primary w-100">Track</button>
-                        </div>
-                    </div>
-                </form>
+            <a class="navbar-brand" href="#">Welfare Navigator</a>
+            <div class="collapse navbar-collapse">
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item">
+                        <a class="nav-link" href="#">Application Status</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#">Help</a>
+                    </li>
+                </ul>
             </div>
         </div>
+    </nav>
 
-        <!-- Application Status -->
-        <div id="applicationStatus" class="card shadow-sm mb-4" style="display: none;">
-            <div class="card-header bg-primary text-white">Application Status</div>
-            <div class="card-body">
-                <h5>Status: <span id="statusText" class="fw-bold"></span></h5>
-                <div id="statusIndicator" class="status-indicator"></div>
-            </div>
+    <div class="content container">
+        <div class="status-overview">
+            <h2>Application Status Overview</h2>
+            <p>Your application is currently being reviewed. You will receive updates once the review is complete. Estimated completion: 2 weeks.</p>
         </div>
 
-        <!-- Timeline -->
-        <div id="timeline" class="card shadow-sm" style="display: none;">
-            <div class="card-header bg-info text-white">Estimated Timeline</div>
-            <div class="card-body">
-                <div class="timeline-step">
-                    <strong>Step 1: Submission</strong>
-                    <div class="progress">
-                        <div class="progress-bar bg-success" role="progressbar" style="width: 100%;">Completed</div>
-                    </div>
+        <div class="documents-table">
+            <h5>Required Documents</h5>
+            <table class="table table-bordered mt-3">
+                <thead>
+                    <tr>
+                        <th>Document Name</th>
+                        <th>Status</th>
+                        <th>Action Required</th>
+                        <th>View Details</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>Identity Proof</td>
+                        <td>Submitted</td>
+                        <td>
+                            <select class="form-select" disabled>
+                                <option>None</option>
+                            </select>
+                        </td>
+                        <td><button class="btn btn-primary btn-sm">View</button></td>
+                    </tr>
+                    <tr>
+                        <td>Address Proof</td>
+                        <td>Pending</td>
+                        <td>
+                            <select class="form-select">
+                                <option>Submit</option>
+                            </select>
+                        </td>
+                        <td><button class="btn btn-primary btn-sm">View</button></td>
+                    </tr>
+                    <tr>
+                        <td>Income Statement</td>
+                        <td>Missing</td>
+                        <td>
+                            <select class="form-select">
+                                <option>Upload</option>
+                            </select>
+                        </td>
+                        <td><button class="btn btn-primary btn-sm">View</button></td>
+                    </tr>
+                </tbody>
+            </table>
+            <p class="text-center mt-2">Please ensure all required documents are submitted to proceed with your application.</p>
+        </div>
+
+        <div class="notifications mt-4">
+            <h5>Application Notifications</h5>
+            <div class="row mt-3 justify-content-center">
+                <div class="col-md-4">
+                    <i class="icon bi bi-info-circle"></i>
+                    <p>Application Updates</p>
+                    <p>Your application status has changed to "Under Review."</p>
                 </div>
-                <div class="timeline-step">
-                    <strong>Step 2: Under Review</strong>
-                    <div class="progress">
-                        <div class="progress-bar bg-info" role="progressbar" style="width: 75%;">75%</div>
-                    </div>
+                <div class="col-md-4">
+                    <i class="icon bi bi-bell"></i>
+                    <p>Deadline Reminder</p>
+                    <p>Submit remaining documents by October 15th.</p>
                 </div>
-                <div class="timeline-step">
-                    <strong>Step 3: Approval</strong>
-                    <div class="progress">
-                        <div class="progress-bar bg-warning" role="progressbar" style="width: 50%;">50%</div>
-                    </div>
+                <div class="col-md-4">
+                    <i class="icon bi bi-envelope"></i>
+                    <p>Important Message</p>
+                    <p>Please verify your email to proceed further.</p>
                 </div>
             </div>
         </div>
     </div>
 
-    <!-- Footer -->
-    <footer>
-        <p>&copy; 2025 <a href="#">Government Welfare Portal</a>. All rights reserved.</p>
-    </footer>
-
-    <script>
-        const trackingForm = document.getElementById('trackingForm');
-        const applicationStatus = document.getElementById('applicationStatus');
-        const timeline = document.getElementById('timeline');
-        const statusText = document.getElementById('statusText');
-        const statusIndicator = document.getElementById('statusIndicator');
-
-        trackingForm.addEventListener('submit', function (e) {
-            e.preventDefault();
-            const appId = document.getElementById('applicationId').value.trim();
-
-            if (appId) {
-                // Mock data for application status
-                const status = "Under Review"; // Mock status
-
-                // Update status display
-                statusText.textContent = status;
-                statusIndicator.className = `status-indicator status-${status.toLowerCase().replace(' ', '-')}`;
-
-                // Show sections
-                applicationStatus.style.display = 'block';
-                timeline.style.display = 'block';
-            }
-        });
-    </script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap-icons/font/bootstrap-icons.js"></script>
 </body>
-
 </html>
