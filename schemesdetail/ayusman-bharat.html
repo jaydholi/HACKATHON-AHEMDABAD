@@ -1,0 +1,270 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Aayushman Bharat Yojana</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <style>
+        /* Global Styles */
+        body {
+            font-family: 'Arial', sans-serif;
+            background-color: #f9f9f9;
+            margin: 0;
+            padding: 0;
+        }
+
+        /* Hero Section */
+        .hero-section {
+            background: url('https://via.placeholder.com/1600x800') no-repeat center center;
+            background-size: cover;
+            color: white;
+            height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            position: relative;
+            border-bottom: 5px solid #ffcc00;
+        }
+
+        .hero-overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.5);
+        }
+
+        .hero-content {
+            position: relative;
+            z-index: 2;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.7);
+        }
+
+        .hero-content h1 {
+            font-size: 4rem;
+            font-weight: 700;
+            margin-bottom: 20px;
+        }
+
+        .hero-content p {
+            font-size: 1.5rem;
+            margin-bottom: 25px;
+            opacity: 0.9;
+        }
+
+        .btn-primary {
+            background-color: #ffcc00;
+            border-color: #ffcc00;
+            padding: 18px 35px;
+            font-size: 1.2rem;
+            border-radius: 50px;
+            transition: all 0.3s ease-in-out;
+            box-shadow: 0 8px 15px rgba(255, 204, 0, 0.3);
+        }
+
+        .btn-primary:hover {
+            background-color: #e6b800;
+            transform: translateY(-5px);
+            box-shadow: 0 12px 20px rgba(255, 204, 0, 0.4);
+        }
+
+        /* Section Styling */
+        .section-title {
+            font-size: 2.5rem;
+            font-weight: 700;
+            color: #0066cc;
+            text-align: center;
+            margin-bottom: 30px;
+        }
+
+        .section-container {
+            margin-bottom: 50px;
+        }
+
+        /* Grid Layout for the Sections */
+        .section-content {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 40px;
+            margin-top: 30px;
+        }
+
+        .section-content .col-content {
+            background-color: #ffffff;
+            padding: 30px;
+            border-radius: 10px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+            transition: all 0.3s ease-in-out;
+        }
+
+        .section-content .col-content:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 25px 50px rgba(0, 0, 0, 0.2);
+        }
+
+        .required-docs ul {
+            list-style-type: none;
+            padding-left: 0;
+            font-size: 1.2rem;
+            line-height: 1.8;
+        }
+
+        .required-docs ul li {
+            margin-bottom: 20px;
+            display: flex;
+            align-items: center;
+        }
+
+        .required-docs ul li i {
+            color: #ffcc00;
+            margin-right: 15px;
+            font-size: 1.6rem;
+        }
+
+        /* Form Styling */
+        .form-group label {
+            font-size: 1.1rem;
+            font-weight: 600;
+            color: #333;
+        }
+
+        .form-control {
+            font-size: 1.1rem;
+            padding: 14px;
+            border-radius: 8px;
+            border: 1px solid #ddd;
+            margin-bottom: 20px;
+            transition: all 0.3s ease;
+        }
+
+        .form-control:focus {
+            border-color: #0066cc;
+            box-shadow: 0 0 8px rgba(0, 102, 204, 0.2);
+        }
+
+        .btn-upload {
+            background-color: #ffcc00;
+            border-color: #ffcc00;
+            padding: 12px 30px;
+            font-size: 1.1rem;
+            border-radius: 50px;
+            transition: all 0.3s ease-in-out;
+        }
+
+        .btn-upload:hover {
+            background-color: #e6b800;
+            transform: translateY(-3px);
+        }
+
+        /* Footer */
+        .footer {
+            background-color: #0066cc;
+            color: white;
+            padding: 40px 0;
+            text-align: center;
+            font-size: 1.1rem;
+            border-top: 4px solid #ffcc00;
+            margin-top: 60px;
+        }
+
+        .footer a {
+            color: #ffcc00;
+            text-decoration: none;
+            font-weight: bold;
+        }
+
+        .footer a:hover {
+            text-decoration: underline;
+        }
+
+        /* Responsive Styles */
+        @media (max-width: 768px) {
+            .hero-content h1 {
+                font-size: 3rem;
+            }
+
+            .hero-content p {
+                font-size: 1.2rem;
+            }
+
+            .btn-primary {
+                font-size: 1rem;
+                padding: 12px 25px;
+            }
+
+            .section-content {
+                grid-template-columns: 1fr;
+                gap: 20px;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Hero Section -->
+    <div class="hero-section">
+        <div class="hero-overlay"></div>
+        <div class="hero-content">
+            <h1>Aayushman Bharat Yojana</h1>
+            <p>Empowering every family with affordable healthcare</p>
+            <a href="#details" class="btn btn-primary">Get Started</a>
+        </div>
+    </div>
+
+    <!-- Scheme Details Section -->
+    <div id="details" class="container section-container">
+        <div class="section-title">Scheme Details</div>
+        <div class="section-content">
+            <div class="col-content">
+                <h4>Eligibility Criteria</h4>
+                <ul>
+                    <li>Must be a resident of India.</li>
+                    <li>Family income should be below ₹5 lakh annually.</li>
+                    <li>Families without health insurance are eligible.</li>
+                </ul>
+            </div>
+            <div class="col-content">
+                <h4>Required Documents</h4>
+                <ul>
+                    <li>Identity Proof (Aadhaar/Passport/Driving License)</li>
+                    <li>Address Proof (Utility Bills/Bank Statement)</li>
+                    <li>Income Certificate (Salary Slip/Income Tax Return)</li>
+                </ul>
+            </div>
+        </div>
+    </div>
+
+    <!-- Required Documents Section -->
+    <div id="documents" class="container section-container">
+        <div class="section-title">Upload Required Documents</div>
+        <div class="required-docs">
+            <form>
+                <div class="form-group">
+                    <label for="identityProof">Upload Identity Proof</label>
+                    <input type="file" class="form-control" id="identityProof" required>
+                </div>
+                <div class="form-group">
+                    <label for="addressProof">Upload Address Proof</label>
+                    <input type="file" class="form-control" id="addressProof" required>
+                </div>
+                <div class="form-group">
+                    <label for="incomeProof">Upload Income Certificate</label>
+                    <input type="file" class="form-control" id="incomeProof" required>
+                </div>
+                <button type="submit" class="btn btn-upload">Upload Documents</button>
+            </form>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <div class="footer">
+        <p>&copy; 2025 Aayushman Bharat Yojana | All Rights Reserved | <a href="#">Privacy Policy</a></p>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.3/dist/umd/popper.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.0/dist/js/bootstrap.min.js"></script>
+</body>
+</html>

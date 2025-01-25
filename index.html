@@ -1,185 +1,434 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Welfare Schemes</title>
-    <!-- Bootstrap CSS -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.0/css/bootstrap.min.css">
-    <!-- Google Fonts -->
-    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500&family=Raleway:wght@700&display=swap" rel="stylesheet">
-    <!-- Animate.css -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css">
-    <!-- Chart.js -->
-    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <title>CivicCare Portal</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <script src="https://kit.fontawesome.com/a076d05399.js" crossorigin="anonymous"></script>
     <style>
         body {
-            font-family: 'Roboto', sans-serif;
+            font-family: 'Inter', sans-serif;
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            background-color: #002855;
+            color: #fff;
         }
-        .navbar {
-            background-color: #4A90E2;
-        }
-        .header {
-            /* background-image: url('https://via.placeholder.com/1500x500'); */
-            background-color: blue;
-            background-size: cover;
+
+        header {
+            background-color: #002855;
             color: white;
-            padding: 2rem 1rem;
-            text-align: center;
-        }
-        .card {
-            border-radius: 10px;
+            padding: 1rem 2rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
             box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-            margin-bottom: 20px;
         }
-        .btn-primary {
-            background-color: #4A90E2;
-            border: none;
+
+        header h1 {
+            font-size: 1.5rem;
+            margin: 0;
         }
+
+        nav a {
+            color: white;
+            margin: 0 1rem;
+            text-decoration: none;
+            font-weight: 500;
+            transition: color 0.3s ease;
+        }
+
+        nav a:hover {
+            color: #FFD700;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 2rem auto;
+            padding: 0 1rem;
+        }
+
+        .dashboard {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 1.5rem;
+            margin-bottom: 2rem;
+        }
+
+        .card {
+            background: linear-gradient(135deg, #003F88, #0056b3);
+            color: white;
+            border-radius: 8px;
+            padding: 1.5rem;
+            text-align: center;
+            box-shadow: 0 6px 10px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s ease;
+        }
+
+        .card:hover {
+            transform: translateY(-5px);
+        }
+
+        .card h2 {
+            font-size: 2.5rem;
+            margin: 0.5rem 0;
+        }
+
+        .card p {
+            margin: 0;
+            font-weight: 500;
+        }
+
+        .card i {
+            font-size: 2rem;
+            margin-bottom: 0.5rem;
+            display: block;
+        }
+
+        .application-process {
+            background: white;
+            padding: 2rem;
+            border-radius: 8px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            margin-bottom: 2rem;
+        }
+
+        .application-process h3 {
+            margin-bottom: 1rem;
+            color: #FFD700;
+        }
+
+        .welcome-section {
+            background-color: #003F88;
+            padding: 2rem;
+            border-radius: 8px;
+            margin-bottom: 2rem;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        }
+
+        .welcome-section h2 {
+            margin: 0;
+            color: #FFD700;
+        }
+
+        .welcome-section p {
+            margin: 0.5rem 0;
+            color: #fff;
+        }
+
+        .action-button {
+            background: #FFD700;
+            color: #002855;
+            padding: 0.5rem 1.5rem;
+            text-decoration: none;
+            border-radius: 5px;
+            font-weight: 600;
+            display: inline-block;
+            transition: background 0.3s ease, transform 0.3s ease;
+        }
+
+        .action-button:hover {
+            background: #FFC107;
+            transform: translateY(-3px);
+        }
+
+        .available-schemes {
+            margin-top: 2rem;
+            background: #003F88;
+            padding: 2rem;
+            border-radius: 8px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        }
+
+        .available-schemes h3 {
+            color: #FFD700;
+        }
+
+        .scheme {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 1rem 0;
+            border-bottom: 1px solid #FFD700;
+        }
+
+        .scheme:last-child {
+            border-bottom: none;
+        }
+
+        .scheme h4 {
+            margin: 0;
+            color: #FFD700;
+        }
+
+        .scheme p {
+            margin: 0;
+            color: #fff;
+        }
+
+        .scheme a {
+            color: #002855;
+            background: #FFD700;
+            padding: 0.5rem 1rem;
+            text-decoration: none;
+            border-radius: 5px;
+            font-weight: 600;
+            transition: background 0.3s ease, transform 0.3s ease;
+        }
+
+        .scheme a:hover {
+            background: #FFC107;
+            transform: translateY(-3px);
+        }
+
+        .required-documents {
+            margin-top: 2rem;
+            background: #003F88;
+            padding: 2rem;
+            border-radius: 8px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        }
+
+        .required-documents h3 {
+            color: #FFD700;
+        }
+
+        .documents-list {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 1.5rem;
+        }
+
+        .document {
+            background: #0056b3;
+            padding: 1.5rem;
+            border-radius: 8px;
+            text-align: center;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        }
+
+        .document h4 {
+            color: #FFD700;
+        }
+
         footer {
-            background-color: #f8f9fa;
+            background: #002855;
+            color: white;
             text-align: center;
             padding: 1rem 0;
+            margin-top: 2rem;
+            box-shadow: 0 -4px 6px rgba(0, 0, 0, 0.1);
         }
-        .chart-container {
-            position: relative;
-            height: 300px;
+
+        footer p {
+            margin: 0.5rem 0;
+            font-size: 0.9rem;
         }
-        .pagination {
-            justify-content: center;
+
+        footer a {
+            color: white;
+            text-decoration: underline;
+        }
+
+        footer a:hover {
+            color: #FFD700;
+        }
+
+        .profile-section {
+            background: #003F88;
+            padding: 2rem;
+            border-radius: 8px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            margin-bottom: 2rem;
+        }
+
+        .profile-section h3 {
+            color: #FFD700;
+        }
+
+        .statistics-section {
+            background: #003F88;
+            padding: 2rem;
+            border-radius: 8px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        }
+
+        .statistics-section h3 {
+            color: #FFD700;
+            margin-bottom: 1rem;
+        }
+
+        .statistics {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 1.5rem;
+            margin-top: 1rem;
+        }
+
+        .stat {
+            background: #0056b3;
+            padding: 1.5rem;
+            border-radius: 8px;
+            text-align: center;
+            color: #fff;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        }
+
+        .stat h4 {
+            font-size: 1.25rem;
+            margin: 0.5rem 0;
+        }
+
+        .stat p {
+            font-size: 1.5rem;
+            margin: 0.5rem 0;
+        }
+
+        .progress-bar {
+            background-color: #444;
+            border-radius: 5px;
+            margin: 1rem 0;
+            height: 10px;
+            overflow: hidden;
+        }
+
+        .progress {
+            background-color: #FFD700;
+            height: 100%;
+            transition: width 0.3s ease;
+        }
+
+        .stat .progress-bar p {
+            font-size: 0.85rem;
+            color: #ccc;
+            margin-top: 0.5rem;
         }
     </style>
 </head>
+
 <body>
-
-     <nav class="navbar navbar-expand-lg navbar-dark">
-        <div class="container-fluid">
-            <a class="navbar-brand" href="index.html">Welfare Schemes</a>
-            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
-                <span class="navbar-toggler-icon"></span>
-            </button>
-            <div class="collapse navbar-collapse" id="navbarNav">
-                <ul class="navbar-nav">
-                    <li class="nav-item">
-                        <a class="nav-link active" href="index.html">Home</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link active" href="/pages/all-schemes.html">All Schemes</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link active" href="/pages/contact.html">Contact Us</a>
-                    </li>
-                     <li class="nav-item" id="citizen_page" style="display: none;">
-                        <a class="nav-link active" href="/pages/citizen.html">Citizen Dashboard</a>
-                    </li>
-                    <li class="nav-item">
-                        <button class="btn btn-success me-2" type="button"  id="login_page"><a href="/pages/login.html" style="text-decoration: none;color: white;">login</a></button>
-                        <button class="btn btn-success me-2" type="button" id="sign-up_page"><a href="/pages/sign-up.html"style="text-decoration: none;color: white;" >sign-up</a></button>
-                        <button class="btn btn-danger me-2" type="button" id="logout_button" style="display: none;">Logout</button>
-
-
-                    </li>
-                </ul>
-            </div>
-        </div>
-    </nav>
-     <!-- Header -->
-    <header class="header animate__animated animate__fadeInDown">
-        <h1>Welcome,<span id="Welcome_span"> GUEST</span></h1>
-        <p>Discover and apply for government welfare schemes you may be eligible for.</p>
+    <header>
+        <h1><i class="fas fa-city"></i> CivicCare Portal</h1>
+        <nav>
+            <a href="#"><i class="fas fa-home"></i> Dashboard</a>
+            <a href="#"><i class="fas fa-folder-open"></i> My Applications</a>
+            <a href="#"><i class="fas fa-file-alt"></i>Schemes</a>
+            <a href="#"><i class="fas fa-headset"></i> Contact</a>
+            <a href="#"><i class="fas fa-signup"></i> signup</a>
+            <a href="#"><i class="fas fa-login"></i> Login</a>
+        </nav>
     </header>
 
-    <!-- Alerts -->
-    <!-- <div class="container mt-4">
-        <div class="alert alert-info alert-dismissible fade show" role="alert">
-            <strong>Tip:</strong> Use the search bar above to find specific schemes quickly!
-            <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
-        </div>
-    </div>--> 
+    <div class="container">
+        <section class="welcome-section">
+            <h2>Welcome, Guest</h2>
+            <p>Track your applications and explore available welfare schemes.</p>
+            <a href="#" class="action-button"><i class="fas fa-plus-circle"></i> New Application</a>
+        </section>
 
-    <!-- Recommended Section -->
-    <div class="container my-5">
-        <h3 class="mb-4">Recommended for You</h3>
-        <div class="row">
-            <!-- Card 1 -->
-            <div class="col-md-6">
-                <div class="card animate__animated animate__zoomIn">
-                    <img src="images/pm_kisan_samman_nidhi_yojana.jpeg" class="card-img-top" alt="Scheme Image">
-                    <div class="card-body">
-                        <h5 class="card-title">PM Kisan Samman Nidhi</h5>
-                        <p class="card-text">Financial support for farmers. Get ₹6,000 per year in three installments.</p>
-                        <span class="badge bg-success">Eligible</span>
-                        <div class="mt-3">
-                            <button class="btn btn-outline-primary" ><a href="pages/scheme-details.html" style="text-decoration: none;">View Details</a></button>
-                        </div>
+        
+
+        <section class="dashboard">
+            <div class="card">
+                <i class="fas fa-file-alt"></i>
+                <h2>24</h2>
+                <p>Active Applications</p>
+            </div>
+            <div class="card">
+                <i class="fas fa-folder-open"></i>
+                <h2>15</h2>
+                <p>Documents Updated</p>
+            </div>
+            <div class="card">
+                <i class="fas fa-clock"></i>
+                <h2>8</h2>
+                <p>Pending Review</p>
+            </div>
+            <div class="card">
+                <i class="fas fa-bell"></i>
+                <h2>5</h2>
+                <p>New Notifications</p>
+            </div>
+        </section>
+
+        <section class="statistics-section">
+            <h3>Application and Welfare Statistics</h3>
+            <div class="statistics">
+                <div class="stat">
+                    <h4><i class="fas fa-chart-line"></i> Total Applications</h4>
+                    <p>36</p>
+                    <div class="progress-bar">
+                        <div class="progress" style="width: 80%;"></div>
                     </div>
+                    <p>80% of Applications Completed</p>
+                </div>
+                <div class="stat">
+                    <h4><i class="fas fa-folder-open"></i> Pending Applications</h4>
+                    <p>12</p>
+                    <div class="progress-bar">
+                        <div class="progress" style="width: 33%;"></div>
+                    </div>
+                    <p>33% Pending for Review</p>
+                </div>
+                <div class="stat">
+                    <h4><i class="fas fa-check-circle"></i> Applications Approved</h4>
+                    <p>24</p>
+                    <div class="progress-bar">
+                        <div class="progress" style="width: 67%;"></div>
+                    </div>
+                    <p>67% of Applications Approved</p>
+                </div>
+                
+                <div class="stat">
+                    <h4><i class="fas fa-file-alt"></i> Documents Submitted</h4>
+                    <p>15</p>
+                    <div class="progress-bar">
+                        <div class="progress" style="width: 90%;"></div>
+                    </div>
+                    <p>90% of Required Documents Submitted</p>
                 </div>
             </div>
-            <!-- Card 2 -->
-            <div class="col-md-6">
-                <div class="card animate__animated animate__zoomIn">
-                    <img src="images/04_01_2025-pm_awas_yojana_chhattisgarh_202514_9024.jpeg" class="card-img-top" alt="Scheme Image">
-                    <div class="card-body">
-                        <h5 class="card-title">PM Awas Yojana</h5>
-                        <p class="card-text">Housing scheme for urban poor. Financial assistance for house construction.</p>
-                        <span class="badge bg-warning text-dark">Check Eligibility</span>
-                        <div class="mt-3">
-                            <button class="btn btn-outline-primary">View Details</button>
-                        </div>
-                    </div>
+        </section>
+
+        <section class="available-schemes">
+            <h3>Available Welfare Schemes</h3>
+            <div class="scheme">
+                <div>
+                    <h4><i class="fas fa-user-check"></i> Senior Citizen Pension Scheme</h4>
+                    <p>Financial assistance for citizens above 60 years</p>
+                </div>
+                <a href="#"><i class="fas fa-clipboard-check"></i> Apply Now</a>
+            </div>
+            <div class="scheme">
+                <div>
+                    <h4><i class="fas fa-home"></i> Housing Assistance Program</h4>
+                    <p>Support for low-income families for housing</p>
+                </div>
+                <a href="#"><i class="fas fa-clipboard-check"></i> Apply Now</a>
+            </div>
+        </section>
+
+        <section class="required-documents">
+            <h3>Required Documents</h3>
+            <div class="documents-list">
+                <div class="document">
+                    <h4><i class="fas fa-id-card"></i> Identity Proof</h4>
+                    <p>Aadhaar, Passport, etc.</p>
+                </div>
+                <div class="document">
+                    <h4><i class="fas fa-map-marker-alt"></i> Address Proof</h4>
+                    <p>Utility Bill, Rental Agreement.</p>
                 </div>
             </div>
-        </div>
-
-        <!-- Pagination -->
-        <nav aria-label="Page navigation">
-            <ul class="pagination mt-4">
-                <li class="page-item"><a class="page-link" href="#">1</a></li>
-                <li class="page-item"><a class="page-link" href="/pages/all-schemes.html">View all schemes</a></li>
-            </ul>
-        </nav>
+        </section>
     </div>
 
-    <!-- Statistics Section -->
-    <div class="container my-5">
-        <h3 class="mb-4">Scheme Statistics</h3>
-        <div class="chart-container">
-            <canvas id="schemeChart"></canvas>
-        </div>
-    </div>
-
-    <!-- Footer -->
     <footer>
-        <p>&copy; 2025 Welfare Schemes. All rights reserved.</p>
+        <p>&copy; 2025 CivicCare Portal. All rights reserved.</p>
+        <p><a href="#">Privacy Policy</a> | <a href="#">Terms of Service</a></p>
     </footer>
-
-    <!-- Chart.js Script -->
-    <script>
-        const ctx = document.getElementById('schemeChart').getContext('2d');
-        new Chart(ctx, {
-            type: 'bar',
-            data: {
-                labels: ['PM Kisan', 'PM Awas', 'PM Jan Arogya', 'PM Ujjwala', 'Skill India'],
-                datasets: [{
-                    label: 'Applicants (in thousands)',
-                    data: [120, 90, 150, 110, 95],
-                    backgroundColor: ['#4A90E2', '#F5A623', '#50E3C2', '#B8E986', '#9013FE']
-                }]
-            },
-            options: {
-                responsive: true,
-                plugins: {
-                    legend: {
-                        display: false
-                    }
-                }
-            }
-        });
-    </script>
-    <script src="js/script.js"></script>
-    <!-- diable login and sign-up button if user is logged in -->
-
-    <!-- Bootstrap JS -->
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.0/js/bootstrap.bundle.min.js"></script>
 </body>
+
 </html>
