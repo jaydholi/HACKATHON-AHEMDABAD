@@ -61,6 +61,42 @@
         <p class="mt-3">Already have an account? <a href="/pages/login.html">Login</a></p>
     </div>
 
+    <!-- Account Created Success Modal -->
+    <div class="modal fade" id="accountCreatedModal" tabindex="-1" aria-labelledby="accountCreatedModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="accountCreatedModalLabel">Account Created</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <p>Account created successfully!</p>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-primary" id="redirectToLogin">OK</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Fill All Fields Modal -->
+    <div class="modal fade" id="fillAllFieldsModal" tabindex="-1" aria-labelledby="fillAllFieldsModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="fillAllFieldsModalLabel">Incomplete Form</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <p>Please fill in all fields.</p>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
     <!-- Footer -->
     <footer class="text-center mt-5">
         <p>&copy; 2025 Welfare Schemes Portal. All rights reserved.</p>

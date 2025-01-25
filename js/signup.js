@@ -13,9 +13,22 @@ document.getElementById('signup-form').addEventListener('submit', function(event
       localStorage.setItem('userPhone', phone);
       localStorage.setItem('userEmail', email);
       localStorage.setItem('userPassword', password);
-      alert('Account created successfully!');
-      window.location.href = 'login.html';
+      showAccountCreatedModal();
   } else {
-      alert('Please fill in all fields.');
+      showFillAllFieldsModal();
   }
 });
+
+function showAccountCreatedModal() {
+    const accountCreatedModal = new bootstrap.Modal(document.getElementById('accountCreatedModal'));
+    accountCreatedModal.show();
+
+    document.getElementById('redirectToLogin').addEventListener('click', function() {
+        window.location.href = 'login.html';
+    });
+}
+
+function showFillAllFieldsModal() {
+    const fillAllFieldsModal = new bootstrap.Modal(document.getElementById('fillAllFieldsModal'));
+    fillAllFieldsModal.show();
+}
