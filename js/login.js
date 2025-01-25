@@ -13,7 +13,7 @@ document.getElementById('login-form').addEventListener('submit', function(event)
         showLoginSuccessModal('../pages/officerdashboard.html');
     }
     else if (email === storedEmail && password === storedPassword) {
-        showLoginSuccessModal('citizen.html');
+        showLoginSuccessModal('../index.html');
     } else {
         alert('Invalid email or password.');
     }
