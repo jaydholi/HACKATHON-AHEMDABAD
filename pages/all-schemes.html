@@ -67,11 +67,38 @@
     </style>
 </head>
 <body>
+    <script>    
+    //    document.addEventListener('DOMContentLoaded', function() {
+    //         document.querySelectorAll('.view-details').forEach(button => {
+    //             button.addEventListener('click', function(event) {
+    //                 if (!localStorage.getItem('userFirstName')) {
+    //                     event.preventDefault();
+    //                     event.stopPropagation();   
+    //                     alert('Please sign up first for more details.');
+                        
+    //                 }
+    //             });
+    //         });
+    //     });
+    // document.addEventListener('DOMContentLoaded', function() {
+    //         document.querySelectorAll('.view-details').forEach(button => {
+    //             button.addEventListener('click', function(event) {
+    //                 if (!localStorage.getItem('userFirstName')) {
+    //                     event.preventDefault();
+    //                     event.stopPropagation();   
+    //                     alert('Please sign up first for more details.');
+    //                     button.setAttribute('data-bs-target', 'none');
+    //                 }
+    //             });
+    //         });
+    //     });
+    </script>
+
 
     <!-- Navbar -->
     <nav class="navbar navbar-expand-lg navbar-dark">
         <div class="container-fluid">
-            <a class="navbar-brand" href="index.html">Welfare Schemes</a>
+            <a class="navbar-brand" href="../index.html">Welfare Schemes</a>
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
                 <span class="navbar-toggler-icon"></span>
             </button>
@@ -81,16 +108,16 @@
                         <a class="nav-link active" href="../index.html">Home</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link active" href="/pages/all-schemes.html">All Schemes</a>
+                        <a class="nav-link active" href="all-schemes.html">All Schemes</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link active" href="/pages/contact.html">Contact Us</a>
+                        <a class="nav-link active" href="contact.html">Contact Us</a>
                     </li>
-                    <li class="nav-item">
+                    <!-- <li class="nav-item">
                         <button class="btn btn-success me-2" type="button"><a href="/pages/login.html" style="text-decoration: none;color: white;">login</a></button>
                         <button class="btn btn-success me-2" type="button"><a href="/pages/sign-up.html" style="text-decoration: none;color: white;">sign-up</a></button>
 
-                    </li>
+                    </li> -->
                 </ul>
             </div>
         </div>
@@ -109,14 +136,14 @@
     <!-- Schemes Section -->
     <div class="container my-5">
         <div class="row">
-            <!-- PM Kisan -->
+            <!-- PM Kisan --> 
             <div class="col-md-4 animate__animated animate__fadeIn">
                 <div class="card">
                     <div class="card-body text-center">
                         <i class="fas fa-tractor scheme-icon"></i>
                         <h5 class="card-title">PM Kisan Samman Nidhi</h5>
                         <p class="card-text">Financial assistance of ₹6,000 per year to farmer families</p>
-                        <button class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#pmKisanModal">
+                        <button class="btn btn-primary view-details" data-bs-toggle="modal" data-bs-target="#pmKisanModal">
                             View Details
                         </button>
                     </div>
@@ -130,7 +157,7 @@
                         <i class="fas fa-home scheme-icon"></i>
                         <h5 class="card-title">PM Awas Yojana</h5>
                         <p class="card-text">Housing for All - Urban and Rural housing scheme</p>
-                        <button class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#pmAwasModal">
+                        <button class="btn btn-primary view-details" data-bs-toggle="modal" data-bs-target="#pmAwasModal">
                             View Details
                         </button>
                     </div>
@@ -144,7 +171,7 @@
                         <i class="fas fa-heartbeat scheme-icon"></i>
                         <h5 class="card-title">Ayushman Bharat</h5>
                         <p class="card-text">Health insurance coverage up to ₹5 lakhs per family per year</p>
-                        <button class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#ayushmanModal">
+                        <button class="btn btn-primary view-details" data-bs-toggle="modal" data-bs-target="#ayushmanModal">
                             View Details
                         </button>
                     </div>
@@ -158,7 +185,7 @@
                         <i class="fas fa-fire scheme-icon"></i>
                         <h5 class="card-title">PM Ujjwala Yojana</h5>
                         <p class="card-text">Free LPG connections to women from BPL households</p>
-                        <button class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#ujjwalaModal">
+                        <button class="btn btn-primary view-details" data-bs-toggle="modal" data-bs-target="#ujjwalaModal">
                             View Details
                         </button>
                     </div>
@@ -172,7 +199,7 @@
                         <i class="fas fa-child scheme-icon"></i>
                         <h5 class="card-title">Sukanya Samriddhi Yojana</h5>
                         <p class="card-text">Savings scheme for girl child education and marriage</p>
-                        <button class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#sukanyaModal">
+                        <button class="btn btn-primary view-details" data-bs-toggle="modal" data-bs-target="#sukanyaModal">
                             View Details
                         </button>
                     </div>
@@ -186,7 +213,7 @@
                         <i class="fas fa-store scheme-icon"></i>
                         <h5 class="card-title">PM Mudra Yojana</h5>
                         <p class="card-text">Loans up to ₹10 lakhs for small business ventures</p>
-                        <button class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#mudraModal">
+                        <button class="btn btn-primary view-details" data-bs-toggle="modal" data-bs-target="#mudraModal">
                             View Details
                         </button>
                     </div>
@@ -200,7 +227,7 @@
                         <i class="fas fa-piggy-bank scheme-icon"></i>
                         <h5 class="card-title">PM Jan Dhan Yojana</h5>
                         <p class="card-text">Financial inclusion program with zero balance accounts</p>
-                        <button class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#janDhanModal">
+                        <button class="btn btn-primary view-details" data-bs-toggle="modal" data-bs-target="#janDhanModal">
                             View Details
                         </button>
                     </div>
@@ -239,7 +266,7 @@
                 </div>
                 <div class="modal-footer">
                     <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-                    <button type="button" class="btn btn-primary"><a href="/pages/register.html">Apply Now</a></button>
+                    <button type="button" class="btn btn-primary"><a href="/pages/register.html" style="text-decoration: none; color: white;" class="modal-a-tag">Apply Now</a></button>
                 </div>
             </div>
         </div>
@@ -272,7 +299,7 @@
                 </div>
                 <div class="modal-footer">
                     <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-                    <button type="button" class="btn btn-primary"><a href="/pages/register.html">Apply Now</a></button>
+                    <button type="button" class="btn btn-primary"><a href="/pages/register.html" style="text-decoration: none;  color: white;" class="modal-a-tag">Apply Now</a></button>
                 </div>
             </div>
         </div>
@@ -305,7 +332,7 @@
                 </div>
                 <div class="modal-footer">
                     <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-                    <button type="button" class="btn btn-primary"><a href="/pages/register.html">Apply Now</a></button>
+                    <button type="button" class="btn btn-primary"><a href="/pages/register.html" style="text-decoration: none;  color: white;" class="modal-a-tag">Apply Now</a></button>
                 </div>
             </div>
         </div>
@@ -338,7 +365,7 @@
                 </div>
                 <div class="modal-footer">
                     <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-                    <button type="button" class="btn btn-primary"><a href="/pages/register.html">Apply Now</a></button>
+                    <button type="button" class="btn btn-primary"><a href="/pages/register.html"style="text-decoration: none;  color: white;" class="modal-a-tag">Apply Now</a></button>
                 </div>
             </div>
         </div>
@@ -372,7 +399,7 @@
                 </div>
                 <div class="modal-footer">
                     <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-                    <button type="button" class="btn btn-primary"><a href="/pages/register.html">Apply Now</a></button>
+                    <button type="button" class="btn btn-primary"><a href="/pages/register.html" style="text-decoration: none; color: white;" class="modal-a-tag">Apply Now</a></button>
                 </div>
             </div>
         </div>
@@ -407,7 +434,7 @@
                 </div>
                 <div class="modal-footer">
                     <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-                    <button type="button" class="btn btn-primary"><a href="/pages/register.html">Apply Now</a></button>
+                    <button type="button" class="btn btn-primary"><a href="/pages/register.html" style="text-decoration: none; color: white;" class="modal-a-tag">Apply Now</a></button>
                 </div>
             </div>
         </div>
@@ -442,11 +469,32 @@
                 </div>
                 <div class="modal-footer">
                     <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-                    <button type="button" class="btn btn-primary"><a href="/pages/register.html">Apply Now</a></button>
+                    <button type="button" class="btn btn-primary"><a href="/pages/register.html" style="text-decoration: none; color: white;" class="modal-a-tag">Apply Now</a></button>
                 </div>
             </div>
         </div>
     </div>
+
+    <!-- Login Modal -->
+    <div class="modal fade" id="loginModal" tabindex="-1" aria-labelledby="loginModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="loginModalLabel">Login Required</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <p>Please login first to apply for this scheme.</p>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                    <button type="button" class="btn btn-primary"><a href="/pages/login.html" style="text-decoration: none; color: white;">Login</a></button>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    
 
     <!-- Footer -->
     <footer class="bg-light py-4">
@@ -455,6 +503,24 @@
         </div>
     </footer>
     <!-- Bootstrap JS -->
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+            const applyButtons = document.querySelectorAll('.modal-a-tag');
+            const loginModal = new bootstrap.Modal(document.getElementById('loginModal'));
+    
+            applyButtons.forEach(button => {
+                button.addEventListener('click', function (event) {
+                    const userfirstname = localStorage.getItem('userFirstName');
+                    if (!userfirstname) {
+                        event.preventDefault();
+                        loginModal.show(); // Show login modal
+                    } else {
+                        button.href = '/pages/register.html'; // Redirect to register.html
+                    }
+                });
+            });
+        });
+    </script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.0/js/bootstrap.bundle.min.js"></script>
 </body>
 </html>
