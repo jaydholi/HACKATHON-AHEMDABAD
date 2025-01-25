@@ -11,24 +11,63 @@
     <style>
         body {
             font-family: 'Roboto', sans-serif;
+            background-color: #f9f9f9;
         }
         .navbar {
-            background-color: #4A90E2;
+            background-color: #003366; /* Dark Blue */
+        }
+        .navbar-brand {
+            font-weight: bold;
+            color: #FFD700; /* Yellow */
         }
         .header {
-            background-color: #4A90E2;
-            color: white;
+            background-color: #FFD700; /* Yellow */
+            color: #003366; /* Dark Blue */
             text-align: center;
             padding: 2rem 1rem;
         }
+        .header h1 {
+            font-size: 2rem;
+            font-weight: 700;
+        }
+        .header p {
+            font-size: 1.2rem;
+        }
+        .section-title {
+            font-size: 1.5rem;
+            font-weight: 700;
+            margin-top: 2rem;
+        }
+        .card {
+            border: none;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+        .card-header {
+            background-color: #003366; /* Dark Blue */
+            color: #FFD700; /* Yellow */
+            font-weight: 500;
+        }
         .btn-primary {
-            background-color: #4A90E2;
+            background-color: #003366; /* Dark Blue */
             border: none;
         }
+        .btn-primary:hover {
+            background-color: #FFD700; /* Yellow */
+            color: #003366; /* Dark Blue */
+        }
         footer {
-            background-color: #f8f9fa;
+            background-color: #003366; /* Dark Blue */
+            color: #FFD700; /* Yellow */
             text-align: center;
             padding: 1rem 0;
+            margin-top: 3rem;
+        }
+        a.text-primary {
+            color: #003366; /* Dark Blue */
+        }
+        a.text-primary:hover {
+            color: #FFD700; /* Yellow */
         }
     </style>
 </head>
@@ -37,20 +76,23 @@
     <!-- Navbar -->
     <nav class="navbar navbar-expand-lg navbar-dark">
         <div class="container-fluid">
-            <a class="navbar-brand" href="../index.html">Welfare Schemes</a>
+            <a class="navbar-brand" href="#">CivicCare Portal</a>
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
                 <span class="navbar-toggler-icon"></span>
             </button>
             <div class="collapse navbar-collapse" id="navbarNav">
                 <ul class="navbar-nav">
                     <li class="nav-item">
-                        <a class="nav-link" href="../index.html">Home</a>
+                        <a class="nav-link active" href="#">Dashboard</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="/pages/all-schemes.html">All Schemes</a>
+                        <a class="nav-link" href="#">My Applications</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="/pages/contact.html">Contact Us</a>
+                        <a class="nav-link" href="#">Documents</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#">Support</a>
                     </li>
                 </ul>
             </div>
@@ -59,51 +101,159 @@
 
     <!-- Header -->
     <header class="header">
-        <h1>PM Kisan Samman Nidhi</h1>
-        <p>Empowering farmers with financial assistance</p>
+        <h1>Scheme Selection</h1>
+        <p>Select a Scheme to View Details</p>
     </header>
 
-    <!-- Scheme Details -->
+    <!-- Content -->
     <div class="container my-5">
-        <h3>Scheme Overview</h3>
-        <p>The PM Kisan Samman Nidhi provides direct financial support to farmers in India. Eligible farmers receive ₹6,000 annually in three equal installments of ₹2,000 each. The funds are directly transferred to the beneficiaries' bank accounts.</p>
-        
-        <h4>Eligibility Criteria</h4>
-        <ul>
-            <li>Small and marginal farmers with cultivable land up to 2 hectares.</li>
-            <li>Farmers with valid Aadhaar-linked bank accounts.</li>
-            <li>Exclusions: Institutional landowners, retired professionals, and tax-paying farmers.</li>
-        </ul>
+        <div class="row">
+            <!-- Left Column -->
+            <div class="col-md-8">
+                <!-- Dropdown to Select Scheme -->
+                <div class="mb-4">
+                    <label for="schemeSelect" class="form-label">Select a Scheme</label>
+                    <select id="schemeSelect" class="form-select" onchange="updateSchemeDetails()">
+                        <option value="1">PM Kisan Samman Nidhi</option>
+                        <option value="2">PM Awas Yojana</option>
+                        <option value="3">Ayushman Bharat</option>
+                        <option value="4">PM Ujjwala Yojana</option>
+                        <option value="5">Sukanya Samriddhi Yojana</option>
+                        <option value="6">PM Mudra Yojana</option>
+                        <option value="7">PM Jan Dhan Yojana</option>
+                    </select>
+                </div>
 
-        <h4>Benefits</h4>
-        <ul>
-            <li>Provides income support to farmers to meet agricultural and household needs.</li>
-            <li>Encourages investment in farming equipment and practices.</li>
-            <li>Reduces reliance on informal credit sources.</li>
-        </ul>
+                <!-- Scheme Details Cards -->
+                <div id="schemeDetails">
+                    <!-- Dynamically updated content will go here -->
+                </div>
+            </div>
 
-        <h4>Application Process</h4>
-        <ol>
-            <li>Visit the official PM Kisan portal: <a href="https://pmkisan.gov.in" target="_blank">pmkisan.gov.in</a>.</li>
-            <li>Click on "New Farmer Registration" and fill out the form with the required details.</li>
-            <li>Submit the form and track your application status on the portal.</li>
-        </ol>
-
-        <h4>Contact Information</h4>
-        <p>For assistance, contact the PM Kisan Helpline: <strong>155261</strong> or email at <strong>pmkisan-ict@gov.in</strong>.</p>
-
-        <!-- Apply Button -->
-        <div class="text-center mt-4">
-            <button class="btn btn-primary" onclick="alert('Application process will begin soon!')">Apply Now</button>
+            <!-- Right Column (Application Status) -->
+            <div class="col-md-4">
+                <div class="card">
+                    <div class="card-header">
+                        Application Status
+                    </div>
+                    <div class="card-body">
+                        <ul class="list-unstyled">
+                            <li class="text-success">&#10003; Documents Uploaded</li>
+                            <li class="text-warning">&#8226; Verification</li>
+                            <li class="text-muted">&#8226; Approval</li>
+                        </ul>
+                        <button class="btn btn-primary w-100 mt-3">Submit Application</button>
+                    </div>
+                </div>
+            </div>
         </div>
     </div>
 
     <!-- Footer -->
     <footer>
-        <p>&copy; 2025 Welfare Schemes. All rights reserved.</p>
+        <p>&copy; 2025 CivicCare Portal. All rights reserved.</p>
     </footer>
 
     <!-- Bootstrap JS -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.0/js/bootstrap.bundle.min.js"></script>
+
+    <!-- JavaScript for Dynamic Content -->
+    <script>
+        const schemes = {
+            1: {
+                title: "PM Kisan Samman Nidhi",
+                eligibility: ["Farmer", "Holding cultivable land", "Valid Aadhaar card"],
+                documents: ["Aadhaar Card", "Bank Account Details", "Land Ownership Proof"],
+                notifications: ["Your application is under review.", "Please verify your bank account details."]
+            },
+            2: {
+                title: "PM Awas Yojana",
+                eligibility: ["Low-income families", "No prior government housing assistance"],
+                documents: ["Income Certificate", "Aadhaar Card", "Residence Proof"],
+                notifications: ["Your application has been successfully submitted.", "Awaiting document verification."]
+            },
+            3: {
+                title: "Ayushman Bharat",
+                eligibility: ["BPL (Below Poverty Line) families", "No existing health insurance"],
+                documents: ["Aadhaar Card", "BPL Card", "Medical History Documents"],
+                notifications: ["Your health insurance application has been processed.", "Awaiting approval."]
+            },
+            4: {
+                title: "PM Ujjwala Yojana",
+                eligibility: ["BPL (Below Poverty Line) women", "No prior LPG connection"],
+                documents: ["Aadhaar Card", "Bank Account Details", "Ration Card"],
+                notifications: ["Your application is under review.", "Please verify your documents."]
+            },
+            5: {
+                title: "Sukanya Samriddhi Yojana",
+                eligibility: ["Parents/Guardians of a girl child"],
+                documents: ["Aadhaar Card", "Birth Certificate of the girl child", "Bank Account Details"],
+                notifications: ["Your Sukanya Samriddhi account has been successfully opened.", "Deposit made successfully."]
+            },
+            6: {
+                title: "PM Mudra Yojana",
+                eligibility: ["Small business owners", "Annual turnover up to ₹10 lakhs"],
+                documents: ["Business Registration", "Aadhaar Card", "Business Plan"],
+                notifications: ["Your loan application is under processing.", "Please submit the business plan."]
+            },
+            7: {
+                title: "PM Jan Dhan Yojana",
+                eligibility: ["Indian Citizen", "No existing bank account"],
+                documents: ["Aadhaar Card", "Address Proof", "Photograph"],
+                notifications: ["Your bank account has been successfully created.", "Please link your mobile number."]
+            }
+        };
+
+        // Function to update scheme details dynamically
+        function updateSchemeDetails() {
+            const schemeId = document.getElementById("schemeSelect").value;
+            const scheme = schemes[schemeId];
+
+            let content = `
+                <div class="card">
+                    <div class="card-header">
+                        Eligibility Criteria
+                    </div>
+                    <div class="card-body">
+                        <ul>`;
+            scheme.eligibility.forEach(item => {
+                content += `<li>${item}</li>`;
+            });
+            content += `</ul>
+                    </div>
+                </div>
+                
+                <div class="card mt-4">
+                    <div class="card-header">
+                        Required Documents
+                    </div>
+                    <div class="card-body">
+                        <ul>`;
+            scheme.documents.forEach(item => {
+                content += `<li>${item} <a href="#" class="text-primary">Upload</a></li>`;
+            });
+            content += `</ul>
+                    </div>
+                </div>
+
+                <div class="card mt-4">
+                    <div class="card-header">
+                        Recent Notifications
+                    </div>
+                    <div class="card-body">`;
+            scheme.notifications.forEach(item => {
+                content += `<p class="text-primary">&#8226; ${item}</p>`;
+            });
+            content += `</div>
+                </div>
+            `;
+
+            document.getElementById("schemeDetails").innerHTML = content;
+        }
+
+        // Initialize with the first scheme selected by default
+        updateSchemeDetails();
+    </script>
+
 </body>
 </html>
