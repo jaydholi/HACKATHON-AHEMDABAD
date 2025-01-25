@@ -80,18 +80,18 @@
     //             });
     //         });
     //     });
-    document.addEventListener('DOMContentLoaded', function() {
-            document.querySelectorAll('.view-details').forEach(button => {
-                button.addEventListener('click', function(event) {
-                    if (!localStorage.getItem('userFirstName')) {
-                        event.preventDefault();
-                        event.stopPropagation();   
-                        alert('Please sign up first for more details.');
-                        button.setAttribute('data-bs-target', 'none');
-                    }
-                });
-            });
-        });
+    // document.addEventListener('DOMContentLoaded', function() {
+    //         document.querySelectorAll('.view-details').forEach(button => {
+    //             button.addEventListener('click', function(event) {
+    //                 if (!localStorage.getItem('userFirstName')) {
+    //                     event.preventDefault();
+    //                     event.stopPropagation();   
+    //                     alert('Please sign up first for more details.');
+    //                     button.setAttribute('data-bs-target', 'none');
+    //                 }
+    //             });
+    //         });
+    //     });
     </script>
 
 
@@ -474,6 +474,25 @@
             </div>
         </div>
     </div>
+
+    <!-- Login Modal -->
+<div class="modal fade" id="loginModal" tabindex="-1" aria-labelledby="loginModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="loginModalLabel">Login Required</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <p>Please login first to continue.</p>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                <button type="button" class="btn btn-primary"><a href="/pages/login.html" style="color: white; text-decoration: none;">Login</a></button>
+            </div>
+        </div>
+    </div>
+</div>
 
     <!-- Footer -->
     <footer class="bg-light py-4">
