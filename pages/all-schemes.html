@@ -266,7 +266,7 @@
                 </div>
                 <div class="modal-footer">
                     <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-                    <button type="button" class="btn btn-primary"><a href="/pages/register.html">Apply Now</a></button>
+                    <button type="button" class="btn btn-primary"><a href="/pages/register.html" style="text-decoration: none; color: white;" class="modal-a-tag">Apply Now</a></button>
                 </div>
             </div>
         </div>
@@ -299,7 +299,7 @@
                 </div>
                 <div class="modal-footer">
                     <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-                    <button type="button" class="btn btn-primary"><a href="/pages/register.html">Apply Now</a></button>
+                    <button type="button" class="btn btn-primary"><a href="/pages/register.html" style="text-decoration: none;  color: white;" class="modal-a-tag">Apply Now</a></button>
                 </div>
             </div>
         </div>
@@ -332,7 +332,7 @@
                 </div>
                 <div class="modal-footer">
                     <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-                    <button type="button" class="btn btn-primary"><a href="/pages/register.html">Apply Now</a></button>
+                    <button type="button" class="btn btn-primary"><a href="/pages/register.html" style="text-decoration: none;  color: white;" class="modal-a-tag">Apply Now</a></button>
                 </div>
             </div>
         </div>
@@ -365,7 +365,7 @@
                 </div>
                 <div class="modal-footer">
                     <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-                    <button type="button" class="btn btn-primary"><a href="/pages/register.html">Apply Now</a></button>
+                    <button type="button" class="btn btn-primary"><a href="/pages/register.html"style="text-decoration: none;  color: white;" class="modal-a-tag">Apply Now</a></button>
                 </div>
             </div>
         </div>
@@ -399,7 +399,7 @@
                 </div>
                 <div class="modal-footer">
                     <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-                    <button type="button" class="btn btn-primary"><a href="/pages/register.html">Apply Now</a></button>
+                    <button type="button" class="btn btn-primary"><a href="/pages/register.html" style="text-decoration: none; color: white;" class="modal-a-tag">Apply Now</a></button>
                 </div>
             </div>
         </div>
@@ -434,7 +434,7 @@
                 </div>
                 <div class="modal-footer">
                     <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-                    <button type="button" class="btn btn-primary"><a href="/pages/register.html">Apply Now</a></button>
+                    <button type="button" class="btn btn-primary"><a href="/pages/register.html" style="text-decoration: none; color: white;" class="modal-a-tag">Apply Now</a></button>
                 </div>
             </div>
         </div>
@@ -469,30 +469,32 @@
                 </div>
                 <div class="modal-footer">
                     <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-                    <button type="button" class="btn btn-primary"><a href="/pages/register.html">Apply Now</a></button>
+                    <button type="button" class="btn btn-primary"><a href="/pages/register.html" style="text-decoration: none; color: white;" class="modal-a-tag">Apply Now</a></button>
                 </div>
             </div>
         </div>
     </div>
 
     <!-- Login Modal -->
-<div class="modal fade" id="loginModal" tabindex="-1" aria-labelledby="loginModalLabel" aria-hidden="true">
-    <div class="modal-dialog">
-        <div class="modal-content">
-            <div class="modal-header">
-                <h5 class="modal-title" id="loginModalLabel">Login Required</h5>
-                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-            </div>
-            <div class="modal-body">
-                <p>Please login first to continue.</p>
-            </div>
-            <div class="modal-footer">
-                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-                <button type="button" class="btn btn-primary"><a href="/pages/login.html" style="color: white; text-decoration: none;">Login</a></button>
+    <div class="modal fade" id="loginModal" tabindex="-1" aria-labelledby="loginModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="loginModalLabel">Login Required</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <p>Please login first to apply for this scheme.</p>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                    <button type="button" class="btn btn-primary"><a href="/pages/login.html" style="text-decoration: none; color: white;">Login</a></button>
+                </div>
             </div>
         </div>
     </div>
-</div>
+    
+    
 
     <!-- Footer -->
     <footer class="bg-light py-4">
@@ -501,7 +503,25 @@
         </div>
     </footer>
     <!-- Bootstrap JS -->
-   
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+            const applyButtons = document.querySelectorAll('.modal-a-tag');
+            const loginModal = new bootstrap.Modal(document.getElementById('loginModal'));
+    
+            applyButtons.forEach(button => {
+                button.addEventListener('click', function (event) {
+                    const userfirstname = localStorage.getItem('userFirstName');
+                    if (!userfirstname) {
+                        event.preventDefault();
+                        loginModal.show(); // Show login modal
+                    } else {
+                        button.href = '/pages/register.html'; // Redirect to register.html
+                    }
+                });
+            });
+        });
+    </script>
+    
     <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.0/js/bootstrap.bundle.min.js"></script>
 </body>
 </html>
