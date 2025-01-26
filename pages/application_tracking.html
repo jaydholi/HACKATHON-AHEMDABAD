@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -73,26 +74,15 @@
             color: #ffc107;
         }
 
-        table {
-            margin-top: 1rem;
-        }
-
         table th {
             background-color: #ffc107;
-            color: #001f3f;
+            color: #ffd000;
             font-weight: 600;
         }
 
         table td {
             vertical-align: middle;
             color: white;
-        }
-
-        table th:first-child,
-        table th:nth-child(2),
-        table th:nth-child(3),
-        table th:nth-child(4) {
-            color: yellow;
         }
 
         .btn-primary {
@@ -143,11 +133,15 @@
         }
     </style>
 </head>
+
 <body>
     <nav class="navbar navbar-expand-lg">
         <div class="container">
             <a class="navbar-brand" href="#">Welfare Navigator</a>
-            <div class="collapse navbar-collapse">
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                <span class="navbar-toggler-icon" style="color: #ffc107;">☰</span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
                 <ul class="navbar-nav ms-auto">
                     <li class="nav-item">
                         <a class="nav-link" href="#">Application Status</a>
@@ -163,55 +157,113 @@
     <div class="content container">
         <div class="status-overview">
             <h2>Application Status Overview</h2>
-            <p>Your application is currently being reviewed. You will receive updates once the review is complete. Estimated completion: 2 weeks.</p>
+            <p>Your application is currently being reviewed. You will receive updates once the review is complete.
+                Estimated completion: 2 weeks.</p>
         </div>
 
         <div class="documents-table">
             <h5>Required Documents</h5>
-            <table class="table table-bordered mt-3">
-                <thead>
-                    <tr>
-                        <th>Document Name</th>
-                        <th>Status</th>
-                        <th>Action Required</th>
-                        <th>View Details</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    <tr>
-                        <td>Identity Proof</td>
-                        <td>Submitted</td>
-                        <td>
-                            <select class="form-select" disabled>
-                                <option>None</option>
-                            </select>
-                        </td>
-                        <td><button class="btn btn-primary btn-sm">View</button></td>
-                    </tr>
-                    <tr>
-                        <td>Address Proof</td>
-                        <td>Pending</td>
-                        <td>
-                            <select class="form-select">
-                                <option>Submit</option>
-                            </select>
-                        </td>
-                        <td><button class="btn btn-primary btn-sm">View</button></td>
-                    </tr>
-                    <tr>
-                        <td>Income Statement</td>
-                        <td>Missing</td>
-                        <td>
-                            <select class="form-select">
-                                <option>Upload</option>
-                            </select>
-                        </td>
-                        <td><button class="btn btn-primary btn-sm">View</button></td>
-                    </tr>
-                </tbody>
-            </table>
+        
+            <!-- Desktop/Table View -->
+            <div class="d-none d-sm-block">
+                <div class="table-responsive">
+                    <table class="table table-bordered mt-3">
+                        <thead>
+                            <tr>
+                                <th>Document Name</th>
+                                <th>Status</th>
+                                <th>Action Required</th>
+                                <th>View Details</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>Identity Proof</td>
+                                <td>Submitted</td>
+                                <td>
+                                    <select class="form-select" disabled>
+                                        <option>None</option>
+                                    </select>
+                                </td>
+                                <td><button class="btn btn-primary btn-sm">View</button></td>
+                            </tr>
+                            <tr>
+                                <td>Address Proof</td>
+                                <td>Pending</td>
+                                <td>
+                                    <select class="form-select">
+                                        <option>Submit</option>
+                                    </select>
+                                </td>
+                                <td><button class="btn btn-primary btn-sm">View</button></td>
+                            </tr>
+                            <tr>
+                                <td>Income Statement</td>
+                                <td>Missing</td>
+                                <td>
+                                    <select class="form-select">
+                                        <option>Upload</option>
+                                    </select>
+                                </td>
+                                <td><button class="btn btn-primary btn-sm">View</button></td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        
+            <!-- Mobile View: Table Layout with Common View Button -->
+            <div class="d-block d-sm-none mt-3">
+                <div class="table-responsive">
+                    <table class="table table-bordered mt-3">
+                        <thead>
+                            <tr>
+                                <th>Document Name</th>
+                                <th>Status</th>
+                                <th>Action Required</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>Identity Proof</td>
+                                <td>Submitted</td>
+                                <td>
+                                    <select class="form-select" disabled>
+                                        <option>None</option>
+                                    </select>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>Address Proof</td>
+                                <td>Pending</td>
+                                <td>
+                                    <select class="form-select">
+                                        <option>Submit</option>
+                                    </select>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>Income Statement</td>
+                                <td>Missing</td>
+                                <td>
+                                    <select class="form-select">
+                                        <option>Upload</option>
+                                    </select>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+        
+                    <!-- Common View Button for Mobile -->
+                    <div class="text-center mt-3">
+                        <button class="btn btn-primary btn-sm">Common View</button>
+                    </div>
+                </div>
+            </div>
+        
             <p class="text-center mt-2">Please ensure all required documents are submitted to proceed with your application.</p>
         </div>
+        
 
         <div class="notifications mt-4">
             <h5>Application Notifications</h5>
@@ -238,4 +290,5 @@
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/js/bootstrap.bundle.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap-icons/font/bootstrap-icons.js"></script>
 </body>
+
 </html>
