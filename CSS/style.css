@@ -6,7 +6,7 @@ body {
 }
 
 header {
-    background: linear-gradient(45deg, #6a11cb, #2575fc);
+    background: linear-gradient(45deg, #6a11cb, #041a41);
     color: #fff;
     padding: 20px;
     text-align: center;
@@ -19,7 +19,7 @@ header h1 {
 }
 
 .navbar {
-    background-color: #2575fc;
+    background-color: #051530;
     padding: 10px;
 }
 
@@ -31,7 +31,7 @@ header h1 {
 }
 
 .navbar a:hover {
-    background-color: #6a11cb;
+    background-color: #cbbf11;
     border-radius: 5px;
 }
 
