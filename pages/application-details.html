@@ -6,13 +6,14 @@
     <title>Government Applications Report</title>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/xlsx/0.17.4/xlsx.full.min.js"></script>
     <link href="https://cdn.jsdelivr.net/npm/font-awesome/css/font-awesome.min.css" rel="stylesheet">
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/5.3.0/css/bootstrap.min.css" rel="stylesheet">
     <style>
         body {
             font-family: 'Arial', sans-serif;
-            margin: 0;
-            padding: 0;
             background-color: #001f3f;
             color: white;
+            margin: 0;
+            padding: 0;
         }
 
         .header {
@@ -22,6 +23,7 @@
             padding: 25px;
             border-radius: 8px;
             box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            margin-bottom: 40px;
         }
 
         .header img {
@@ -36,11 +38,31 @@
             animation: fadeIn 2s;
         }
 
+        .header p {
+            font-size: 1.2em;
+        }
+
+        .header .icons {
+            display: flex;
+            justify-content: center;
+            gap: 15px;
+            margin-top: 20px;
+        }
+
+        .header .icons img {
+            width: 50px;
+            height: 50px;
+            border-radius: 5px;
+            transition: transform 0.3s;
+        }
+
+        .header .icons img:hover {
+            transform: scale(1.1);
+        }
+
         .main-content {
             padding: 40px;
             background-color: #001a35;
-            width: 90%;
-            margin: 40px auto;
             border-radius: 8px;
             box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
             animation: fadeIn 3s;
@@ -93,24 +115,6 @@
             background-color: #2ecc71;
         }
 
-        .icons {
-            display: flex;
-            justify-content: center;
-            gap: 15px;
-            margin-top: 20px;
-        }
-
-        .icons img {
-            width: 50px;
-            height: 50px;
-            border-radius: 5px;
-            transition: transform 0.3s;
-        }
-
-        .icons img:hover {
-            transform: scale(1.1);
-        }
-
         @keyframes fadeIn {
             from {
                 opacity: 0;
@@ -120,53 +124,130 @@
             }
         }
 
-        @media (max-width: 768px) {
-            .main-content {
-                width: 95%;
-                margin: 20px auto;
+        /* Responsive Styles */
+        @media (max-width: 1200px) {
+            .header h1 {
+                font-size: 2.2em;
             }
+            .header img {
+                width: 70px;
+                height: 70px;
+            }
+            .main-content {
+                padding: 30px;
+            }
+            .btn {
+                padding: 8px 12px;
+            }
+        }
 
+        @media (max-width: 992px) {
             .header h1 {
                 font-size: 2em;
             }
+            .main-content {
+                padding: 25px;
+            }
+            table th, table td {
+                padding: 10px;
+            }
+            .icons img {
+                width: 40px;
+                height: 40px;
+            }
+        }
 
+        @media (max-width: 768px) {
+            .header h1 {
+                font-size: 1.8em;
+            }
+            .header img {
+                width: 60px;
+                height: 60px;
+            }
+            .main-content {
+                padding: 20px;
+            }
+            table th, table td {
+                padding: 8px;
+                font-size: 0.9em;
+            }
             .icons {
                 flex-direction: column;
                 align-items: center;
+            }
+            .icons img {
+                width: 35px;
+                height: 35px;
+            }
+        }
+
+        @media (max-width: 576px) {
+            .header h1 {
+                font-size: 1.5em;
+            }
+            .main-content {
+                padding: 15px;
+            }
+            table th, table td {
+                padding: 6px;
+                font-size: 0.8em;
+            }
+            .btn {
+                padding: 6px 10px;
+            }
+            .icons img {
+                width: 30px;
+                height: 30px;
+            }
+        }
+
+        /* Make the table horizontally scrollable on small screens */
+        @media (max-width: 576px) {
+            .table-responsive {
+                overflow-x: auto;
+                -webkit-overflow-scrolling: touch;
             }
         }
     </style>
 </head>
 <body>
 
-    <div class="header">
-        <img src="https://upload.wikimedia.org/wikipedia/commons/5/5b/Prime_Minister_of_India.jpg" alt="PM Image">
-        <h1>Government Applications Report</h1>
-        <p>By the Hon'ble Prime Minister and Chief Minister</p>
-        <div class="icons">
-            <img src="https://upload.wikimedia.org/wikipedia/commons/e/e9/G20_logo.svg" alt="G20 Logo">
-            <img src="https://upload.wikimedia.org/wikipedia/commons/6/64/Chief_Minister_of_Gujarat.jpg" alt="CM Image">
+    <div class="container-fluid">
+        <div class="header">
+            <img src="https://upload.wikimedia.org/wikipedia/commons/5/5b/Prime_Minister_of_India.jpg" alt="PM Image">
+            <h1>Government Applications Report</h1>
+            <p>By the Hon'ble Prime Minister and Chief Minister</p>
+            <div class="icons">
+                <img src="https://upload.wikimedia.org/wikipedia/commons/e/e9/G20_logo.svg" alt="G20 Logo">
+                <img src="https://upload.wikimedia.org/wikipedia/commons/6/64/Chief_Minister_of_Gujarat.jpg" alt="CM Image">
+            </div>
+        </div>
+
+        <div class="main-content">
+            <button class="btn download" onclick="downloadApplicationsAsExcel()">Download All Applications (Excel)</button>
+            <!-- Collapsible Table Section -->
+            <div class="table-responsive">
+                <table id="applicationTable">
+                    <thead>
+                        <tr>
+                            <th>Application ID</th>
+                            <th>Name</th>
+                            <th>Date</th>
+                            <th>Type</th>
+                            <th>Required Documents</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <!-- Dynamically Generated Rows -->
+                    </tbody>
+                </table>
+            </div>
         </div>
     </div>
 
-    <div class="main-content">
-        <button class="btn download" onclick="downloadApplicationsAsExcel()">Download All Applications (Excel)</button>
-        <table id="applicationTable">
-            <thead>
-                <tr>
-                    <th>Application ID</th>
-                    <th>Name</th>
-                    <th>Date</th>
-                    <th>Type</th>
-                    <th>Required Documents</th>
-                </tr>
-            </thead>
-            <tbody>
-                <!-- Dynamically Generated Rows -->
-            </tbody>
-        </table>
-    </div>
-
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/xlsx/0.17.4/xlsx.full.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/5.3.0/js/bootstrap.bundle.min.js"></script>
     <script>
         // Sample applications array with 50 entries
         const applications = Array.from({ length: 50 }, (_, i) => ({
