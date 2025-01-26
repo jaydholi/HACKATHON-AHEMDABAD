@@ -4,392 +4,311 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Admin Dashboard</title>
-    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500&display=swap" rel="stylesheet">
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-KyZXEJv3X4H6tM6w28eQx82ca7f+3+rxB2q58MDoaR5a5n9jhfH9I1TyDq+7vS8m" crossorigin="anonymous">
+    <title>Responsive Admin Panel</title>
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Font Awesome -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
     <style>
         body {
             font-family: 'Roboto', sans-serif;
-            background: linear-gradient(145deg, #f3f4f7, #e0e7ef);
-            color: #333;
-            display: flex;
-            min-height: 100vh;
-            transition: background-color 0.3s;
-            overflow-x: hidden;
+            background-color: #ffffff;
+            color: #fff;
         }
 
         .sidebar {
             width: 250px;
-            background-color: #2c3e50;
-            color: #fff;
-            height: 100%;
+            height: 100vh;
             position: fixed;
             top: 0;
             left: 0;
-            box-shadow: 2px 0px 15px rgba(0, 0, 0, 0.3);
-            transition: all 0.3s ease;
+            background-color: #0e21cc;
+            color: white;
+            display: flex;
+            flex-direction: column;
+            padding-top: 10px;
+            transition: transform 0.3s ease;
+            z-index: 1000;
         }
 
-        .sidebar .sidebar-header {
-            font-size: 26px;
-            font-weight: 700;
+        .sidebar.collapsed {
+            transform: translateX(-250px);
+        }
+
+        .sidebar-header {
+            font-size: 1.5rem;
+            font-weight: 500;
             text-align: center;
-            padding: 25px 0;
-            background: #34495e;
-            color: #fff;
-            letter-spacing: 2px;
+            margin-bottom: 20px;
+            color: #f8f9fa;
         }
 
         .sidebar a {
-            padding: 18px 25px;
-            display: block;
-            color: #b8c1c8;
             text-decoration: none;
-            font-size: 17px;
-            font-weight: 500;
-            transition: background-color 0.3s ease;
-        }
-
-        .sidebar a:hover {
-            background-color: #2980b9;
-            color: #fff;
-        }
-
-        .main-content {
-            margin-left: 250px;
-            width: 100%;
-            padding: 50px;
-            overflow-x: hidden;
-            transition: margin-left 0.3s ease;
-        }
-
-        .stats-cards {
-            display: flex;
-            justify-content: space-between;
-            gap: 25px;
-            flex-wrap: wrap;
-            margin-bottom: 40px;
-        }
-
-        .card {
-            background-color: #fff;
-            border-radius: 12px;
-            box-shadow: 0 6px 25px rgba(0, 0, 0, 0.1);
-            padding: 25px;
-            flex: 1;
-            min-width: 220px;
-            text-align: center;
-            transition: transform 0.3s ease, box-shadow 0.3s ease, background-color 0.3s;
-        }
-
-        .card:hover {
-            transform: translateY(-10px);
-            box-shadow: 0 12px 30px rgba(0, 0, 0, 0.15);
-            background-color: #f0f1f6;
-        }
-
-        .card h3 {
-            font-size: 24px;
-            color: #34495e;
-            margin-bottom: 15px;
-            transition: color 0.3s ease;
-        }
-
-        .card:hover h3 {
-            color: #2980b9;
-        }
-
-        .card p {
-            font-size: 20px;
-            color: #7f8c8d;
-        }
-
-        .table-container {
-            background-color: #fff;
-            border-radius: 12px;
-            box-shadow: 0 6px 25px rgba(0, 0, 0, 0.1);
-            padding: 25px;
-            overflow-x: auto;
-            margin-top: 30px;
-        }
-
-        table {
-            width: 100%;
-            border-collapse: collapse;
-            transition: all 0.3s ease;
-        }
-
-        table th,
-        table td {
-            padding: 18px;
-            text-align: left;
-            border-bottom: 2px solid #ecf0f1;
-            font-size: 17px;
-            font-weight: 500;
-        }
-
-        table th {
-            background-color: #3498db;
-            color: #fff;
-        }
-
-        table tr:hover {
-            background-color: #f4f4f4;
-        }
-
-        .status {
-            display: inline-block;
-            padding: 8px 15px;
-            border-radius: 5px;
-            font-size: 15px;
-            font-weight: 600;
-            text-transform: uppercase;
-        }
-
-        .approved {
-            background-color: #27ae60;
-            color: #fff;
-        }
-
-        .rejected {
-            background-color: #e74c3c;
-            color: #fff;
-        }
-
-        .pending {
-            background-color: #f39c12;
-            color: #fff;
-        }
-
-        .filters {
-            margin-bottom: 20px;
-            display: flex;
-            gap: 20px;
-            flex-wrap: wrap;
-            justify-content: space-between;
-        }
-
-        .filter-box {
-            display: flex;
-            gap: 12px;
-            align-items: center;
-        }
-
-        .filter-box label {
-            font-size: 18px;
-            font-weight: 600;
-            color: #2c3e50;
-        }
-
-        .filter-box select,
-        .filter-box input {
-            padding: 12px;
-            font-size: 16px;
-            border-radius: 8px;
-            border: 1px solid #ccc;
-            outline: none;
-        }
-
-        .filter-box select:focus,
-        .filter-box input:focus {
-            border-color: #3498db;
-        }
-
-        .btn {
-            background-color: #3498db;
-            color: #fff;
-            padding: 15px 25px;
-            border-radius: 8px;
-            border: none;
-            cursor: pointer;
-            font-size: 17px;
-            font-weight: 600;
+            color: white;
+            padding: 15px 20px;
+            display: block;
+            font-size: 1rem;
             transition: background-color 0.3s;
         }
 
-        .btn:hover {
-            background-color: #2980b9;
+        .sidebar a:hover {
+            background-color: #d0d315;
         }
 
-        /* Modal styles */
-        .modal {
-            display: none;
+        .content {
+            margin-left: 250px;
+            padding: 20px;
+            transition: margin-left 0.3s ease;
+        }
+
+        .content.collapsed {
+            margin-left: 0;
+        }
+
+        .navbar {
+            background-color: #f8f9fa;
+            z-index: 1100;
+        }
+
+        .navbar-toggler {
+            border: none;
+        }
+
+        .navbar-toggler:focus {
+            outline: none;
+            box-shadow: none;
+        }
+
+        .toggler-btn {
             position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: rgba(0, 0, 0, 0.6);
-            justify-content: center;
+            top: 15px;
+            right: 15px;
+            z-index: 1100;
+            background-color: #2013da;
+            color: white;
+            border: 1px solid #ced4da;
+            border-radius: 50%;
+            width: 40px;
+            height: 40px;
+            display: flex;
             align-items: center;
-            z-index: 1000;
-            animation: fadeIn 0.4s;
-        }
-
-        .modal-content {
-            background: #fff;
-            border-radius: 15px;
-            padding: 30px;
-            width: 80%;
-            max-width: 650px;
-            box-shadow: 0 10px 35px rgba(0, 0, 0, 0.1);
-        }
-
-        .close {
-            position: absolute;
-            top: 10px;
-            right: 20px;
-            font-size: 35px;
-            color: #888;
+            justify-content: center;
             cursor: pointer;
+            transition: background-color 0.3s;
         }
 
-        @keyframes fadeIn {
-            from {
-                opacity: 0;
-            }
+        .toggler-btn:hover {
+            background-color: #495057;
+        }
 
-            to {
-                opacity: 1;
-            }
+        h1, h2 {
+            color: #ffffff;
+        }
+
+        p {
+            font-size: 20px;
+            color: #ffd104;
+        }
+
+        .card-title {
+            font-size: 1.2rem;
+            font-weight: 500;
+            color: #007bff;
+        }
+
+        .card-body {
+            padding: 20px;
+        }
+
+        .card .btn {
+            background-color: #343a40;
+            color: white;
+            border-radius: 5px;
+            transition: background-color 0.3s;
+        }
+
+        .card .btn:hover {
+            background-color: #495057;
+        }
+
+        .filter-container {
+            margin-bottom: 20px;
+        }
+
+        .filter-container select,
+        .filter-container input {
+            margin-right: 10px;
+        }
+
+        .btn-primary {
+            background-color: #ffcc00;
+            border-color: #ffcc00;
+        }
+
+        .btn-primary:hover {
+            background-color: #e6b800;
+            border-color: #e6b800;
+        }
+
+        .section-container {
+            background-color: #0a07aa;
+            padding: 20px;
+            margin-bottom: 20px;
+            border-radius: 8px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            height: 100%;
+        }
+
+        .section-container h2, .section-container p {
+            margin-bottom: 15px;
+        }
+
+        .grid-item {
+            margin-bottom: 20px;
+        }
+
+        .grid-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 20px;
+        }
+
+        .btn-container {
+            display: flex;
+            justify-content: flex-end;
+            margin-top: 15px;
         }
 
         @media (max-width: 768px) {
             .sidebar {
-                width: 220px;
+                transform: translateX(-250px);
             }
 
-            .main-content {
-                margin-left: 220px;
+            .sidebar.collapsed {
+                transform: translateX(0);
             }
 
-            .stats-cards {
-                flex-direction: column;
+            .content {
+                margin-left: 0;
             }
 
-            .card {
-                width: 100%;
-                margin-bottom: 20px;
+            .content.collapsed {
+                margin-left: 250px;
             }
 
-            .filters {
-                flex-direction: column;
+            .toggler-btn {
+                display: block;
             }
         }
     </style>
 </head>
 
 <body>
-
-    <div class="sidebar">
-        <div class="sidebar-header">Govt Admin</div>
-        <a href="/pages/officerdashboard.html">Dashboard</a>
-        <a href="/pages/application-details.html">Applications</a>
-        <a href="/pages/report.html">Reports</a>
-        <a href="/pages/setting.html">Settings</a>
+    <!-- Sidebar -->
+    <div class="sidebar" id="sidebar">
+        <div class="sidebar-header">
+            Govt Admin Panel
+        </div>
+        <a href="#" id="dashboardLink"><i class="fas fa-tachometer-alt"></i> Dashboard</a>
+        <a href="#" id="applicationsLink"><i class="fas fa-file-alt"></i> Applications</a>
+        <a href="#" id="reportsLink"><i class="fas fa-chart-bar"></i> Reports</a>
+        <a href="#" id="userManagementLink"><i class="fas fa-users"></i> User Management</a>
+        <a href="#"><i class="fas fa-cogs"></i> Settings</a>
+        <a href="#"><i class="fas fa-sign-out-alt"></i> Logout</a>
     </div>
 
-    <div class="main-content">
-        <div class="filters">
-            <div class="filter-box">
-                <label for="applicationFilter">Type:</label>
-                <select id="applicationFilter">
-                    <option value="all">All</option>
-                    <option value="Water Supply">Water Supply</option>
-                    <option value="Public Health">Public Health</option>
-                    <option value="Sanitation">Sanitation</option>
-                </select>
-            </div>
-
-            <div class="filter-box">
-                <label for="statusFilter">Status:</label>
-                <select id="statusFilter">
-                    <option value="all">All</option>
-                    <option value="Approved">Approved</option>
-                    <option value="Pending">Pending</option>
-                    <option value="Rejected">Rejected</option>
-                </select>
-            </div>
-
-            <div class="filter-box">
-                <button class="btn" onclick="applyFilters()">Apply Filters</button>
-            </div>
+    <!-- Navbar -->
+    <nav class="navbar navbar-expand-lg navbar-light bg-light">
+        <div class="container-fluid">
+            <span class="navbar-brand mb-0 h1">Government Admin Dashboard</span>
         </div>
+    </nav>
 
-        <div class="stats-cards">
-            <div class="card">
-                <h3>Applications</h3>
-                <p>1200</p>
-            </div>
-            <div class="card">
-                <h3>Approved</h3>
-                <p>800</p>
-            </div>
-            <div class="card">
-                <h3>Pending</h3>
-                <p>250</p>
-            </div>
-            <div class="card">
-                <h3>Rejected</h3>
-                <p>150</p>
-            </div>
-        </div>
-
-        <div class="table-container">
-            <table id="applicationsTable">
-                <thead>
-                    <tr>
-                        <th>Application ID</th>
-                        <th>Name</th>
-                        <th>Department</th>
-                        <th>Status</th>
-                        <th>Action</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    <tr>
-                        <td>001</td>
-                        <td>John Doe</td>
-                        <td>Water Supply</td>
-                        <td><span class="status approved">Approved</span></td>
-                        <td><button class="btn btn-sm" onclick="viewDetails('001')">View</button></td>
-                    </tr>
-                    <tr>
-                        <td>002</td>
-                        <td>Jane Smith</td>
-                        <td>Public Health</td>
-                        <td><span class="status pending">Pending</span></td>
-                        <td><button class="btn btn-sm" onclick="viewDetails('002')">View</button></td>
-                    </tr>
-                </tbody>
-            </table>
-        </div>
+    <!-- Toggler Button -->
+    <div class="toggler-btn" id="togglerBtn">
+        <i class="fas fa-bars"></i>
     </div>
 
-    <!-- Modal -->
-    <div class="modal" id="detailsModal">
-        <div class="modal-content">
-            <span class="close" onclick="closeModal()">&times;</span>
-            <h3>Application Details</h3>
-            <p id="applicationDetailsText"></p>
+    <!-- Main Content -->
+    <div class="content" id="content">
+        <div class="container-fluid">
+            <div class="grid-container">
+                <!-- Dashboard Section -->
+                <div class="grid-item">
+                    <div class="section-container">
+                        <h1>Dashboard</h1>
+                        <p>Welcome to the Government Admin Dashboard. This is where you can monitor the overall system status, user activity, and quick analytics.</p>
+                        <div class="btn-container">
+                            <button class="btn btn-primary">View Details</button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Total Applications Section -->
+                <div class="grid-item">
+                    <div class="section-container">
+                        <h2>Total Applications</h2>
+                        <p>Currently, there are 1200 applications in the system awaiting review. Applications can be filtered by status, type, and submission date.</p>
+                        <div class="btn-container">
+                            <button class="btn btn-primary">Filter Applications</button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Active Users Section -->
+                <div class="grid-item">
+                    <div class="section-container">
+                        <h2>Active Users</h2>
+                        <p>There are 320 active users currently using the system. You can view their activity and profiles by clicking below.</p>
+                        <div class="btn-container">
+                            <button class="btn btn-primary">View Users</button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Recent Activities Section -->
+                <div class="grid-item">
+                    <div class="section-container">
+                        <h2>Recent Activities</h2>
+                        <ul>
+                            <li>User "John Doe" completed the tax registration application.</li>
+                            <li>User "Jane Doe" submitted a land acquisition request.</li>
+                            <li>System update completed successfully.</li>
+                        </ul>
+                        <div class="btn-container">
+                            <button class="btn btn-primary">View More</button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Reports Section -->
+                <div class="grid-item">
+                    <div class="section-container">
+                        <h2>Reports</h2>
+                        <p>This section can display the latest system reports or any other relevant information.</p>
+                        <div class="btn-container">
+                            <button class="btn btn-primary">Generate Report</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
         </div>
     </div>
 
+    <!-- Bootstrap JS -->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
     <script>
-        function applyFilters() {
-            alert('Filters applied!');
-        }
+        const sidebar = document.getElementById('sidebar');
+        const content = document.getElementById('content');
+        const togglerBtn = document.getElementById('togglerBtn');
 
-        function viewDetails(applicationId) {
-            document.getElementById('applicationDetailsText').textContent = 'Details for Application ID ' + applicationId;
-            document.getElementById('detailsModal').style.display = 'flex';
-        }
+        const toggleSidebar = () => {
+            sidebar.classList.toggle('collapsed');
+            content.classList.toggle('collapsed');
+        };
 
-        function closeModal() {
-            document.getElementById('detailsModal').style.display = 'none';
-        }
+        togglerBtn.addEventListener('click', toggleSidebar);
     </script>
 </body>
 
