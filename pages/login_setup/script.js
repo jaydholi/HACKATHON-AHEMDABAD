@@ -90,7 +90,7 @@ submitButton.addEventListener("click", function() {
       const user = userCredential.user;
       console.log("Success! Welcome back!");
       window.alert("Success! Welcome back!");
-      window.location.href("../../index.html");
+      window.location.href="../../index.html";
     })
     .catch((error) => {
       const errorCode = error.code;
