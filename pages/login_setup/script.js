@@ -40,10 +40,10 @@ const createacctbtn = document.getElementById("create-acct-btn");
 
 const returnBtn = document.getElementById("return-btn");
 
-localStorage.setItem('Name', nameSignupIn.value);
 var email, password, signupEmail, signupPassword, confirmSignupEmail, confirmSignUpPassword, name, phone;
 createacctbtn.addEventListener("click", async function() {
   var isVerified = true;
+  localStorage.setItem('Name', nameSignupIn.value);
 
   name = nameSignupIn.value;
   phone = phoneSignupIn.value;
