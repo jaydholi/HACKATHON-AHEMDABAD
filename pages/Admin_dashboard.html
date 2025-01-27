@@ -1,0 +1,192 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin Dashboard</title>
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.0/css/bootstrap.min.css">
+    <!-- Animate.css -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css">
+    <style>
+        body {
+            font-family: 'Arial', sans-serif;
+            background-color: #04366e;
+            color: white;
+        }
+        .navbar {
+            background-color: #002855; /* Dark Blue */
+        }
+        .navbar-brand, .nav-link {
+            color: #FFD700; /* Golden */
+        }
+        .navbar-brand:hover, .nav-link:hover {
+            color: #F9A602; /* Yellow */
+        }
+        .section-title {
+            color: white;
+            font-weight: bold;
+            text-transform: uppercase;
+        }
+        .card {
+            background-color: #e7f3fe; /* Light Blue */
+            border: 1px solid #FFD700; /* Golden */
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+        .card-title {
+            color: #04366e; /* Dark Blue */
+        }
+        .btn-primary {
+            background-color: #FFD700; /* Golden */
+            border: none;
+        }
+        .btn-primary:hover {
+            background-color: #F9A602; /* Yellow */
+        }
+        footer {
+            background-color: #002855;
+            color: white;
+            padding: 1rem 0;
+            text-align: center;
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Navbar -->
+    <nav class="navbar navbar-expand-lg">
+        <div class="container-fluid">
+            <a class="navbar-brand" href="#">Admin Dashboard</a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item"><a class="nav-link" href="Admin_dashboard.html">Home</a></li>
+                    <li class="nav-item"><a class="nav-link" href="manage_schemes.html">Manage Schemes</a></li>
+                    <li class="nav-item"><a class="nav-link" href="applications.html">Applications</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#">Reports</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#">Settings</a></li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Welcome Section -->
+    <div class="container my-5">
+        <h1 class="text-center section-title animate__animated animate__fadeInDown">Welcome to the Admin Dashboard</h1>
+        <p class="text-center" style="color: white;">Analyze and manage welfare schemes, applications, and user data efficiently.</p>
+    </div>
+
+    <!-- Metrics Section -->
+    <div class="container my-5">
+        <div class="row g-4">
+            <div class="col-md-3">
+                <div class="card animate__animated animate__fadeInLeft">
+                    <div class="card-body text-center">
+                        <h5 class="card-title">Active Schemes</h5>
+                        <p class="display-6">15</p>
+                        <button class="btn btn-primary">View</button>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-3">
+                <div class="card animate__animated animate__fadeInLeft">
+                    <div class="card-body text-center">
+                        <h5 class="card-title">Pending Applications</h5>
+                        <p class="display-6">120</p>
+                        <button class="btn btn-primary">Manage</button>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-3">
+                <div class="card animate__animated animate__fadeInRight">
+                    <div class="card-body text-center">
+                        <h5 class="card-title">Total Users</h5>
+                        <p class="display-6">340</p>
+                        <button class="btn btn-primary">Details</button>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-3">
+                <div class="card animate__animated animate__fadeInRight">
+                    <div class="card-body text-center">
+                        <h5 class="card-title">Monthly Reports</h5>
+                        <p class="display-6">5</p>
+                        <button class="btn btn-primary">Generate</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Analysis Section -->
+    <div class="container my-5">
+        <h2 class="section-title text-center">Analysis</h2>
+        <p class="text-center">Track real-time insights about scheme applications and user trends.</p>
+        <div class="row g-4">
+            <div class="col-md-6">
+                <div class="card animate__animated animate__fadeInUp">
+                    <div class="card-body">
+                        <h5 class="card-title">Top Performing Schemes</h5>
+                        <p>1. PM Kisan Samman Nidhi<br>2. Skill India Mission<br>3. PM Awas Yojana</p>
+                        <button class="btn btn-primary">View Details</button>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-6">
+                <div class="card animate__animated animate__fadeInUp">
+                    <div class="card-body">
+                        <h5 class="card-title">User Activity</h5>
+                        <p>Most active users: Urban youth and farmers.<br>Least active users: Rural women (targeted campaigns needed).</p>
+                        <button class="btn btn-primary">Take Action</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Schemes Management Section -->
+    <div class="container my-5">
+        <h2 class="section-title text-center">Manage Welfare Schemes</h2>
+        <p class="text-center" style="color: white;">View, add, or update welfare schemes to keep them up-to-date.</p>
+        <div class="row g-4">
+            <div class="col-md-4">
+                <div class="card animate__animated animate__fadeInUp">
+                    <div class="card-body">
+                        <h5 class="card-title">PM Kisan Samman Nidhi</h5>
+                        <p>Financial support for farmers with ₹6,000 annually.</p>
+                        <button class="btn btn-primary">Edit Scheme</button>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="card animate__animated animate__fadeInUp">
+                    <div class="card-body">
+                        <h5 class="card-title">PM Awas Yojana</h5>
+                        <p>Affordable housing for the urban poor.</p>
+                        <button class="btn btn-primary">Edit Scheme</button>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="card animate__animated animate__fadeInUp">
+                    <div class="card-body">
+                        <h5 class="card-title">Skill India Mission</h5>
+                        <p>Skill development and employment training for youth.</p>
+                        <button class="btn btn-primary">Edit Scheme</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer>
+        <p>&copy; 2025 Welfare Schemes. Admin Dashboard. All rights reserved.</p>
+    </footer>
+
+    <!-- Bootstrap JS -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.0/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>

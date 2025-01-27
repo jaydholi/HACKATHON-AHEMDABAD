@@ -1,0 +1,207 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Manage Schemes</title>
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.0/css/bootstrap.min.css">
+    <!-- Animate.css -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css">
+    <style>
+        body {
+            font-family: 'Arial', sans-serif;
+            background-color: #04366e;
+            color: rgb(0, 0, 0);
+        }
+        .navbar {
+            background-color: #002855; /* Dark Blue */
+        }
+        .navbar-brand, .nav-link {
+            color: #FFD700; /* Golden */
+        }
+        .navbar-brand:hover, .nav-link:hover {
+            color: #F9A602; /* Yellow */
+        }
+        .section-title {
+            color: white;
+            font-weight: bold;
+            text-transform: uppercase;
+        }
+        .card {
+            background-color: #e7f3fe; /* Light Blue */
+            border: 1px solid #FFD700; /* Golden */
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+        .btn-primary {
+            background-color: #FFD700; /* Golden */
+            border: none;
+        }
+        .btn-primary:hover {
+            background-color: #F9A602; /* Yellow */
+        }
+        .btn-danger:hover {
+            background-color: #E60023; /* Bright Red */
+        }
+        footer {
+            background-color: #002855;
+            color: white;
+            padding: 1rem 0;
+            text-align: center;
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Navbar -->
+    <nav class="navbar navbar-expand-lg">
+        <div class="container-fluid">
+            <a class="navbar-brand" href="admin_dashboard.html">Admin Dashboard</a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item"><a class="nav-link" href="admin_dashboard.html">Home</a></li>
+                    <li class="nav-item"><a class="nav-link" href="manage_schemes.html">Manage Schemes</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#">Applications</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#">Reports</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#">Settings</a></li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Page Header -->
+    <div class="container my-5">
+        <h1 class="text-center section-title animate__animated animate__fadeInDown">Manage Welfare Schemes</h1>
+        <p class="text-center" style="color: white;">Add, view, and manage welfare schemes efficiently.</p>
+    </div>
+
+    <!-- Actions Section -->
+    <div class="container text-end mb-4">
+        <button class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#addSchemeModal">Add New Scheme</button>
+    </div>
+
+    <!-- Schemes Table -->
+    <div class="container">
+        <table class="table table-hover table-bordered table-dark">
+            <thead>
+                <tr>
+                    <th>#</th>
+                    <th>Scheme Name</th>
+                    <th>Description</th>
+                    <th>Status</th>
+                    <th>Actions</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>1</td>
+                    <td>PM Kisan Samman Nidhi</td>
+                    <td>Financial support for farmers with ₹6,000 annually.</td>
+                    <td><span class="badge bg-success">Active</span></td>
+                    <td>
+                        <button class="btn btn-danger btn-sm" data-bs-toggle="modal" data-bs-target="#deleteSchemeModal" data-scheme="PM Kisan Samman Nidhi">Remove</button>
+                    </td>
+                </tr>
+                <tr>
+                    <td>2</td>
+                    <td>PM Awas Yojana</td>
+                    <td>Affordable housing for the urban poor.</td>
+                    <td><span class="badge bg-warning text-dark">Pending</span></td>
+                    <td>
+                        <button class="btn btn-danger btn-sm" data-bs-toggle="modal" data-bs-target="#deleteSchemeModal" data-scheme="PM Awas Yojana">Remove</button>
+                    </td>
+                </tr>
+                <tr>
+                    <td>3</td>
+                    <td>Skill India Mission</td>
+                    <td>Skill development and employment training for youth.</td>
+                    <td><span class="badge bg-success">Active</span></td>
+                    <td>
+                        <button class="btn btn-danger btn-sm" data-bs-toggle="modal" data-bs-target="#deleteSchemeModal" data-scheme="Skill India Mission">Remove</button>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+
+    <!-- Add Scheme Modal -->
+    <div class="modal fade" id="addSchemeModal" tabindex="-1" aria-labelledby="addSchemeModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="addSchemeModalLabel">Add New Scheme</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <form id="addSchemeForm">
+                        <div class="mb-3">
+                            <label for="schemeName" class="form-label">Scheme Name</label>
+                            <input type="text" class="form-control" id="schemeName" required>
+                        </div>
+                        <div class="mb-3">
+                            <label for="schemeDescription" class="form-label">Description</label>
+                            <textarea class="form-control" id="schemeDescription" rows="3" required></textarea>
+                        </div>
+                        <div class="mb-3">
+                            <label for="schemeStatus" class="form-label">Status</label>
+                            <select class="form-select" id="schemeStatus">
+                                <option value="Active">Active</option>
+                                <option value="Pending">Pending</option>
+                            </select>
+                        </div>
+                        <button type="submit" class="btn btn-primary">Add Scheme</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Delete Scheme Modal -->
+    <div class="modal fade" id="deleteSchemeModal" tabindex="-1" aria-labelledby="deleteSchemeModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="deleteSchemeModalLabel">Remove Scheme</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <p>Are you sure you want to remove <strong id="schemeToRemove"></strong>?</p>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>
+                    <button type="button" class="btn btn-danger">Confirm</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer>
+        <p>&copy; 2025 Welfare Schemes. Manage Schemes Page. All rights reserved.</p>
+    </footer>
+
+    <!-- Bootstrap JS -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.0/js/bootstrap.bundle.min.js"></script>
+    <script>
+        // Update the scheme name in the delete modal
+        const deleteModal = document.getElementById('deleteSchemeModal');
+        deleteModal.addEventListener('show.bs.modal', function (event) {
+            const button = event.relatedTarget;
+            const schemeName = button.getAttribute('data-scheme');
+            document.getElementById('schemeToRemove').textContent = schemeName;
+        });
+
+        // Add Scheme Form Submission Handler
+        document.getElementById('addSchemeForm').addEventListener('submit', function (e) {
+            e.preventDefault();
+            alert('New Scheme Added Successfully!');
+            this.reset();
+            const modal = bootstrap.Modal.getInstance(document.getElementById('addSchemeModal'));
+            modal.hide();
+        });
+    </script>
+</body>
+</html>

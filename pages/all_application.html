@@ -1,0 +1,263 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Manage Applications</title>
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.0/css/bootstrap.min.css">
+    <!-- Animate.css -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css">
+    <!-- FileSaver.js for downloading files -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/FileSaver.js/2.0.5/FileSaver.min.js"></script>
+    <!-- SheetJS for Excel Export -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/xlsx/0.17.2/xlsx.full.min.js"></script>
+    <style>
+        body {
+            font-family: 'Arial', sans-serif;
+            background-color: #04366e;
+            color: white;
+        }
+        .navbar {
+            background-color: #002855; /* Dark Blue */
+        }
+        .navbar-brand, .nav-link {
+            color: #FFD700; /* Golden */
+        }
+        .navbar-brand:hover, .nav-link:hover {
+            color: #F9A602; /* Yellow */
+        }
+        .section-title {
+            color: white;
+            font-weight: bold;
+            text-transform: uppercase;
+        }
+        .card {
+            background-color: #e7f3fe; /* Light Blue */
+            border: 1px solid #FFD700; /* Golden */
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+        .card-title {
+            color: #04366e; /* Dark Blue */
+        }
+        .btn-primary {
+            background-color: #FFD700; /* Golden */
+            border: none;
+        }
+        .btn-primary:hover {
+            background-color: #F9A602; /* Yellow */
+        }
+        footer {
+            background-color: #002855;
+            color: white;
+            padding: 1rem 0;
+            text-align: center;
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Navbar -->
+    <nav class="navbar navbar-expand-lg">
+        <div class="container-fluid">
+            <a class="navbar-brand" href="#">Admin Dashboard</a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item"><a class="nav-link" href="Admin_dashboard.html">Home</a></li>
+                    <li class="nav-item"><a class="nav-link" href="manage_schemes.html">Manage Schemes</a></li>
+                    <li class="nav-item"><a class="nav-link" href="applications.html">Applications</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#">Reports</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#">Settings</a></li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Applications Section -->
+    <div class="container my-5">
+        <h1 class="text-center section-title animate__animated animate__fadeInDown">Manage Applications</h1>
+        <p class="text-center" style="color: white;">View users' applications for schemes, check their uploaded documents, and download the list of all users.</p>
+
+        <!-- Search Filter -->
+        <div class="row g-4 my-3">
+            <div class="col-md-6">
+                <input type="text" id="searchInput" class="form-control" placeholder="Search by user name or scheme...">
+            </div>
+        </div>
+
+        <!-- Application List Table -->
+        <div class="table-responsive">
+            <table class="table table-bordered table-striped table-hover text-center">
+                <thead>
+                    <tr>
+                        <th>User Name</th>
+                        <th>Scheme Applied</th>
+                        <th>Documents Uploaded</th>
+                        <th>Action</th>
+                    </tr>
+                </thead>
+                <tbody id="applicationsTableBody">
+                    <!-- Dynamic content will go here -->
+                    <tr>
+                        <td>John Doe</td>
+                        <td>PM Kisan Samman Nidhi</td>
+                        <td><a href="#" class="btn btn-primary" onclick="viewDocuments('John Doe')">View</a></td>
+                        <td><button class="btn btn-primary" onclick="downloadUserData('John Doe')">Download</button></td>
+                    </tr>
+                    <tr>
+                        <td>Jane Smith</td>
+                        <td>PM Awas Yojana</td>
+                        <td><a href="#" class="btn btn-primary" onclick="viewDocuments('Jane Smith')">View</a></td>
+                        <td><button class="btn btn-primary" onclick="downloadUserData('Jane Smith')">Download</button></td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+
+        <!-- Download Options -->
+        <div class="text-center my-3">
+            <button class="btn btn-primary" onclick="downloadAllApplications()">Download All Users as Excel</button>
+            <button class="btn btn-primary" onclick="downloadAllApplicationsPDF()">Download All Users as PDF</button>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer>
+        <p>&copy; 2025 Welfare Schemes. Admin Dashboard. All rights reserved.</p>
+    </footer>
+
+    <!-- Bootstrap JS -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.0/js/bootstrap.bundle.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.4.0/jspdf.umd.min.js"></script>
+
+    <!-- Custom JavaScript -->
+
+    <script>
+        const users = [
+            { name: 'John Doe', scheme: 'PM Kisan Samman Nidhi' },
+            { name: 'Jane Smith', scheme: 'PM Awas Yojana' },
+            { name: 'Alice Johnson', scheme: 'PM Kisan Samman Nidhi' },
+            { name: 'Bob Brown', scheme: 'PM Awas Yojana' },
+            { name: 'Charlie Davis', scheme: 'PM Kisan Samman Nidhi' },
+            { name: 'Diana Evans', scheme: 'PM Awas Yojana' },
+            { name: 'Ethan Foster', scheme: 'PM Kisan Samman Nidhi' },
+            { name: 'Fiona Green', scheme: 'PM Awas Yojana' },
+            { name: 'George Harris', scheme: 'PM Kisan Samman Nidhi' },
+            { name: 'Hannah Irving', scheme: 'PM Awas Yojana' },
+            { name: 'Ian Jackson', scheme: 'PM Kisan Samman Nidhi' },
+            { name: 'Julia King', scheme: 'PM Awas Yojana' },
+            { name: 'Kevin Lewis', scheme: 'PM Kisan Samman Nidhi' },
+            { name: 'Laura Martinez', scheme: 'PM Awas Yojana' },
+            { name: 'Michael Nelson', scheme: 'PM Kisan Samman Nidhi' },
+            { name: 'Nina Owens', scheme: 'PM Awas Yojana' },
+            { name: 'Oscar Perez', scheme: 'PM Kisan Samman Nidhi' },
+            { name: 'Paula Quinn', scheme: 'PM Awas Yojana' },
+            { name: 'Quincy Roberts', scheme: 'PM Kisan Samman Nidhi' },
+            { name: 'Rachel Scott', scheme: 'PM Awas Yojana' },
+            { name: 'Samuel Thompson', scheme: 'PM Kisan Samman Nidhi' },
+            { name: 'Tina Underwood', scheme: 'PM Awas Yojana' },
+            { name: 'Ulysses Vance', scheme: 'PM Kisan Samman Nidhi' },
+            { name: 'Victoria White', scheme: 'PM Awas Yojana' },
+            { name: 'William Xander', scheme: 'PM Kisan Samman Nidhi' },
+            { name: 'Xena Young', scheme: 'PM Awas Yojana' },
+            { name: 'Yusuf Zane', scheme: 'PM Kisan Samman Nidhi' },
+            { name: 'Zara Adams', scheme: 'PM Awas Yojana' },
+            { name: 'Aaron Baker', scheme: 'PM Kisan Samman Nidhi' },
+            { name: 'Bella Clark', scheme: 'PM Awas Yojana' },
+            { name: 'Carter Davis', scheme: 'PM Kisan Samman Nidhi' },
+            { name: 'Daisy Evans', scheme: 'PM Awas Yojana' },
+            { name: 'Eli Foster', scheme: 'PM Kisan Samman Nidhi' },
+            { name: 'Faith Green', scheme: 'PM Awas Yojana' },
+            { name: 'Gavin Harris', scheme: 'PM Kisan Samman Nidhi' },
+            { name: 'Holly Irving', scheme: 'PM Awas Yojana' },
+            { name: 'Isaac Jackson', scheme: 'PM Kisan Samman Nidhi' },
+            { name: 'Jenna King', scheme: 'PM Awas Yojana' },
+            { name: 'Kyle Lewis', scheme: 'PM Kisan Samman Nidhi' },
+            { name: 'Lily Martinez', scheme: 'PM Awas Yojana' },
+            { name: 'Mason Nelson', scheme: 'PM Kisan Samman Nidhi' },
+            { name: 'Nora Owens', scheme: 'PM Awas Yojana' },
+            { name: 'Owen Perez', scheme: 'PM Kisan Samman Nidhi' },
+            { name: 'Piper Quinn', scheme: 'PM Awas Yojana' },
+            { name: 'Quinn Roberts', scheme: 'PM Kisan Samman Nidhi' },
+            { name: 'Riley Scott', scheme: 'PM Awas Yojana' },
+            { name: 'Sophia Thompson', scheme: 'PM Kisan Samman Nidhi' },
+            { name: 'Thomas Underwood', scheme: 'PM Awas Yojana' },
+            { name: 'Uma Vance', scheme: 'PM Kisan Samman Nidhi' },
+            { name: 'Violet White', scheme: 'PM Awas Yojana' },
+            { name: 'Wyatt Xander', scheme: 'PM Kisan Samman Nidhi' },
+            { name: 'Xander Young', scheme: 'PM Awas Yojana' },
+            { name: 'Yara Zane', scheme: 'PM Kisan Samman Nidhi' },
+            { name: 'Zane Adams', scheme: 'PM Awas Yojana' }
+        ];
+    
+        const tableBody = document.getElementById('applicationsTableBody');
+        users.forEach(user => {
+            const row = document.createElement('tr');
+            row.innerHTML = `
+                <td>${user.name}</td>
+                <td>${user.scheme}</td>
+                <td><a href="#" class="btn btn-primary" onclick="viewDocuments('${user.name}')">View</a></td>
+                <td><button class="btn btn-primary" onclick="downloadUserData('${user.name}')">Download</button></td>
+            `;
+            tableBody.appendChild(row);
+        });
+    </script>
+
+
+    <script>
+        // Function to view documents
+        function viewDocuments(userName) {
+            alert("Viewing documents for " + userName);
+            // Add your logic to display the uploaded documents here.
+        }
+
+        // Function to download user data (PDF/Excel)
+        function downloadUserData(userName) {
+            alert("Downloading data for " + userName);
+            // Add your logic for downloading individual user data (can be PDF or Excel).
+        }
+
+        // Function to download all applications as Excel
+        function downloadAllApplications() {
+            var wb = XLSX.utils.book_new();
+            var ws = XLSX.utils.table_to_sheet(document.getElementById('applicationsTableBody'));
+            XLSX.utils.book_append_sheet(wb, ws, "Applications");
+            XLSX.writeFile(wb, 'All_Applications.xlsx');
+        }
+
+        // Function to download all applications as PDF
+        function downloadAllApplicationsPDF() {
+            // alert('This feature is under development!');
+            // Implement PDF download functionality (using a library like jsPDF)
+            alert('Downloading all applications as PDF');   
+            const { jsPDF } = window.jspdf;
+            const doc = new jsPDF();
+            doc.text('Applications Management', 10, 10);
+            let y = 20;
+            users.forEach(user => {
+                doc.text(`Name: ${user.name}, Scheme: ${user.scheme}`, 10, y);
+                y += 10;
+            });
+            doc.save('applications.pdf');
+        }
+
+        // Search functionality
+        document.getElementById('searchInput').addEventListener('input', function(e) {
+            var searchTerm = e.target.value.toLowerCase();
+            var rows = document.querySelectorAll('#applicationsTableBody tr');
+            rows.forEach(function(row) {
+                var name = row.cells[0].textContent.toLowerCase();
+                var scheme = row.cells[1].textContent.toLowerCase();
+                if (name.includes(searchTerm) || scheme.includes(searchTerm)) {
+                    row.style.display = '';
+                } else {
+                    row.style.display = 'none';
+                }
+            });
+        });
+    </script>
+</body>
+</html>
