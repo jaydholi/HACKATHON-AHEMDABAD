@@ -1,0 +1,36 @@
+@import url('https://fonts.googleapis.com/css2?family=Fredoka+One&display=swap');
+
+body {
+  background-color: #0583D2;
+  font-family: sans-serif;
+}
+
+h1 {
+  font-family: "Fredoka One", cursive;
+  color: #0583D2;
+  letter-spacing: 0.1em;
+}
+
+p span {
+  background: #fff;
+  padding: 0 10px;
+}
+
+.card {
+  box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
+}
+
+.btn-primary {
+  background-color: #0583D2;
+  border: none;
+}
+
+.btn-primary:hover {
+  opacity: 0.8;
+  transition: 0.3s;
+}
+
+.btn-link {
+  color: grey;
+  text-decoration: underline;
+}
