@@ -96,7 +96,7 @@ submitButton.addEventListener("click", function() {
       const errorCode = error.code;
       const errorMessage = error.message;
       console.log("Error occurred. Try again.");
-      window.alert("Error occurred. Try again.");
+      // window.alert("Error occurred. Try again.");
     });
 });
 
