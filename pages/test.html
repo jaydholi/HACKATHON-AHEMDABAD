@@ -1,0 +1,180 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Explore government welfare schemes for skill development, digital empowerment, and more.">
+    <title>Government Welfare Schemes</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f8f9fa;
+        }
+
+        header {
+            background-color: #007bff;
+            color: #fff;
+            padding: 20px 0;
+            text-align: center;
+        }
+
+        header h1 {
+            font-size: 2.5rem;
+            margin: 0;
+        }
+
+        #search-section {
+            margin: 20px 0;
+            text-align: center;
+        }
+
+        #search-bar {
+            width: 50%;
+            padding: 10px;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+        }
+
+        .scheme-card {
+            border: 1px solid #ddd;
+            border-radius: 8px;
+            padding: 20px;
+            margin: 10px 0;
+            text-align: center;
+            background-color: #fff;
+            transition: transform 0.3s;
+        }
+
+        .scheme-card:hover {
+            transform: scale(1.05);
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+        }
+
+        .scheme-icon {
+            margin-bottom: 15px;
+        }
+
+        .scheme-info h2 {
+            font-size: 1.5rem;
+            margin: 10px 0;
+        }
+
+        .scheme-info p {
+            font-size: 1rem;
+            margin-bottom: 15px;
+        }
+
+        .floating-icons {
+            position: fixed;
+            top: 50%;
+            left: 10px;
+            transform: translateY(-50%);
+        }
+
+        .floating-icons a {
+            display: block;
+            margin: 10px 0;
+            color: #007bff;
+            font-size: 1.5rem;
+            text-decoration: none;
+            transition: color 0.3s;
+        }
+
+        .floating-icons a:hover {
+            color: #0056b3;
+        }
+
+        footer {
+            background-color: #343a40;
+            color: #fff;
+            text-align: center;
+            padding: 10px 0;
+            margin-top: 20px;
+        }
+
+        footer p {
+            margin: 0;
+            font-size: 0.9rem;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>Government Welfare Schemes</h1>
+    </header>
+
+    <!-- Search Section -->
+    <div id="search-section">
+        <input type="text" id="search-bar" onkeyup="searchSchemes()" placeholder="Search for schemes...">
+    </div>
+
+    <!-- Schemes Section -->
+    <div class="container">
+        <section class="row">
+            <!-- Scheme 5 -->
+            <div class="col-md-4">
+                <div class="scheme-card" data-scheme="Skill India Mission">
+                    <div class="scheme-icon">
+                        <i class="fas fa-tools fa-3x" style="color: #ffcc00;"></i>
+                    </div>
+                    <div class="scheme-info">
+                        <h2>Skill India Mission</h2>
+                        <p>Empowering youth with industry-relevant skills.</p>
+                        <a href="/schemesdetail/skill-india.html"><button>Apply Now</button></a>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Scheme 6 -->
+            <div class="col-md-4">
+                <div class="scheme-card" data-scheme="Digital India">
+                    <div class="scheme-icon">
+                        <i class="fas fa-laptop fa-3x" style="color: #ffcc00;"></i>
+                    </div>
+                    <div class="scheme-info">
+                        <h2>Digital India</h2>
+                        <p>Transforming India into a digitally empowered society.</p>
+                        <a href="/schemesdetail/digital-india.html"><button>Apply Now</button></a>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </div>
+
+    <!-- Floating Icons Section -->
+    <div class="floating-icons">
+        <a href="https://www.facebook.com" target="_blank"><i class="fab fa-facebook-f"></i></a>
+        <a href="https://www.twitter.com" target="_blank"><i class="fab fa-twitter"></i></a>
+        <a href="https://www.instagram.com" target="_blank"><i class="fab fa-instagram"></i></a>
+    </div>
+
+    <!-- Footer Section -->
+    <footer>
+        <p>© 2025 Government Welfare Schemes. All rights reserved.</p>
+    </footer>
+
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.4.4/dist/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+    <script>
+        // Search Bar Functionality
+        function searchSchemes() {
+            const searchInput = document.getElementById("search-bar").value.toLowerCase();
+            const cards = document.querySelectorAll(".scheme-card");
+
+            cards.forEach(card => {
+                const schemeName = card.getAttribute("data-scheme").toLowerCase();
+                if (schemeName.includes(searchInput)) {
+                    card.parentElement.style.display = "block";
+                } else {
+                    card.parentElement.style.display = "none";
+                }
+            });
+        }
+    </script>
+</body>
+</html>
