@@ -17,6 +17,12 @@ const analytics = getAnalytics(app);
 const auth = getAuth(app);
 const db = getFirestore(app);
 
+function showAlert(message) {
+  const alertModal = new bootstrap.Modal(document.getElementById("alertModal"));
+  document.getElementById("alertModalBody").innerText = message;
+  alertModal.show();
+}
+
 const submitButton = document.getElementById("submit");
 const signupButton = document.getElementById("sign-up");
 const emailInput = document.getElementById("email");
@@ -44,19 +50,19 @@ createacctbtn.addEventListener("click", async function() {
   signupEmail = signupEmailIn.value;
   confirmSignupEmail = confirmSignupEmailIn.value;
   if (signupEmail != confirmSignupEmail) {
-    window.alert("Email fields do not match. Try again.");
+    showAlert("Email fields do not match. Try again.");
     isVerified = false;
   }
 
   signupPassword = signupPasswordIn.value;
   confirmSignUpPassword = confirmSignUpPasswordIn.value;
   if (signupPassword != confirmSignUpPassword) {
-    window.alert("Password fields do not match. Try again.");
+    showAlert("Password fields do not match. Try again.");
     isVerified = false;
   }
 
   if (!name || !phone || !signupEmail || !confirmSignupEmail || !signupPassword || !confirmSignUpPassword) {
-    window.alert("Please fill out all required fields.");
+    showAlert("Please fill out all required fields.");
     isVerified = false;
   }
 
@@ -69,12 +75,12 @@ createacctbtn.addEventListener("click", async function() {
         phone: phone,
         email: signupEmail
       });
-      window.alert("Success! Account created.");
+      showAlert("Success! Account created.");
     } catch (error) {
       const errorCode = error.code;
       const errorMessage = error.message;
       console.log(errorCode, "", errorMessage);
-      window.alert("Error occurred. Try again.");
+      showAlert("Error occurred. Try again.");
     }
   }
 });
@@ -89,7 +95,7 @@ submitButton.addEventListener("click", function() {
     .then((userCredential) => {
       const user = userCredential.user;
       console.log("Success! Welcome back!");
-      window.alert("Success! Welcome back!");
+      showAlert("Success! Welcome back!");
       localStorage.setItem('email', email);
       window.location.href="../../index.html";
     })
@@ -98,7 +104,7 @@ submitButton.addEventListener("click", function() {
       const errorMessage = error.message;
       console.log("Error occurred. Try again.");
       if(error){
-        window.alert("Error occurred. Try again.");
+        showAlert("Error occurred. Try again.");
       }
       // window.alert("Error occurred. Try again.");
     });
