@@ -116,8 +116,10 @@
                                 class="fas fa-archive"></i> Schemes</a></li>
                     <li class="nav-item"><a class="nav-link" href="/pages/contact.html"><i class="fas fa-phone-alt"></i>
                             Contact</a></li>
-                    <li class="nav-item"><a class="nav-link" href="/pages/login_setup/index.html"><i
+                    <li class="nav-item" id="login_sign-up_list"><a class="nav-link" href="/pages/login_setup/index.html"><i
                                 class="fas fa-user-plus"></i> Signup/login</a></li>
+                    <li class="nav-item" id="logout_list" style="display: none;"><a class="nav-link" href="#" onclick="Remove_local()"><i
+                                    class="fa fa-sign-out"></i> logout</a></li>
                     <li class="nav-item"><a class="nav-link" href="/pages/settings.html"><i
                                 class="fas fa-user-plus"></i> Settings</a></li>
                 </ul>
@@ -263,8 +265,16 @@
                 // You can use the email as needed, for example, display it on the page
                 document.getElementById('Guest_span').innerText = userEmail;
                 alert("Welcome back, " + userEmail);
+                document.getElementById('login_sign-up_list').style.display = "none";
+                document.getElementById('logout_list').style.display = "block";
             }
         });
+        function Remove_local(){
+            localStorage.removeItem("email");
+            alert("Logged out successfully");
+            document.getElementById('login_sign-up_list').style.display = "block";
+            document.getElementById('logout_list').style.display = "none";
+        }
     </script>
 </body>
 
