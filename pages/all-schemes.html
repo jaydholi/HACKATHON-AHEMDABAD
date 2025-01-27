@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -31,18 +32,26 @@
 
         /* Navbar Toggler Button Styling */
         .navbar-toggler {
-            border: none; /* Remove border to avoid rectangle shape */
-            padding: 5px 10px; /* Smaller padding to make the button more compact */
-            background-color: #ffcc00; /* Make the background color match the design */
-            border-radius: 5px; /* Slightly rounded */
-            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.3); /* Add shadow for better contrast */
+            border: none;
+            /* Remove border to avoid rectangle shape */
+            padding: 5px 10px;
+            /* Smaller padding to make the button more compact */
+            background-color: #ffcc00;
+            /* Make the background color match the design */
+            border-radius: 5px;
+            /* Slightly rounded */
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.3);
+            /* Add shadow for better contrast */
         }
 
         /* Change the icon size inside the toggler button */
         .navbar-toggler-icon {
-            background-color: #003366; /* Dark color for the hamburger icon */
-            width: 25px; /* Reduce the width of the icon */
-            height: 18px; /* Reduce the height of the icon */
+            background-color: #003366;
+            /* Dark color for the hamburger icon */
+            width: 25px;
+            /* Reduce the width of the icon */
+            height: 18px;
+            /* Reduce the height of the icon */
         }
 
         /* Header */
@@ -75,7 +84,8 @@
 
         /* Scheme Cards */
         .scheme-card {
-            background-color: #003366; /* Blue */
+            background-color: #003366;
+            /* Blue */
             border-radius: 8px;
             padding: 20px;
             box-shadow: 0 4px 15px rgba(0, 0, 0, 0.15);
@@ -99,7 +109,8 @@
         .scheme-info h2 {
             font-size: 30px;
             margin-bottom: 10px;
-            color: #ffcc00; /* Yellow */
+            color: #ffcc00;
+            /* Yellow */
         }
 
         .scheme-info p {
@@ -109,8 +120,10 @@
 
         /* Button Styling */
         button {
-            background-color: #ffcc00; /* Yellow */
-            color: #003366; /* Blue */
+            background-color: #ffcc00;
+            /* Yellow */
+            color: #003366;
+            /* Blue */
             border: none;
             padding: 12px 30px;
             font-size: 18px;
@@ -213,6 +226,7 @@
         }
     </style>
 </head>
+
 <body>
 
     <!-- Navbar Section -->
@@ -248,7 +262,8 @@
             <h1>Explore Government Welfare Schemes</h1>
             <p>Search schemes and find the welfare initiatives available for all sectors in India.</p>
             <!-- Search Bar -->
-            <input type="text" id="search-bar" class="form-control" placeholder="Search schemes..." onkeyup="searchSchemes()">
+            <input type="text" id="search-bar" class="form-control" placeholder="Search schemes..."
+                onkeyup="searchSchemes()">
         </header>
 
         <!-- Schemes Section -->
@@ -356,19 +371,21 @@
     <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.1/dist/umd/popper.min.js"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
     <script>
-        // Search Functionality
+        // Search Bar Functionality
         function searchSchemes() {
-            let input = document.getElementById("search-bar").value.toUpperCase();
-            let cards = document.querySelectorAll(".scheme-card");
-            cards.forEach(function (card) {
-                let schemeName = card.getAttribute("data-scheme");
-                if (schemeName.toUpperCase().indexOf(input) > -1) {
-                    card.style.display = "";
+            const searchInput = document.getElementById("search-bar").value.toLowerCase();
+            const cards = document.querySelectorAll(".scheme-card");
+
+            cards.forEach(card => {
+                const schemeName = card.getAttribute("data-scheme").toLowerCase();
+                if (schemeName.includes(searchInput)) {
+                    card.parentElement.style.display = "block";
                 } else {
-                    card.style.display = "none";
+                    card.parentElement.style.display = "none";
                 }
             });
         }
     </script>
 </body>
+
 </html>
