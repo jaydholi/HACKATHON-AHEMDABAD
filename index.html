@@ -279,7 +279,8 @@
     </script>
     <script src="pages/login_setup/script.js"></script>
     <script>
-        console.log(userEmail);
+        const userEmail = localStorage.getItem("Name");
+        document.getElementById('Guest_span').innerText = userEmail;
     </script>
 </body>
 
