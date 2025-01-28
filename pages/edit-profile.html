@@ -1,0 +1,215 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Edit Profile - CivicCare Portal</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" rel="stylesheet">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+    <style>
+        body {
+            background-color: #00274d;
+            color: white;
+            overflow-x: hidden;
+        }
+
+        .form-container {
+            background-color: #003366;
+            padding: 30px;
+            border-radius: 10px;
+            box-shadow: 0 15px 25px rgba(0, 0, 0, 0.3);
+        }
+
+        .btn-custom {
+            background-color: #ffcc00;
+            color: black;
+            font-weight: bold;
+            transition: background-color 0.3s ease, transform 0.2s ease, box-shadow 0.2s ease;
+        }
+
+        .btn-custom:hover {
+            background-color: #e6b800;
+            transform: translateY(-3px);
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+        }
+
+        .btn-cancel {
+            background-color: #ff4d4d;
+            color: white;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .btn-cancel:hover {
+            background-color: #e60000;
+            transform: scale(1.05);
+            box-shadow: 0 4px 8px rgba(255, 77, 77, 0.3);
+        }
+
+        #success-alert {
+            display: none;
+            position: fixed;
+            top: 20px;
+            right: 20px;
+            z-index: 1050;
+        }
+
+        .profile-text {
+            display: inline;
+        }
+
+        .editable-field {
+            display: none;
+        }
+
+        .edit-button {
+            cursor: pointer;
+            color: #ffcc00;
+            font-size: 18px;
+        }
+
+        .edit-button:hover {
+            color: #e6b800;
+        }
+
+        .edit-section {
+            text-align: center;
+            margin-top: 20px;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container mt-5">
+        <!-- Success Alert -->
+        <div class="alert alert-success" id="success-alert">
+            <strong>Success!</strong> Your profile has been updated successfully.
+        </div>
+
+        <!-- Edit Profile Form -->
+        <div class="row justify-content-center">
+            <div class="col-md-6">
+                <div class="form-container">
+                    <h4 class="text-center mb-4"><i class="fas fa-user-edit"></i> Edit Profile</h4>
+
+                    <!-- Full Name Section -->
+                    <div class="mb-3">
+                        <label for="fullName" class="form-label">Full Name</label>
+                        <span id="fullNameText" class="profile-text">John Doe</span>
+                        <input type="text" class="form-control editable-field" id="fullName" value="John Doe">
+                    </div>
+
+                    <!-- Email Section -->
+                    <div class="mb-3">
+                        <label for="email" class="form-label">Email Address</label>
+                        <span id="emailText" class="profile-text">john.doe@example.com</span>
+                        <input type="email" class="form-control editable-field" id="email" value="john.doe@example.com">
+                    </div>
+
+                    <!-- Phone Section -->
+                    <div class="mb-3">
+                        <label for="phone" class="form-label">Phone Number</label>
+                        <span id="phoneText" class="profile-text">+1 234 567 890</span>
+                        <input type="text" class="form-control editable-field" id="phone" value="+1 234 567 890">
+                    </div>
+
+                    <!-- Address Section -->
+                    <div class="mb-3">
+                        <label for="address" class="form-label">Address</label>
+                        <span id="addressText" class="profile-text">1234 Elm Street, Springfield</span>
+                        <textarea class="form-control editable-field" id="address" rows="3">1234 Elm Street, Springfield</textarea>
+                    </div>
+
+                    <!-- Password Section -->
+                    <div class="mb-3">
+                        <label for="password" class="form-label">Change Password</label>
+                        <input type="password" class="form-control editable-field" id="password" value="password123">
+                    </div>
+
+                    <!-- Edit Details Button -->
+                    <div class="edit-section">
+                        <button type="button" class="btn btn-custom" onclick="editProfile()">Edit Details</button>
+                    </div>
+
+                    <!-- Save Changes Button -->
+                    <div class="text-center mt-3">
+                        <button type="button" class="btn btn-custom me-2" onclick="saveChanges()">Save Changes</button>
+                        <a href="settings.html" class="btn btn-cancel"><i class="fas fa-arrow-left"></i> Back to Settings</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Simulate fetching user details
+        const userDetails = {
+            fullName: "John Doe",
+            email: "john.doe@example.com",
+            phone: "+1 234 567 890",
+            address: "1234 Elm Street, Springfield",
+            password: "password123"
+        };
+
+        // Initialize page with user details
+        document.getElementById('fullNameText').textContent = userDetails.fullName;
+        document.getElementById('emailText').textContent = userDetails.email;
+        document.getElementById('phoneText').textContent = userDetails.phone;
+        document.getElementById('addressText').textContent = userDetails.address;
+
+        // Function to switch fields to editable
+        function editProfile() {
+            // Show input fields
+            const editableFields = document.querySelectorAll('.editable-field');
+            editableFields.forEach(field => {
+                field.style.display = 'block';
+            });
+
+            // Show text for all details
+            const textFields = document.querySelectorAll('.profile-text');
+            textFields.forEach(field => {
+                field.style.display = 'none';
+            });
+
+            // Hide the "Edit Details" button after clicking
+            document.querySelector('.edit-section').style.display = 'none';
+        }
+
+        // Function to save changes
+        function saveChanges() {
+            const fullName = document.getElementById('fullName').value;
+            const email = document.getElementById('email').value;
+            const phone = document.getElementById('phone').value;
+            const address = document.getElementById('address').value;
+            const password = document.getElementById('password').value;
+
+            // Update the userDetails object with the new values
+            userDetails.fullName = fullName;
+            userDetails.email = email;
+            userDetails.phone = phone;
+            userDetails.address = address;
+            userDetails.password = password;
+
+            // Update the text fields with new data
+            document.getElementById('fullNameText').textContent = fullName;
+            document.getElementById('emailText').textContent = email;
+            document.getElementById('phoneText').textContent = phone;
+            document.getElementById('addressText').textContent = address;
+
+            // Display success notification
+            const alert = document.getElementById('success-alert');
+            alert.style.display = 'block';
+
+            // Hide the alert after 3 seconds
+            setTimeout(() => {
+                alert.style.display = 'none';
+            }, 3000);
+
+            // Log the updated user details (in a real scenario, you would send this data to the server)
+            console.log('Updated profile:', userDetails);
+        }
+    </script>
+</body>
+
+</html>
