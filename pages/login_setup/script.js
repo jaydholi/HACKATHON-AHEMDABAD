@@ -43,8 +43,6 @@ const returnBtn = document.getElementById("return-btn");
 var email, password, signupEmail, signupPassword, confirmSignupEmail, confirmSignUpPassword, name, phone;
 createacctbtn.addEventListener("click", async function() {
   var isVerified = true;
-  localStorage.setItem('Name', nameSignupIn.value);
-
   name = nameSignupIn.value;
   phone = phoneSignupIn.value;
   signupEmail = signupEmailIn.value;
@@ -75,12 +73,14 @@ createacctbtn.addEventListener("click", async function() {
         phone: phone,
         email: signupEmail
       });
+      localStorage.setItem('Name', nameSignupIn.value);
       showAlert("Success! Account created.");
+      window.location.reload();
     } catch (error) {
       const errorCode = error.code;
       const errorMessage = error.message;
       console.log(errorCode, "", errorMessage);
-      showAlert("Error occurred. Try again.");
+      showAlert(errorCode + " " + errorMessage);
     }
   }
 });
@@ -115,7 +115,7 @@ signupButton.addEventListener("click", function() {
   createacct.style.display = "block";
 });
 
-returnBtn.addEventListener("click", function() {
-  main.style.display = "block";
-  createacct.style.display = "none";
-});
+// returnBtn.addEventListener("click", function() {
+//   main.style.display = "block";
+//   createacct.style.display = "none";
+// });
