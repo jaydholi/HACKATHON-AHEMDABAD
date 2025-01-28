@@ -130,7 +130,7 @@
 
     <div class="container mt-5 fade-in">
         <div class="text-center mb-4">
-            <h4><i class="fas fa-user-circle"></i> Welcome , <span>Guest</span></h4>
+            <h4><i class="fas fa-user-circle"></i> Welcome , <span id="Guest_span">Guest</span></h4>
             <p><i class="fas fa-map-signs"></i> Track your applications and explore available welfare schemes.</p>
             <a href="/pages//application_tracking.html" class="btn btn-custom">
                 <i class="fas fa-plus-circle"></i> New Application
@@ -259,11 +259,11 @@
             });
 
             // Retrieve the email from localStorage
-            const userEmail = localStorage.getItem("Name");
+            const UserName = localStorage.getItem("Name");
             if (userEmail) {
-                console.log("User Email: " + userEmail);
+                console.log("User Email: " + UserName);
                 // You can use the email as needed, for example, display it on the page
-                document.getElementById('Guest_span').innerText = userEmail;
+                document.getElementById('Guest_span').innerText = UserName;
                 // alert("Welcome back, " + userEmail);
                 document.getElementById('login_sign-up_list').style.display = "none";
                 document.getElementById('logout_list').style.display = "block";
