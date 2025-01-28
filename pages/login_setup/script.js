@@ -2,6 +2,7 @@ import { initializeApp } from "https://www.gstatic.com/firebasejs/9.6.10/firebas
 import { getAnalytics } from "https://www.gstatic.com/firebasejs/9.6.10/firebase-analytics.js";
 import { getAuth, signInWithEmailAndPassword, createUserWithEmailAndPassword } from "https://www.gstatic.com/firebasejs/9.6.10/firebase-auth.js";
 import { getFirestore, doc, setDoc } from "https://www.gstatic.com/firebasejs/9.6.10/firebase-firestore.js";
+import { sendPasswordResetEmail } from "https://www.gstatic.com/firebasejs/9.6.10/firebase-auth.js";
 
 const firebaseConfig = {
   apiKey: "AIzaSyCY_fhibH_JU1oNt2_4naNm7trv3QgQY1o",
@@ -23,6 +24,7 @@ function showAlert(message) {
   alertModal.show();
 }
 
+const forgotPasswordButton = document.getElementById("forgot-password");
 const submitButton = document.getElementById("submit");
 const signupButton = document.getElementById("sign-up");
 const emailInput = document.getElementById("email");
@@ -115,6 +117,24 @@ signupButton.addEventListener("click", function() {
   createacct.style.display = "block";
 });
 
+forgotPasswordButton.addEventListener("click", function() {
+  const email = emailInput.value;
+  if (!email) {
+    showAlert("Please enter your email address.");
+    return;
+  }
+
+  sendPasswordResetEmail(auth, email)
+    .then(() => {
+      showAlert("Password reset email sent! Check your inbox.");
+    })
+    .catch((error) => {
+      const errorCode = error.code;
+      const errorMessage = error.message;
+      console.log(errorCode, errorMessage);
+      showAlert("Error: " + errorMessage);
+    });
+});
 // returnBtn.addEventListener("click", function() {
 //   main.style.display = "block";
 //   createacct.style.display = "none";
