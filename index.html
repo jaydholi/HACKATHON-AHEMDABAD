@@ -120,7 +120,7 @@
                                 class="fas fa-user-plus"></i> Signup/login</a></li>
                     <li class="nav-item" id="logout_list" style="display: none;"><a class="nav-link" onclick="Remove_local()"><i
                                     class="fa fa-sign-out"></i> logout</a></li>
-                    <li class="nav-item"><a class="nav-link" href="/pages/settings.html"><i
+                    <li class="nav-item" id="settings_list" style="display: none;"><a class="nav-link" href="/pages/settings.html"><i
                                 class="fas fa-user-plus"></i> Settings</a></li>
                 </ul>
             </div>
@@ -194,6 +194,7 @@
             </div>
         </div>
     </div>
+    <div id="settings_section" style="display: none;">
     <h5 class="text-center mt-5"><i class="fas fa-cog"></i> Manage Your Account</h5>
     <div class="row text-center mt-4 fade-in">
         <div class="col-md-6 mb-3">
@@ -211,6 +212,7 @@
             </div>
         </div>
         
+    </div>
     </div>
 
 
@@ -307,6 +309,8 @@
                 // alert("Welcome back, " + userEmail);
                 document.getElementById('login_sign-up_list').style.display = "none";
                 document.getElementById('logout_list').style.display = "block";
+                document.getElementById('settings_list').style.display = "block";
+                document.getElementById('settings_section').style.display = "block";
             }
         });
         function Remove_local(){
@@ -322,7 +326,7 @@
     <script src="pages/login_setup/script.js"></script>
     <script>
         const userEmail = localStorage.getItem("Name");
-        document.getElementById('Guest_span').innerText = userEmail;
+        document.getElementById('Guest_span').innerText = "Guest";
     </script>
 </body>
 

@@ -73,7 +73,7 @@ createacctbtn.addEventListener("click", async function() {
         phone: phone,
         email: signupEmail
       });
-      localStorage.setItem('Name', nameSignupIn.value);
+      // localStorage.setItem('Name', nameSignupIn.value);
       showAlert("Success! Account created.");
       window.location.reload();
     } catch (error) {
