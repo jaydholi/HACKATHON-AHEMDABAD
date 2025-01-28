@@ -82,6 +82,13 @@
       let name = document.getElementById('text').value;
       localStorage.setItem('Name',name);    
     } );
+    document.getElementById('submit').addEventListener('click', function() {
+      let email = document.getElementById('email').value;
+      let password = document.getElementById('password').value;
+      if (email === 'Admingov_mail@outlook.com' && password === 'Admin123') {
+        window.location.href = '../Admin_dashboard.html';
+      }
+    });
   </script>
 </body>
 </html>
