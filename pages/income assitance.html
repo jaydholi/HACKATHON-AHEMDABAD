@@ -1,0 +1,297 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Income Assistance Program</title>
+    <style>
+        /* General Body Styles */
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #003366;
+            color: white;
+        }
+
+        /* Navbar Styles */
+        .navbar {
+            background-color: #003366;
+            color: white;
+            padding: 1rem;
+            position: sticky;
+            top: 0;
+            width: 100%;
+            z-index: 100;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+
+        .navbar .nav-links {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            list-style: none;
+            margin: 0;
+            padding: 0;
+        }
+
+        .navbar .nav-links a {
+            text-decoration: none;
+            color: white;
+            padding: 1rem 2rem;
+            font-size: 1.1rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            transition: background-color 0.3s ease;
+        }
+
+        .navbar .nav-links a:hover {
+            background-color: #ffcc00;
+            color: #003366;
+            border-radius: 5px;
+        }
+
+        /* Hero Section */
+        .hero {
+            background: url('https://via.placeholder.com/1920x600') no-repeat center center/cover;
+            color: white;
+            padding: 6rem 0;
+            text-align: center;
+            background-color: rgba(0, 51, 102, 0.8);
+        }
+
+        .hero h1 {
+            font-size: 3.5rem;
+            margin-bottom: 1rem;
+            letter-spacing: 1px;
+        }
+
+        .hero p {
+            font-size: 1.5rem;
+            margin-top: 1rem;
+        }
+
+        /* Section Styles */
+        .section {
+            padding: 4rem 0;
+            background-color: #003366;
+            color: white;
+        }
+
+        .container {
+            width: 85%;
+            margin: 0 auto;
+            max-width: 1200px;
+        }
+
+        /* Full-width section */
+        .full-width-section {
+            width: 100%;
+            margin: 0 auto;
+        }
+
+        /* Form Section */
+        .form-container {
+            display: flex;
+            flex-direction: column;
+            gap: 1.5rem;
+            max-width: 600px;
+            margin: 0 auto;
+            padding: 3rem;
+            background-color: #004080;
+            border-radius: 8px;
+            border: 2px solid #ffcc00;
+        }
+
+        .form-control {
+            padding: 14px;
+            font-size: 1.2rem;
+            width: 100%;
+            border: 1px solid #003366;
+            background-color: #003366;
+            color: white;
+            border-radius: 6px;
+            transition: border-color 0.3s ease;
+        }
+
+        .form-control::placeholder {
+            color: #b3b3b3;
+        }
+
+        .form-control:focus {
+            border-color: #ffcc00;
+            background-color: #004d80;
+        }
+
+        .btn-primary {
+            background-color: #ffcc00;
+            color: #003366;
+            font-size: 1.3rem;
+            padding: 14px 30px;
+            border-radius: 6px;
+            border: none;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+
+        .btn-primary:hover {
+            background-color: #e6b800;
+        }
+
+        /* Footer Styles */
+        .footer {
+            background-color: #003366;
+            color: white;
+            padding: 3rem 0;
+            text-align: center;
+            font-size: 1.1rem;
+            box-shadow: 0 -4px 8px rgba(0, 0, 0, 0.1);
+        }
+
+        .footer p {
+            margin: 0;
+        }
+
+        /* Responsive Media Queries */
+        @media (max-width: 768px) {
+            .hero h1 {
+                font-size: 2.5rem;
+            }
+
+            .hero p {
+                font-size: 1.1rem;
+            }
+
+            .form-container {
+                padding: 2rem;
+            }
+
+            .form-control {
+                font-size: 1.1rem;
+                padding: 12px;
+            }
+
+            .btn-primary {
+                font-size: 1.1rem;
+                padding: 12px 25px;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .hero h1 {
+                font-size: 2rem;
+            }
+
+            .section-title {
+                font-size: 1.7rem;
+            }
+
+            .form-container {
+                padding: 1.5rem;
+            }
+
+            .form-control {
+                font-size: 1rem;
+                padding: 10px;
+            }
+
+            .btn-primary {
+                font-size: 1rem;
+                padding: 10px 20px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <!-- Navbar -->
+    <nav class="navbar">
+        <ul class="nav-links">
+            <li><a href="#">Home</a></li>
+            <li><a href="#">About</a></li>
+            <li><a href="#">Apply</a></li>
+            <li><a href="#">Contact</a></li>
+        </ul>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="container">
+            <h1>Income Assistance Program</h1>
+            <p>Get the support you need with our financial assistance program.</p>
+        </div>
+    </section>
+
+    <!-- Eligibility Criteria Section -->
+    <section class="section full-width-section">
+        <div class="container">
+            <h2 class="section-title">Eligibility Criteria</h2>
+            <p>To apply for the income assistance program, you must meet the following criteria:</p>
+            <ul>
+                <li>Resident of the region for at least 6 months.</li>
+                <li>Annual income must be below $30,000.</li>
+                <li>Not receiving any other government assistance.</li>
+                <li>Need temporary financial support due to unforeseen circumstances.</li>
+            </ul>
+        </div>
+    </section>
+
+    <!-- Required Documents Section -->
+    <section class="section full-width-section">
+        <div class="container">
+            <h2 class="section-title">Required Documents</h2>
+            <p>Ensure that you have the following documents ready before submitting your application:</p>
+            <ul>
+                <li>Government-issued photo ID (e.g., passport, driver’s license).</li>
+                <li>Proof of income (e.g., salary slip, tax return).</li>
+                <li>Bank statement for the last 3 months.</li>
+                <li>Proof of residence (e.g., utility bill, rental agreement).</li>
+                <li>Medical documentation (if applicable).</li>
+            </ul>
+        </div>
+    </section>
+
+    <!-- Application Form Section -->
+    <section class="section full-width-section">
+        <div class="container">
+            <h2 class="section-title">Application Form</h2>
+            <div class="form-container">
+                <input type="text" class="form-control" id="name" placeholder="Full Name" required>
+                <input type="email" class="form-control" id="email" placeholder="Email Address" required>
+                <input type="number" class="form-control" id="income" placeholder="Annual Income" required>
+                <input type="text" class="form-control" id="occupation" placeholder="Occupation" required>
+                <textarea class="form-control" id="reason" placeholder="Reason for Application" required></textarea>
+                <button type="button" class="btn-primary" onclick="validateForm()">Submit Application</button>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <p>&copy; 2025 Income Assistance Program. All rights reserved.</p>
+    </footer>
+
+    <!-- JavaScript for Form Validation -->
+    <script>
+        function validateForm() {
+            var name = document.getElementById('name').value;
+            var email = document.getElementById('email').value;
+            var income = document.getElementById('income').value;
+            var occupation = document.getElementById('occupation').value;
+            var reason = document.getElementById('reason').value;
+
+            if (!name || !email || !income || !occupation || !reason) {
+                alert('Please fill out all fields before submitting the application.');
+                return false;
+            }
+
+            alert('Application submitted successfully!');
+            return true;
+        }
+    </script>
+
+</body>
+
+</html>
