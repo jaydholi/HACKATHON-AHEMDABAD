@@ -145,13 +145,12 @@
     <script>
         // Simulate fetching user details
         document.addEventListener('DOMContentLoaded',()=>{
-                        // Call the function to fetch location
-fetchLocation();
             userDetails.fullName =localStorage.getItem('Name');
             userDetails.email = localStorage.getItem('email');
             userDetails.address =localStorage.getItem('town');
-
-            // Add your OpenCage API key here
+})
+document.addEventListener("DOMContentLoaded",()=>{
+                // Add your OpenCage API key here
 const API_KEY = "a148e48fafc94535ae130af577869158";
 
 // Function to get the user's live location
@@ -180,7 +179,8 @@ function successCallback(position) {
                 
                 console.log(`Town: ${town}, State: ${state}`);
                 // alert(`Your location: ${town}, ${state}`);
-                localStorage.setItem("town",town)
+                localStorage.setItem("town",town);
+                userDetails.address =localStorage.getItem('town');
             } else {
                 console.log("Unable to fetch location details.");
             }
@@ -207,10 +207,9 @@ function errorCallback(error) {
             break;
     }
 }
-
-
-
-        })
+// Call the function to fetch location
+fetchLocation();
+})
         const userDetails = {
             fullName: localStorage.getItem('Name'),
             email: localStorage.getItem('email'),
