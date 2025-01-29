@@ -57,6 +57,5 @@ document.addEventListener("DOMContentLoaded", () => {
         }
     }
     // Call the function to fetch location
-    alert("location featched: ")
     fetchLocation();
 })
