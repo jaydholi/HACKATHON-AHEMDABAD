@@ -29,7 +29,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
                     console.log(`Town: ${town}, State: ${state}`);
                     // alert(`Your location: ${town}, ${state}`);
-                    window.location.reload();
+                    // window.location.reload();
                     localStorage.setItem("town", town);
                     localStorage.setItem("state", state);
                 } else {
