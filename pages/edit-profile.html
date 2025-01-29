@@ -145,10 +145,12 @@
     <script>
         // Simulate fetching user details
         document.addEventListener('DOMContentLoaded',()=>{
+                        // Call the function to fetch location
+fetchLocation();
             userDetails.fullName =localStorage.getItem('Name');
             userDetails.email = localStorage.getItem('email');
-            // Call the function to fetch location
-fetchLocation();
+            userDetails.address =localStorage.getItem('town');
+
             // Add your OpenCage API key here
 const API_KEY = "a148e48fafc94535ae130af577869158";
 
@@ -178,7 +180,7 @@ function successCallback(position) {
                 
                 console.log(`Town: ${town}, State: ${state}`);
                 // alert(`Your location: ${town}, ${state}`);
-                userDetails.address=state;
+                localStorage.setItem("town",town)
             } else {
                 console.log("Unable to fetch location details.");
             }
