@@ -264,95 +264,10 @@
         </header>
 
         <!-- Schemes Section -->
-        <section class="scheme-row">
-            <!-- Scheme 1 -->
-            <div class="col-md-4">
-                <div class="scheme-card" data-scheme="PM Kisan Samman Nidhi">
-                    <div class="scheme-icon">
-                        <i class="fas fa-tractor fa-3x" style="color: #ffcc00;"></i>
-                    </div>
-                    <div class="scheme-info">
-                        <h2>PM Kisan Samman Nidhi</h2>
-                        <p>Financial assistance of ₹6,000 per year to farmer families.</p>
-                        <a href="/schemesdetail/pm-kisan-details.html"><button>Apply Now</button></a>
-                    </div>
-                </div>
-            </div>
-
-            <!-- Scheme 2 -->
-            <div class="col-md-4">
-                <div class="scheme-card" data-scheme="PM Awas Yojana">
-                    <div class="scheme-icon">
-                        <i class="fas fa-home fa-3x" style="color: #ffcc00;"></i>
-                    </div>
-                    <div class="scheme-info">
-                        <h2>PM Awas Yojana</h2>
-                        <p>Housing for All - Urban and Rural housing scheme.</p>
-                        <a href="/schemesdetail/pm-awas-yojana.html"><button>Apply Now</button></a>
-                    </div>
-                </div>
-            </div>
-
-            <!-- Scheme 3 -->
-            <div class="col-md-4">
-                <div class="scheme-card" data-scheme="Ayushman Bharat">
-                    <div class="scheme-icon">
-                        <i class="fas fa-heartbeat fa-3x" style="color: #ffcc00;"></i>
-                    </div>
-                    <div class="scheme-info">
-                        <h2>Ayushman Bharat</h2>
-                        <p>Health insurance coverage up to ₹5 lakhs per family per year.</p>
-                        <a href="/schemesdetail/ayusman-bharat.html"><button>Apply Now</button></a>
-                    </div>
-                </div>
-            </div>
-
-            <!-- Scheme 4 -->
-            <div class="col-md-4">
-                <div class="scheme-card" data-scheme="MUDRA Yojana">
-                    <div class="scheme-icon">
-                        <i class="fas fa-briefcase fa-3x" style="color: #ffcc00;"></i>
-                    </div>
-                    <div class="scheme-info">
-                        <h2>MUDRA Yojana</h2>
-                        <p>Microfinance for small entrepreneurs and businesses.</p>
-                        <a href="/schemesdetail/pm-mudra.html"><button>Apply Now</button></a>
-                    </div>
-                </div>
-            </div>
-
-            <!-- Scheme 5 -->
-            <div class="col-md-4">
-                <div class="scheme-card" data-scheme="Pradhan Mantri Ujjwala Yojana">
-                    <div class="scheme-icon">
-                        <i class="fas fa-fire fa-3x" style="color: #ffcc00;"></i>
-                    </div>
-                    <div class="scheme-info">
-                        <h2>PM Ujjwala Yojana</h2>
-                        <p>Free LPG connections to BPL families.</p>
-                        <a href="/schemesdetail/pm-ujjwala.html"><button>Apply Now</button></a>
-                    </div>
-                </div>
-            </div>
-
-            <!-- Scheme 6 -->
-            <div class="col-md-4">
-                <div class="scheme-card" data-scheme="Sukanya Samriddhi Yojana">
-                    <div class="scheme-icon">
-                        <i class="fas fa-girl fa-3x" style="color: #ff80c0;"></i>
-                    </div>
-                    <div class="scheme-info">
-                        <h2>Sukanya Samriddhi Yojana</h2>
-                        <p>Financial support for the girl child to secure her future.</p>
-                        <a href="/schemesdetail/sukanya-samridhhi.html"><button>Apply Now</button></a>
-                    </div>
-                </div>
-            </div>
-            
+        <section class="scheme-row" id="schemes-container">
+            <!-- Schemes will be dynamically added here -->
         </section>
     </div>
-
-    
 
     <!-- Footer Section -->
     <footer>
@@ -378,6 +293,30 @@
                 }
             });
         }
+
+        // Load schemes from local storage and render them
+        document.addEventListener('DOMContentLoaded', function () {
+            const schemesContainer = document.getElementById('schemes-container');
+            const schemes = JSON.parse(localStorage.getItem('schemes')) || [];
+
+            schemes.forEach(scheme => {
+                const schemeCard = document.createElement('div');
+                schemeCard.className = 'col-md-4';
+                schemeCard.innerHTML = `
+                    <div class="scheme-card" data-scheme="${scheme.name}">
+                        <div class="scheme-icon">
+                            <i class="${scheme.icon} fa-3x" style="color: #ffcc00;"></i>
+                        </div>
+                        <div class="scheme-info">
+                            <h2>${scheme.name}</h2>
+                            <p>${scheme.description}</p>
+                            <a href="${scheme.link}"><button>Apply Now</button></a>
+                        </div>
+                    </div>
+                `;
+                schemesContainer.appendChild(schemeCard);
+            });
+        });
     </script>
 </body>
 
