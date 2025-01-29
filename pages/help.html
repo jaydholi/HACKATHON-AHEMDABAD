@@ -1,0 +1,271 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Help & Support - Public Welfare System</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css">
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background-color: #f8f9fa;
+    }
+
+    .hero-section {
+      background: linear-gradient(90deg, #4e54c8, #8f94fb);
+      color: white;
+      padding: 100px 0;
+      text-align: center;
+    }
+
+    .hero-section h1 {
+      font-size: 3rem;
+      font-weight: bold;
+    }
+
+    .section-title {
+      font-size: 2rem;
+      font-weight: bold;
+      margin-bottom: 20px;
+    }
+
+    .faq-item {
+      margin-bottom: 20px;
+      background: white;
+      padding: 20px;
+      border-radius: 10px;
+      box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
+    }
+
+    .faq-item h5 {
+      cursor: pointer;
+      transition: color 0.3s;
+    }
+
+    .faq-item h5:hover {
+      color: #4e54c8;
+    }
+
+    .contact-info {
+      margin-top: 40px;
+    }
+
+    .chat-box {
+      position: fixed;
+      bottom: 20px;
+      right: 20px;
+      background: white;
+      border-radius: 10px;
+      box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
+      max-width: 300px;
+      display: none;
+      flex-direction: column;
+    }
+
+    .chat-box-header {
+      background: #4e54c8;
+      color: white;
+      padding: 10px;
+      border-radius: 10px 10px 0 0;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .chat-box-header h5 {
+      margin: 0;
+    }
+
+    .chat-box-messages {
+      padding: 10px;
+      max-height: 200px;
+      overflow-y: auto;
+    }
+
+    .chat-box-footer {
+      display: flex;
+      padding: 10px;
+      border-top: 1px solid #ddd;
+    }
+
+    .chat-box-footer input {
+      flex: 1;
+      border: none;
+      padding: 5px;
+      border-radius: 5px;
+      box-shadow: inset 0 0 3px rgba(0, 0, 0, 0.1);
+    }
+
+    .chat-box-footer button {
+      margin-left: 10px;
+      background: #4e54c8;
+      color: white;
+      border: none;
+      padding: 5px 10px;
+      border-radius: 5px;
+    }
+
+    .chat-toggle {
+      position: fixed;
+      bottom: 20px;
+      right: 20px;
+      background: #4e54c8;
+      color: white;
+      border: none;
+      padding: 15px;
+      border-radius: 50%;
+      box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
+      cursor: pointer;
+    }
+
+    .animated-icon {
+      display: inline-block;
+      margin-right: 10px;
+      animation: bounce 2s infinite;
+    }
+
+    @keyframes bounce {
+      0%, 100% {
+        transform: translateY(0);
+      }
+      50% {
+        transform: translateY(-10px);
+      }
+    }
+
+    /* Back to Home button */
+    .back-to-home-btn {
+      background-color: #4e54c8;
+      color: white;
+      padding: 10px 20px;
+      border-radius: 30px;
+      box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.2);
+      cursor: pointer;
+      transition: background-color 0.3s ease;
+    }
+
+    .back-to-home-btn:hover {
+      background-color: #3a47b2;
+    }
+
+    /* Search Bar */
+    .search-bar {
+      margin-top: 20px;
+      display: flex;
+      justify-content: center;
+    }
+
+    .search-bar input {
+      width: 60%;
+      padding: 10px;
+      border-radius: 5px;
+      border: 1px solid #ddd;
+    }
+
+    .search-bar button {
+      padding: 10px 20px;
+      margin-left: 10px;
+      border: none;
+      background-color: #4e54c8;
+      color: white;
+      border-radius: 5px;
+    }
+  </style>
+</head>
+
+<body>
+  <!-- Hero Section -->
+  <div class="hero-section animate__animated animate__fadeInDown">
+    <h1>Help & Support</h1>
+    <p>How can we assist you today?</p>
+  </div>
+
+  <!-- Search Bar -->
+  <div class="search-bar">
+    <input type="text" placeholder="Search FAQs...">
+    <button>Search</button>
+  </div>
+
+  <!-- FAQ Section -->
+  <div class="container my-5">
+    <h2 class="section-title text-center animate__animated animate__fadeInUp">Frequently Asked Questions</h2>
+
+    <div class="faq-item animate__animated animate__zoomIn">
+      <h5 data-bs-toggle="collapse" data-bs-target="#faq1">What is Uplift Engineer?</h5>
+      <div id="faq1" class="collapse">
+        <p>Uplift Engineer is a platform designed to [insert brief explanation].</p>
+      </div>
+    </div>
+
+    <div class="faq-item animate__animated animate__zoomIn animate__delay-1s">
+      <h5 data-bs-toggle="collapse" data-bs-target="#faq2">How do I create an account?</h5>
+      <div id="faq2" class="collapse">
+        <p>Click on the Sign Up button and follow the instructions.</p>
+      </div>
+    </div>
+
+    <div class="faq-item animate__animated animate__zoomIn animate__delay-2s">
+      <h5 data-bs-toggle="collapse" data-bs-target="#faq3">How can I contact customer support?</h5>
+      <div id="faq3" class="collapse">
+        <p>You can reach us via email at support@upliftengineer.com or phone at +1 (555) 123-4567.</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- Contact Section -->
+  <div class="container text-center contact-info">
+    <h2 class="section-title animate__animated animate__fadeInUp">Need More Help?</h2>
+    <p class="animate__animated animate__fadeIn">Our support team is here to assist you. Feel free to reach out via:</p>
+    <p class="animate__animated animate__fadeIn">Email: <span class="animated-icon">📧</span>support@upliftengineer.com</p>
+    <p class="animate__animated animate__fadeIn">Phone: <span class="animated-icon">📞</span>+1 (555) 123-4567</p>
+  </div>
+
+  <!-- Testimonial Section -->
+  <div class="container text-center my-5">
+    <h2 class="section-title animate__animated animate__fadeInUp">What Our Customers Say</h2>
+    <p class="animate__animated animate__fadeIn">"Uplift Engineer has been a lifesaver. The support team is always quick and helpful!"</p>
+    <p>- John Doe</p>
+  </div>
+
+  <!-- Back to Home Button -->
+  <div class="container text-center">
+    <button class="back-to-home-btn" onclick="window.location.href='../index.html'">Back to Home</button>
+  </div>
+
+  <!-- Chat Widget -->
+  <button class="chat-toggle">💬</button>
+  <div class="chat-box">
+    <div class="chat-box-header">
+      <h5>Chat with Support</h5>
+      <button class="btn-close btn-close-white" onclick="toggleChat()"></button>
+    </div>
+    <div class="chat-box-messages">
+      <p><strong>Support:</strong> Hi! How can we help you today?</p>
+    </div>
+    <div class="chat-box-footer">
+      <input type="text" placeholder="Type your message...">
+      <button>Send</button>
+    </div>
+  </div>
+
+  <!-- Scripts -->
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/js/bootstrap.bundle.min.js"></script>
+  <script>
+    const chatBox = document.querySelector('.chat-box');
+    const chatToggle = document.querySelector('.chat-toggle');
+
+    function toggleChat() {
+      if (chatBox.style.display === 'none' || !chatBox.style.display) {
+        chatBox.style.display = 'flex';
+      } else {
+        chatBox.style.display = 'none';
+      }
+    }
+
+    chatToggle.addEventListener('click', toggleChat);
+  </script>
+</body>
+
+</html>
