@@ -5,215 +5,119 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Ayushman Bharat Scheme</title>
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" rel="stylesheet">
     <style>
-        /* Global Styles */
+        /* Set overall page background to dark blue */
         body {
-            font-family: 'Arial', sans-serif;
-            background-color: #f8f9fa;
-            margin: 0;
-            padding: 0;
+            font-family: Arial, sans-serif;
+            background-color: #001f3d; /* Dark blue background */
+            color: white; /* White text color */
         }
 
-        /* Header */
-        .navbar {
-            background-color: #005ea2;
-            padding: 20px 0;
+        /* Navbar */
+        nav {
+            background-color: #001f3d; /* Dark blue background */
         }
 
-        .navbar-brand {
-            color: white;
-            font-size: 2rem;
-            font-weight: bold;
-            text-transform: uppercase;
+        nav .nav-link {
+            color: #FFD700; /* Yellow color for nav links */
         }
 
-        .navbar-nav .nav-link {
-            color: white;
-            font-size: 1.1rem;
-            margin-right: 20px;
-            transition: color 0.3s;
+        nav .nav-link:hover {
+            color: #fff; /* Hover effect to white */
         }
 
-        .navbar-nav .nav-link:hover {
-            color: #ffcc00;
+        /* Section Containers */
+        .section-container {
+            padding: 60px 0;
         }
 
-        /* Hero Section */
-        .hero-section {
-            background: url('/images/aayushman.png') no-repeat center center;
-            background-size: cover;
-            color: rgb(63, 1, 145);
-            height: 80vh;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            position: relative;
-            text-align: center;
-            padding: 0 20px;
+        /* Grid Layouts */
+        .section-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 20px;
+            justify-items: center;
         }
 
-        .hero-overlay {
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: rgba(0, 0, 0, 0);
-        }
-
-        .hero-content {
-            position: relative;
-            z-index: 2;
-        }
-
-        .hero-content h2 {
-            font-size: 3.5rem;
-            margin-bottom: 20px;
-            font-weight: 600;
-            text-shadow: 2px 2px 8px rgba(0, 0, 0, 0.3);
-        }
-
-        .hero-content p {
-            font-size: 1.2rem;
-            margin-bottom: 30px;
-            text-shadow: 1px 1px 5px rgba(0, 0, 0, 0.3);
-        }
-
-        .btn-primary {
-            background-color: #007bb5;
-            border-color: #007bb5;
-            color: white;
-            padding: 14px 30px;
-            font-size: 1.3rem;
-            border-radius: 30px;
-            text-transform: uppercase;
-            transition: all 0.3s ease;
-            
-        }
-
-        .btn-primary:hover {
-            background-color: #005ea2;
-            border-color: #005ea2;
-            transform: translateY(-5px);
-        }
-
-        /* Section Styling */
-        .section {
-            padding: 60px 15px;
-        }
-
-        .section-title {
-            font-size: 2.2rem;
-            font-weight: bold;
-            color: #005ea2;
-            text-align: center;
-            margin-bottom: 40px;
-        }
-
-        .section-subtitle {
-            font-size: 1.1rem;
-            color: #666;
-            text-align: center;
-            margin-bottom: 30px;
-        }
-
-        .card {
-            border: none;
+        /* Section Boxes */
+        .section-box {
+            background: #003366; /* Blue background for section boxes */
+            padding: 30px;
             border-radius: 8px;
-            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
-            transition: all 0.3s;
-        }
-
-        .card:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15);
-        }
-
-        .card-header {
-            background-color: #005ea2;
-            color: white;
-            font-weight: bold;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            width: 100%;
+            max-width: 300px;
             text-align: center;
-            padding: 12px 0;
         }
 
-        .card-body ul {
-            list-style-type: none;
-            padding-left: 0;
+        .section-box i {
+            font-size: 40px;
+            color: #FFD700; /* Yellow icons */
+            margin-bottom: 15px;
         }
 
-        .card-body ul li {
-            margin-bottom: 10px;
-            font-size: 1rem;
+        /* Form Container */
+        .form-container {
+            max-width: 500px;
+            margin: 0 auto;
+            background-color: #003366;
+            padding: 40px;
+            border-radius: 8px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
         }
 
-        .footer {
-            background-color: #005ea2;
+        .form-container .btn {
+            background-color: #FFD700; /* Yellow buttons */
+            border: none;
+        }
+
+        .form-container .btn:hover {
+            background-color: #ffc107; /* Slightly darker yellow on hover */
+        }
+
+        .success-message {
+            margin-top: 20px;
+            display: none;
+            padding: 15px;
+            background-color: #28a745;
+            color: #fff;
+            border-radius: 5px;
+            font-size: 16px;
+        }
+
+        footer {
+            background-color: #001f3d;
             color: white;
+            padding: 20px;
             text-align: center;
-            padding: 25px 0;
-            margin-top: 40px;
-            border-top: 4px solid #007bb5;
         }
 
-        .footer a {
-            color: #ffcc00;
+        footer a {
+            color: #FFD700; /* Yellow color for footer links */
             text-decoration: none;
         }
 
-        .footer a:hover {
+        footer a:hover {
             text-decoration: underline;
         }
 
-        /* Application Form */
-        .application-form .form-label {
-            font-weight: bold;
+        h1, h2, h3 {
+            color: #FFD700; /* Yellow headings */
         }
 
-        /* Responsive Styles */
-        @media (max-width: 768px) {
-            .hero-section {
-                height: 60vh;
-            }
-
-            .hero-content h2 {
-                font-size: 2.5rem;
-            }
-
-            .hero-content p {
-                font-size: 1.1rem;
-            }
-
-            .navbar-nav .nav-link {
-                font-size: 1rem;
-            }
-
-            .section-title {
-                font-size: 1.8rem;
-            }
-
-            .card {
-                margin-bottom: 20px;
-            }
-
-            .btn-primary {
-                font-size: 1.1rem;
-                padding: 12px 25px;
-            }
-
-            .footer {
-                padding: 15px 0;
-            }
+        .container p {
+            color: #d1d1d1; /* Lighter text for paragraphs */
         }
     </style>
 </head>
 
 <body>
-    <!-- Header -->
+
+    <!-- Navbar Section -->
     <nav class="navbar navbar-expand-lg navbar-dark">
-        <div class="container">
+        <div class="container-fluid">
             <a class="navbar-brand" href="#">Ayushman Bharat</a>
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
                 aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
@@ -221,108 +125,177 @@
             </button>
             <div class="collapse navbar-collapse" id="navbarNav">
                 <ul class="navbar-nav ms-auto">
-                    <li class="nav-item"><a class="nav-link" href="/index.html">Home</a></li>
-                    
-                    <li class="nav-item"><a class="nav-link" href="/pages/contact.html">Contact</a></li>
+                    <li class="nav-item">
+                        <a class="nav-link active" href="#hero">Home</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#eligibility">Eligibility</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#benefits">Benefits</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#documents">Documents</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#apply">Apply Now</a>
+                    </li>
                 </ul>
             </div>
         </div>
     </nav>
 
-    <!-- Hero Section -->
-    <div class="hero-section">
-        <div class="hero-overlay"></div>
-        <div class="hero-content">
-            
-            <a href="#apply" class="btn btn-primary">Apply Now</a>
-        </div>
-    </div>
+   <!-- Hero Section -->
+<!-- Hero Section -->
+<section id="hero" class="section-container" style="position: relative; height: 100vh; background: url('https://via.placeholder.com/1600x900') no-repeat center center; background-size: cover;">
+    <!-- Overlay -->
+    <div style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; background: rgba(1, 3, 77, 0.5);"></div>
 
-    <!-- Scheme Details Section -->
-    <div id="details" class="section">
-        <h2 class="section-title">Scheme Overview</h2>
-        <p class="section-subtitle">Here’s a breakdown of the eligibility, benefits, and required documents to apply.</p>
+    <!-- Hero Content -->
+    <div class="container" style="position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); text-align: center; z-index: 10;">
+        <h1 style="font-size: 3.5rem; color: #FFD700;">
+            <i class="fas fa-heartbeat" style="font-size: 3rem; margin-right: 15px;"></i>Ayushman Bharat Scheme
+        </h1>
+        <p style="font-size: 1.25rem; color: white;">
+            <i class="fas fa-stethoscope" style="font-size: 1.5rem; margin-right: 10px;"></i>
+            The world’s largest health insurance scheme, empowering citizens and improving access to healthcare services.
+        </p>
+        <p style="font-size: 1.2rem; color: white; margin-top: 15px;">
+            <i class="fas fa-users" style="font-size: 1.5rem; margin-right: 10px;"></i>
+            Join the initiative to ensure better health for every citizen in India. The Ayushman Bharat Scheme is a milestone towards Universal Health Coverage (UHC).
+        </p>
+        <a href="#apply" class="btn" style="margin-top: 20px; background-color: #FFD700; color: #001f3d; font-size: 1.2rem; padding: 10px 20px; border-radius: 5px; text-decoration: none;">
+            <i class="fas fa-pencil-alt" style="margin-right: 8px;"></i>Apply Now
+        </a>
+    </div>
+</section>
+
+
+    <!-- Eligibility Section -->
+    <section id="eligibility" class="section-container">
         <div class="container">
-            <div class="row row-cols-1 row-cols-md-3 g-4">
-                <div class="col">
-                    <div class="card">
-                        <div class="card-header"><i class="fas fa-check-circle"></i> Eligibility</div>
-                        <div class="card-body">
-                            <ul>
-                                <li>Indian citizens</li>
-                                <li>Annual family income below ₹5 lakh</li>
-                                <li>No existing health insurance coverage</li>
-                            </ul>
-                        </div>
-                    </div>
+            <h2>Eligibility Criteria</h2>
+            <p>This scheme targets millions of families across India who are underprivileged and lack access to quality healthcare services.</p>
+            <div class="section-grid">
+                <div class="section-box">
+                    <i class="fas fa-users"></i>
+                    <h3>Families Below Poverty Line</h3>
+                    <p>Eligible families are those who fall under the Below Poverty Line (BPL) category. This ensures the poorest communities are supported first.</p>
                 </div>
-                <div class="col">
-                    <div class="card">
-                        <div class="card-header"><i class="fas fa-gift"></i> Benefits</div>
-                        <div class="card-body">
-                            <ul>
-                                <li>Free health treatments at recognized hospitals</li>
-                                <li>Coverage for critical illnesses up to ₹5 lakh annually</li>
-                                <li>Access to both public and private health facilities</li>
-                            </ul>
-                        </div>
-                    </div>
+                <div class="section-box">
+                    <i class="fas fa-hand-holding-heart"></i>
+                    <h3>Low Income Families</h3>
+                    <p>Incomes that are insufficient to afford private healthcare but still above the poverty line are also considered under the scheme.</p>
                 </div>
-                <div class="col">
-                    <div class="card">
-                        <div class="card-header"><i class="fas fa-file-alt"></i> Required Documents</div>
-                        <div class="card-body">
-                            <ul>
-                                <li>Proof of Identity (Aadhaar/Passport)</li>
-                                <li>Proof of Address (Electricity Bill/Bank Statement)</li>
-                                <li>Income Certificate (Family Income Details)</li>
-                            </ul>
-                        </div>
-                    </div>
+                <div class="section-box">
+                    <i class="fas fa-house-user"></i>
+                    <h3>Rural and Urban Coverage</h3>
+                    <p>Both rural and urban populations are eligible, making this a nationwide initiative that includes all parts of the country.</p>
                 </div>
             </div>
         </div>
-    </div>
+    </section>
 
-    <!-- Apply Now Section -->
-    <div id="apply" class="section bg-light">
-        <h2 class="section-title">Register for Ayushman Bharat</h2>
-        <p class="section-subtitle">Fill in the form below to apply for the Ayushman Bharat scheme.</p>
-        <div class="container application-form">
-            <form action="#" method="POST">
-                <div class="row mb-3">
-                    <div class="col-md-6">
-                        <label for="fullName" class="form-label">Full Name</label>
-                        <input type="text" class="form-control" id="fullName" name="fullName" required>
-                    </div>
-                    <div class="col-md-6">
-                        <label for="email" class="form-label">Email Address</label>
-                        <input type="email" class="form-control" id="email" name="email" required>
-                    </div>
+    <!-- Benefits Section -->
+    <section id="benefits" class="section-container">
+        <div class="container">
+            <h2>Benefits of the Scheme</h2>
+            <p>Ayushman Bharat offers a wide range of benefits to eligible citizens, ensuring better health care access and improved medical facilities.</p>
+            <div class="section-grid">
+                <div class="section-box">
+                    <i class="fas fa-credit-card"></i>
+                    <h3>Cashless Treatment</h3>
+                    <p>Receive treatment at empaneled hospitals without paying any money upfront. The costs are covered under the scheme.</p>
                 </div>
-                <div class="mb-3">
-                    <label for="address" class="form-label">Address</label>
-                    <input type="text" class="form-control" id="address" name="address" required>
+                <div class="section-box">
+                    <i class="fas fa-heartbeat"></i>
+                    <h3>Comprehensive Coverage</h3>
+                    <p>Extensive coverage that includes surgeries, treatments, and diagnostics. The scheme covers hospitalization, surgeries, and even pre-existing conditions.</p>
                 </div>
-                <div class="mb-3">
-                    <label for="phone" class="form-label">Phone Number</label>
-                    <input type="tel" class="form-control" id="phone" name="phone" required>
+                <div class="section-box">
+                    <i class="fas fa-stethoscope"></i>
+                    <h3>Free Health Checkups</h3>
+                    <p>Eligibility for free health checkups under the program ensures regular health monitoring for individuals and families.</p>
                 </div>
-                <div class="mb-3">
-                    <label for="income" class="form-label">Annual Income</label>
-                    <input type="number" class="form-control" id="income" name="income" required>
+                <div class="section-box">
+                    <i class="fas fa-hospital"></i>
+                    <h3>Over 10,000 Hospitals Empaneled</h3>
+                    <p>Hospitals across India are a part of the Ayushman Bharat network, ensuring better accessibility to healthcare services nationwide.</p>
                 </div>
-                <button type="submit" class="btn btn-primary">Submit Application</button>
-            </form>
+            </div>
         </div>
-    </div>
+    </section>
 
-    <!-- Footer -->
-    <div class="footer">
-        <p>&copy; 2025 Ayushman Bharat Scheme | <a href="#">Privacy Policy</a> | <a href="#">Terms & Conditions</a></p>
-    </div>
+    <!-- Required Documents Section -->
+    <section id="documents" class="section-container">
+        <div class="container">
+            <h2>Required Documents</h2>
+            <p>Ensure you have the following documents ready before applying for the scheme:</p>
+            <div class="section-grid">
+                <div class="section-box">
+                    <i class="fas fa-id-card"></i>
+                    <h3>Aadhaar Card</h3>
+                    <p>A government-issued Aadhaar card for identity verification. This is essential for verification purposes.</p>
+                </div>
+                <div class="section-box">
+                    <i class="fas fa-file-invoice"></i>
+                    <h3>Income Proof</h3>
+                    <p>Documents such as salary slips, income certificates, or tax returns to confirm the applicant's income level.</p>
+                </div>
+                <div class="section-box">
+                    <i class="fas fa-home"></i>
+                    <h3>Address Proof</h3>
+                    <p>Documents like utility bills, ration card, or voter ID to confirm the applicant's address within India.</p>
+                </div>
+            </div>
+        </div>
+    </section>
 
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/js/bootstrap.bundle.min.js"></script>
+    <!-- Apply Now Form Section -->
+    <section id="apply" class="section-container">
+        <div class="container form-container">
+            <h2>Apply Now</h2>
+            <form id="applicationForm" onsubmit="submitForm(event)">
+                <div class="mb-3">
+                    <label for="name" class="form-label">Full Name</label>
+                    <input type="text" class="form-control" id="name" placeholder="Enter your full name" required>
+                </div>
+                <div class="mb-3">
+                    <label for="dob" class="form-label">Date of Birth</label>
+                    <input type="date" class="form-control" id="dob" required>
+                </div>
+                <div class="mb-3">
+                    <label for="email" class="form-label">Email Address</label>
+                    <input type="email" class="form-control" id="email" placeholder="Enter your email" required>
+                </div>
+                <div class="mb-3">
+                    <label for="mobile" class="form-label">Mobile Number</label>
+                    <input type="tel" class="form-control" id="mobile" placeholder="Enter your mobile number" required>
+                </div>
+                <button type="submit" class="btn">Submit</button>
+            </form>
+            <div id="successMessage" class="success-message">Your form has been submitted successfully! We will contact you soon.</div>
+        </div>
+    </section>
+
+    <!-- Footer Section -->
+    <footer>
+        <p>&copy; 2025 Ayushman Bharat Scheme | Designed by Your Company</p>
+        <p><a href="#">Privacy Policy</a> | <a href="#">Terms of Service</a></p>
+    </footer>
+
+    <script>
+        function submitForm(event) {
+            event.preventDefault();
+            document.getElementById('successMessage').style.display = 'block';
+            setTimeout(function () {
+                document.getElementById('successMessage').style.display = 'none';
+            }, 3000);
+        }
+    </script>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
+
 </body>
 
 </html>
