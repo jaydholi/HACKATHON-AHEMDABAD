@@ -84,10 +84,6 @@
                                 <option value="english">English</option>
                                 <option value="hindi">Hindi</option>
                                 <option value="gujrati">Gujrati</option>
-                                <option value="spanish">Spanish</option>
-                                <option value="french">French</option>
-                                <option value="german">German</option>
-                                <option value="chinese">Chinese</option>
                             </select>
                         </div>
 
@@ -111,7 +107,10 @@
         document.getElementById("languageForm").addEventListener("submit", function(event) {
             event.preventDefault();  // Prevent the default form submission
             // Optionally, you can handle the language preference here (e.g., save it in localStorage, send it to a server, etc.)
-            
+            let lang = document.getElementById('language').value;
+            if(lang =="gujrati"){
+                window.location.href ="https://upliftengineer-netlify-app.translate.goog/?_x_tr_sl=auto&_x_tr_tl=gu&_x_tr_hl=en-US&_x_tr_pto=wapp";
+            }
             // Show success message
             const alert = document.getElementById('success-alert');
             alert.style.display = 'block';
