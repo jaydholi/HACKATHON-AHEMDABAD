@@ -83,7 +83,7 @@
                 <div class="card p-3 text-center">
                     <h6 class="card-title" style="color: white;"><i class="fas fa-sign-out-alt"></i> Log Out</h6>
                     <p class="card-text" style="color: rgb(159, 131, 91);">Log out of your account to end the session.</p>
-                    <a href="../index.html" class="btn btn-danger"><i class="fas fa-sign-out-alt"></i> Log Out</a>
+                    <a href="../index.html" class="btn btn-danger" id="logout_btn"><i class="fas fa-sign-out-alt"></i> Log Out</a>
                 </div>
             </div>
         </div>
@@ -101,5 +101,9 @@
         <p>&copy; 2025 Public Welfare System. All rights reserved.</p>
     </footer>
 </body>
-
+<script>
+    document.getElementById('logout_btn').addEventListener('click',()=>{
+        localStorage.clear();
+    })
+</script>
 </html>
