@@ -1,0 +1,442 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Senior Citizen Pension Scheme</title>
+
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
+
+    <!-- Font Awesome for Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+
+    <!-- Inbuilt CSS -->
+    <style>
+        /* Global Styles */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Arial', sans-serif;
+            background-color: #001a33;
+            /* Dark blue background */
+            color: white;
+            line-height: 1.6;
+        }
+
+        h1,
+        h2,
+        h3,
+        p {
+            margin-bottom: 1.2rem;
+        }
+
+        a {
+            text-decoration: none;
+            color: #ffcc00;
+            /* Yellow color for links */
+        }
+
+        a:hover {
+            color: #e6b800;
+        }
+
+        /* Navbar Styles */
+        .navbar {
+            background-color: #001a33;
+            padding: 20px 0;
+            position: fixed;
+            top: 0;
+            width: 100%;
+            z-index: 100;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+            transition: background-color 0.3s ease;
+        }
+
+        .navbar-brand {
+            color: #ffcc00;
+            font-size: 1.8rem;
+            font-weight: bold;
+        }
+
+        .navbar-nav .nav-item {
+            margin-left: 30px;
+        }
+
+        .navbar-nav .nav-link {
+            color: white !important;
+            font-size: 1.1rem;
+            text-transform: uppercase;
+        }
+
+        .navbar-nav .nav-link:hover {
+            color: #ffcc00;
+        }
+
+        .navbar-nav {
+            margin-left: auto;
+        }
+
+        /* Hero Section */
+        .hero {
+            background: url('https://via.placeholder.com/1500x800') no-repeat center center/cover;
+            color: white;
+            text-align: center;
+            padding: 150px 20px;
+            background-size: cover;
+            background-position: center;
+            margin-top: 80px;
+            /* Space for fixed navbar */
+        }
+
+        .hero h1 {
+            font-size: 4rem;
+            font-weight: 700;
+            margin-bottom: 0.5rem;
+        }
+
+        .hero p {
+            font-size: 1.2rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .hero .btn {
+            padding: 15px 30px;
+            font-size: 1.2rem;
+            background-color: #ffcc00;
+            color: #003366;
+            border: none;
+            border-radius: 5px;
+            transition: background-color 0.3s;
+        }
+
+        .hero .btn:hover {
+            background-color: #e6b800;
+        }
+
+        /* Section Styles (Improved Layout) */
+        section {
+            padding: 50px 20px;
+            margin-bottom: 3rem;
+            border-radius: 10px;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+        }
+
+        /* Section Background Variations */
+        #eligibility-docs-section {
+            background-color: #003366;
+        }
+
+        section h2 {
+            color: #ffcc00;
+            font-size: 2.5rem;
+            margin-bottom: 1.5rem;
+            font-weight: 600;
+        }
+
+        /* Container for proper padding and centering */
+        .container {
+            width: 90%;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        /* Using Grid Layout for Sections */
+        .grid-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 2rem;
+        }
+
+        .grid-container ul {
+            list-style: none;
+            padding: 0;
+        }
+
+        .grid-container ul li {
+            font-size: 1.1rem;
+            margin-bottom: 10px;
+        }
+
+        /* Card Styling for Eligibility & Documents */
+        .card {
+            background-color: #003366;
+            color: white;
+            border: none;
+            border-radius: 10px;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+            margin-bottom: 1.5rem;
+        }
+
+        .card-header {
+            background-color: #003366;
+            border-bottom: none;
+            color: #ffcc00;
+            padding: 15px;
+            font-size: 1.3rem;
+            font-weight: bold;
+        }
+
+        .card-body {
+            background-color: #003366;
+            padding: 20px;
+        }
+
+        .card-body ul {
+            font-size: 1.1rem;
+        }
+
+        .card-body ul li {
+            margin-bottom: 12px;
+        }
+
+        .card-body ul li i {
+            margin-right: 10px;
+            color: #ffcc00;
+        }
+
+        /* Scheme Information Section */
+        .info-container {
+            background-color: #003366;
+            padding: 30px;
+            margin-top: 3rem;
+            border-radius: 10px;
+        }
+
+        .info-container h3 {
+            color: #ffcc00;
+            font-size: 2rem;
+            margin-bottom: 1rem;
+        }
+
+        .info-container p {
+            font-size: 1.1rem;
+            margin-bottom: 1rem;
+        }
+
+        .info-container ul {
+            list-style: none;
+            padding: 0;
+        }
+
+        .info-container ul li {
+            font-size: 1.1rem;
+            margin-bottom: 12px;
+        }
+
+        .info-container ul li i {
+            margin-right: 10px;
+            color: #ffcc00;
+        }
+
+        /* Form Section */
+        .form-container {
+            display: flex;
+            flex-direction: column;
+            gap: 1.2rem;
+        }
+
+        .form-control {
+            padding: 12px;
+            font-size: 1.1rem;
+            width: 100%;
+            margin-bottom: 20px;
+            border: 1px solid #fff;
+            background-color: #003366;
+            color: white;
+            border-radius: 5px;
+        }
+
+        /* Placeholder text color */
+        .form-control::placeholder {
+            color: #b3b3b3;
+            /* Light gray color for placeholder text */
+        }
+
+        /* Input text color when focused */
+        .form-control:focus {
+            border-color: #ffcc00;
+            background-color: #004d80;
+            color: #ffffff;
+            /* Keeps the text color white when focused */
+        }
+
+        /* Change placeholder text color when the input is focused */
+        .form-control:focus::placeholder {
+            color: #ffcc00;
+            /* Change placeholder text color to yellow on focus */
+        }
+
+        .btn-primary {
+            background-color: #ffcc00;
+            color: #003366;
+            font-size: 1.2rem;
+            padding: 12px 30px;
+            border-radius: 5px;
+            border: none;
+            transition: background-color 0.3s;
+        }
+
+        .btn-primary:hover {
+            background-color: #e6b800;
+        }
+
+
+        /* Footer Styles */
+        footer {
+            background-color: #001a33;
+            color: white;
+            text-align: center;
+            padding: 20px 0;
+        }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .navbar-nav .nav-item {
+                margin-left: 15px;
+            }
+
+            .hero h1 {
+                font-size: 2.5rem;
+            }
+
+            .hero p {
+                font-size: 1rem;
+            }
+
+            .container {
+                padding: 10px;
+            }
+
+            section h2 {
+                font-size: 2rem;
+            }
+
+            .form-control {
+                font-size: 1rem;
+            }
+
+            .btn-primary {
+                font-size: 1rem;
+            }
+
+            .grid-container {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <!-- Navbar -->
+    <nav class="navbar navbar-expand-lg navbar-dark fixed-top">
+        <div class="container">
+            <a class="navbar-brand" href="#">Senior Citizen Pension</a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
+                aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item">
+                        <a class="nav-link" href="#">Home</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#eligibility-docs-section">Eligibility & Documents</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#apply-section">Apply Now</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <h1>Senior Citizen Pension Scheme</h1>
+        <p>Empowering senior citizens with financial support for a secure future.</p>
+        <a href="#eligibility-docs-section" class="btn">Learn More</a>
+    </section>
+
+    <!-- Eligibility & Documents Section -->
+    <section id="eligibility-docs-section">
+        <div class="container">
+            <h2>Eligibility & Required Documents</h2>
+            <div class="grid-container">
+                <!-- Eligibility Criteria -->
+                <div class="card">
+                    <div class="card-header">
+                        <h5><i class="fas fa-check-circle"></i> Eligibility Criteria</h5>
+                    </div>
+                    <div class="card-body">
+                        <ul>
+                            <li><i class="fas fa-user"></i> Must be a citizen of India</li>
+                            <li><i class="fas fa-calendar-day"></i> Age 60 or above</li>
+                            <li><i class="fas fa-hand-holding-usd"></i> Income less than ₹30,000/month</li>
+                            <li><i class="fas fa-home"></i> Residing in India</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <!-- Documents Section -->
+                <div class="card">
+                    <div class="card-header">
+                        <h5><i class="fas fa-file-alt"></i> Required Documents</h5>
+                    </div>
+                    <div class="card-body">
+                        <ul>
+                            <li><i class="fas fa-id-card"></i> Age Proof (Aadhar Card, Birth Certificate)</li>
+                            <li><i class="fas fa-id-card-alt"></i> Identity Proof (Aadhar Card, Passport)</li>
+                            <li><i class="fas fa-file-invoice"></i> Income Certificate</li>
+                            <li><i class="fas fa-university"></i> Bank Account Details</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <!-- Scheme Info Section -->
+                <div class="info-container">
+                    <h3>About the Scheme</h3>
+                    <p>This scheme provides financial support to senior citizens above 60 years of age who have limited
+                        income and no other means of support. The scheme aims to help improve their quality of life.</p>
+                    <ul>
+                        <li><i class="fas fa-hand-holding-heart"></i> Monthly Pension Support</li>
+                        <li><i class="fas fa-clock"></i> Regular Payment Disbursements</li>
+                        <li><i class="fas fa-cogs"></i> Easy Application Process</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Apply Now Section -->
+    <section id="apply-section">
+        <div class="container">
+            <h2>Apply Now</h2>
+            <form class="form-container">
+                <input type="text" class="form-control" placeholder="Full Name" required>
+                <input type="email" class="form-control" placeholder="Email Address" required>
+                <input type="text" class="form-control" placeholder="Phone Number" required>
+                <input type="text" class="form-control" placeholder="Aadhar Number" required>
+                <button type="submit" class="btn-primary">Submit</button>
+            </form>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <p>&copy; 2025 Senior Citizen Pension Scheme. All rights reserved.</p>
+    </footer>
+
+    <!-- Bootstrap JS & Dependencies -->
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.6/dist/umd/popper.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.min.js"></script>
+</body>
+
+</html>
