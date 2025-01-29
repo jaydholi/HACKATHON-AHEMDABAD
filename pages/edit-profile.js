@@ -1,5 +1,5 @@
 document.addEventListener("DOMContentLoaded", () => {
-    window.location.reload();
+    // window.location.reload();
     // Add your OpenCage API key here
     const API_KEY = "a148e48fafc94535ae130af577869158";
 
