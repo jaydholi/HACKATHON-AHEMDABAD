@@ -99,6 +99,8 @@ submitButton.addEventListener("click", function() {
       console.log("Success! Welcome back!");
       showAlert("Success! Welcome back!");
       localStorage.setItem('email', email);
+      let phone_usr = document.getElementById('phone');
+      localStorage.setItem('phone', phone_usr.value); 
       window.location.href="../../index.html";
     })
     .catch((error) => {

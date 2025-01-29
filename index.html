@@ -310,6 +310,79 @@
 
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/js/bootstrap.bundle.min.js"></script>
+     <script>
+        // Store schemes data in local storage
+        // const schemes = [
+        //     {
+        //         name: "PM Kisan Samman Nidhi",
+        //         description: "Financial support for farmers with ₹6,000 annually.",
+        //         status: "Active",
+        //         icon: "fas fa-tractor",
+        //         link: "/schemesdetail/pm-kisan-details.html"
+        //     },
+        //     {
+        //         name: "PM Awas Yojana",
+        //         description: "Affordable housing for the urban poor.",
+        //         status: "Pending",
+        //         icon: "fas fa-home",
+        //         link: "/schemesdetail/pm-awas-yojana.html"
+        //     },
+        //     {
+        //         name: "Ayushman Bharat",
+        //         description: "Health insurance coverage up to ₹5 lakhs per family per year",
+        //         status: "Active",
+        //         icon: "fas fa-heartbeat fa-3x",
+        //         link: "/schemesdetail/ayusman-bharat.html"
+        //     },
+
+        // ];
+        const schemes = [
+     {
+        name: "PM Kisan Samman Nidhi",
+        description: "Financial assistance of ₹6,000 per year to farmer families.",
+        status: "Active",
+        icon: "fas fa-tractor",
+        link: "/schemesdetail/pm-kisan-details.html"
+    },
+    {
+        name: "PM Awas Yojana",
+        description: "Housing for All - Urban and Rural housing scheme.",
+        status: "Active",
+        icon: "fas fa-home",
+        link: "/schemesdetail/pm-awas-yojana.html"
+    },
+    {
+        name: "Ayushman Bharat",
+        description: "Health insurance coverage up to ₹5 lakhs per family per year.",
+        status: "Active",
+        icon: "fas fa-heartbeat",
+        link: "/schemesdetail/ayusman-bharat.html"
+    },
+    {
+        name: "MUDRA Yojana",
+        description: "Microfinance for small entrepreneurs and businesses.",
+        status: "Active",
+        icon: "fas fa-briefcase",
+        link: "/schemesdetail/pm-mudra.html"
+    },
+    {
+        name: "PM Ujjwala Yojana",
+        description: "Free LPG connections to BPL families.",
+        status: "Active",
+        icon: "fas fa-fire",
+        link: "/schemesdetail/pm-ujjwala.html"
+    },
+    {
+        name: "Sukanya Samriddhi Yojana",
+        description: "Financial support for the girl child to secure her future.",
+        status: "Active",
+        icon: "fas fa-girl",
+        link: "/schemesdetail/sukanya-samridhhi.html"
+    }
+];
+    
+        localStorage.setItem('schemes', JSON.stringify(schemes));
+    </script>
     <script>
         document.addEventListener("DOMContentLoaded", () => {
             const counters = document.querySelectorAll('.count');
