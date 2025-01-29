@@ -1,4 +1,5 @@
 document.addEventListener("DOMContentLoaded", () => {
+    window.location.reload();
     // Add your OpenCage API key here
     const API_KEY = "a148e48fafc94535ae130af577869158";
 
@@ -28,6 +29,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
                     console.log(`Town: ${town}, State: ${state}`);
                     // alert(`Your location: ${town}, ${state}`);
+                    window.location.reload();
                     localStorage.setItem("town", town);
                     localStorage.setItem("state", state);
                 } else {
