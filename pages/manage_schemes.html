@@ -136,7 +136,6 @@
                     <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                 </div>
                 <div class="modal-body">
-                    <form id="addSchemeForm">
                         <div class="mb-3">
                             <label for="schemeName" class="form-label">Scheme Name</label>
                             <input type="text" class="form-control" id="schemeName" required>
@@ -152,12 +151,12 @@
                                 <option value="Pending">Pending</option>
                             </select>
                         </div>
-                        <button type="submit" class="btn btn-primary">Add Scheme</button>
-                    </form>
+                        <button type="submit" class="btn btn-primary" id="addscheme_page">Add Scheme</button>
                 </div>
             </div>
         </div>
     </div>
+
 
     <!-- Delete Scheme Modal -->
     <div class="modal fade" id="deleteSchemeModal" tabindex="-1" aria-labelledby="deleteSchemeModalLabel" aria-hidden="true">
@@ -185,6 +184,7 @@
 
     <!-- Bootstrap JS -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.0/js/bootstrap.bundle.min.js"></script>
+
     <script>
         // Update the scheme name in the delete modal
         const deleteModal = document.getElementById('deleteSchemeModal');
@@ -195,8 +195,50 @@
         });
 
         // Add Scheme Form Submission Handler
-        document.getElementById('addSchemeForm').addEventListener('submit', function (e) {
+        document.getElementById('addscheme_page').addEventListener('click', function (e) {
             e.preventDefault();
+            alert('New Scheme Added Successfully!');
+            this.reset();
+            const modal = bootstrap.Modal.getInstance(document.getElementById('addSchemeModal'));
+            modal.hide();
+        });
+    </script>
+    <script>
+        // Update the scheme name in the delete modal
+        // const deleteModal = document.getElementById('deleteSchemeModal');
+        deleteModal.addEventListener('show.bs.modal', function (event) {
+            const button = event.relatedTarget;
+            const schemeName = button.getAttribute('data-scheme');
+            document.getElementById('schemeToRemove').textContent = schemeName;
+        });
+    
+        // Add Scheme Form Submission Handler
+        document.getElementById('addscheme_page').addEventListener('click', function (e) {
+            e.preventDefault();
+    
+            // Get form values
+            const schemeName = document.getElementById('schemeName').value;
+            const schemeDescription = document.getElementById('schemeDescription').value;
+            const schemeStatus = document.getElementById('schemeStatus').value;
+    
+            // Create new scheme object
+            const newScheme = {
+                name: schemeName,
+                description: schemeDescription,
+                status: schemeStatus,
+                icon: "fas fa-info-circle", // Default icon, can be changed as needed
+                link: "#" // Default link, can be changed as needed
+            };
+    
+            // Get existing schemes from local storage
+            const schemes = JSON.parse(localStorage.getItem('schemes')) || [];
+    
+            // Add new scheme to schemes array
+            schemes.push(newScheme);
+    
+            // Save updated schemes array to local storage
+            localStorage.setItem('schemes', JSON.stringify(schemes));
+    
             alert('New Scheme Added Successfully!');
             this.reset();
             const modal = bootstrap.Modal.getInstance(document.getElementById('addSchemeModal'));
