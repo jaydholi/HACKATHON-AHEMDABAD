@@ -107,11 +107,11 @@
         document.getElementById("submit").addEventListener("click", function(event) {
             event.preventDefault();  // Prevent the default form submission
             // Optionally, you can handle the language preference here (e.g., save it in localStorage, send it to a server, etc.)
-            let lang = document.getElementById('language').value;
+            let lang_usr = document.getElementById('language').value;
             console.log(lang)
-            if(lang =="gujrati"){
+            if(lang_usr =="gujrati"){
                 window.location.href("https://upliftengineer-netlify-app.translate.goog/?_x_tr_sl=auto&_x_tr_tl=gu&_x_tr_hl=en-US&_x_tr_pto=wapp");
-            }else if(lang =="hindi"){
+            }else if(lang_usr =="hindi"){
                 window.location.href("https://upliftengineer-netlify-app.translate.goog/?_x_tr_sl=auto&_x_tr_tl=hi&_x_tr_hl=en-US&_x_tr_pto=wapp");
             }else{
                 window.location.href("https://upliftengineer.netlify.app/");
