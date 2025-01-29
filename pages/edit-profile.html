@@ -144,9 +144,13 @@
 
     <script>
         // Simulate fetching user details
+        document.addEventListener('DOMContentLoaded',()=>{
+            userDetails.fullName =localStorage.getItem('Name');
+            userDetails.email = localStorage.getItem('email');
+        })
         const userDetails = {
-            fullName: "John Doe",
-            email: "john.doe@example.com",
+            fullName: localStorage.getItem('Name'),
+            email: localStorage.getItem('email'),
             phone: "+1 234 567 890",
             address: "1234 Elm Street, Springfield",
             // password: "password123"
