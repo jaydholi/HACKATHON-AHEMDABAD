@@ -147,6 +147,8 @@
         document.addEventListener('DOMContentLoaded',()=>{
             userDetails.fullName =localStorage.getItem('Name');
             userDetails.email = localStorage.getItem('email');
+            // Call the function to fetch location
+fetchLocation();
             // Add your OpenCage API key here
 const API_KEY = "a148e48fafc94535ae130af577869158";
 
@@ -204,8 +206,7 @@ function errorCallback(error) {
     }
 }
 
-// Call the function to fetch location
-fetchLocation();
+
 
         })
         const userDetails = {
