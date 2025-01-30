@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -151,9 +152,12 @@
         }
 
         /* Section Text Modifications for Eligibility and Documents */
-        .eligibility-text, .documents-text {
-            color: #003366; /* Dark Blue */
-            font-weight: bold; /* Bold text */
+        .eligibility-text,
+        .documents-text {
+            color: #003366;
+            /* Dark Blue */
+            font-weight: bold;
+            /* Bold text */
         }
 
         /* Animation Keyframes */
@@ -161,6 +165,7 @@
             0% {
                 opacity: 0;
             }
+
             100% {
                 opacity: 1;
             }
@@ -171,6 +176,7 @@
                 transform: translateY(50px);
                 opacity: 0;
             }
+
             100% {
                 transform: translateY(0);
                 opacity: 1;
@@ -200,6 +206,75 @@
 
         .form-submit-btn:hover {
             background-color: #f39c12;
+        }
+
+        #documents {
+            background-color: #003366;
+            /* Dark Blue Background */
+            padding: 50px 0;
+            color: white;
+            /* White Text Color */
+        }
+
+        #documents .section-title {
+            text-align: center;
+            font-size: 2rem;
+            margin-bottom: 30px;
+            color: white;
+            /* Ensures the title is also white */
+        }
+
+        .document-item {
+            background-color: #002857;
+            /* Slightly lighter blue for each item container */
+            padding: 15px;
+            border-radius: 8px;
+            margin-bottom: 15px;
+            display: flex;
+            align-items: center;
+            flex-direction: column;
+            transition: background-color 0.3s ease;
+            /* Smooth hover effect */
+        }
+
+        .document-item:hover {
+            background-color: #1f1d03;
+            /* Darker blue on hover */
+        }
+
+        .documents-text {
+            font-size: 1.1rem;
+            margin-left: 10px;
+            /* Space between icon and text */
+            color: white;
+            /* White Text Color for documents */
+        }
+
+        .document-item i {
+            font-size: 1.5rem;
+            /* Icon size */
+        }
+
+        .dd-details {
+            color: #d1d1d1;
+            /* Light grey text for details */
+            margin-top: 10px;
+            font-size: 1rem;
+        }
+
+        .btn-info {
+            margin-top: 10px;
+            background-color: #fbff00;
+            border-color: #007bff;
+            color: white;
+            font-size: 0.9rem;
+            padding: 5px 15px;
+            border-radius: 5px;
+        }
+
+        .btn-info:hover {
+            background-color: #0056b3;
+            border-color: #0056b3;
         }
     </style>
 </head>
@@ -247,7 +322,7 @@
             <a href="#about" class="btn">Learn More</a>
         </div>
     </section>
-    
+
     <!-- Section Separator -->
     <div class="section-separator"></div>
 
@@ -255,7 +330,9 @@
     <section id="about">
         <div class="container">
             <h2 class="section-title">About the Yojna</h2>
-            <p>The Income Assistance Yojna is a government initiative aimed at providing financial assistance to eligible citizens from low-income households. The assistance helps to uplift the standard of living for the underprivileged members of society.</p>
+            <p>The Income Assistance Yojna is a government initiative aimed at providing financial assistance to
+                eligible citizens from low-income households. The assistance helps to uplift the standard of living for
+                the underprivileged members of society.</p>
         </div>
     </section>
 
@@ -271,7 +348,8 @@
                     <div class="card text-center">
                         <div class="card-body">
                             <h5 class="card-title">Resident of Gujarat</h5>
-                            <p class="card-text eligibility-text">Applicants must be a resident of Gujarat to apply for this scheme. Proof of residence may be required.</p>
+                            <p class="card-text eligibility-text">Applicants must be a resident of Gujarat to apply for
+                                this scheme. Proof of residence may be required.</p>
                         </div>
                     </div>
                 </div>
@@ -279,7 +357,8 @@
                     <div class="card text-center">
                         <div class="card-body">
                             <h5 class="card-title">Income Level</h5>
-                            <p class="card-text eligibility-text">Your annual income should be below the prescribed threshold for eligibility. Please refer to the income guidelines.</p>
+                            <p class="card-text eligibility-text">Your annual income should be below the prescribed
+                                threshold for eligibility. Please refer to the income guidelines.</p>
                         </div>
                     </div>
                 </div>
@@ -287,7 +366,8 @@
                     <div class="card text-center">
                         <div class="card-body">
                             <h5 class="card-title">Age Group</h5>
-                            <p class="card-text eligibility-text">Applicants must be between the age group of 18-60 years to qualify for the scheme.</p>
+                            <p class="card-text eligibility-text">Applicants must be between the age group of 18-60
+                                years to qualify for the scheme.</p>
                         </div>
                     </div>
                 </div>
@@ -299,18 +379,61 @@
     <div class="section-separator"></div>
 
     <!-- Documents Section -->
+    <!-- Documents Section -->
+    <!-- Documents Section -->
+    <!-- Documents Section -->
     <section id="documents">
         <div class="container">
             <h2 class="section-title">Documents Required <i class="fas fa-file-alt"></i></h2>
             <div class="row">
                 <div class="col-md-6">
-                    <p class="documents-text">1. Aadhar Card</p>
-                    <p class="documents-text">2. Income Certificate</p>
-                    <p class="documents-text">3. Proof of Residence</p>
+                    <div class="document-item">
+                        <i class="fas fa-id-card"></i>
+                        <p class="documents-text">Aadhar Card</p>
+                       
+                        <div id="aadhar-details" class="collapse">
+                            <p class="dd-details">Aadhar Card is a mandatory identification proof required for
+                                verification and records.</p>
+                        </div>
+                    </div>
+                    <div class="document-item">
+                        <i class="fas fa-certificate"></i>
+                        <p class="documents-text">Income Certificate</p>
+                       
+                        <div id="income-details" class="collapse">
+                            <p class="dd-details">Income Certificate is needed to verify your family's income for
+                                eligibility criteria.</p>
+                        </div>
+                    </div>
+                    <div class="document-item">
+                        <i class="fas fa-home"></i>
+                        <p class="documents-text">Proof of Residence</p>
+                        
+                        <div id="residence-details" class="collapse">
+                            <p class="dd-details">Proof of Residence verifies your current address, such as a utility
+                                bill or lease agreement.</p>
+                        </div>
+                    </div>
                 </div>
                 <div class="col-md-6">
-                    <p class="documents-text">4. Age Proof</p>
-                    <p class="documents-text">5. Bank Account Details</p>
+                    <div class="document-item">
+                        <i class="fas fa-birthday-cake"></i>
+                        <p class="documents-text">Age Proof</p>
+                        
+                        <div id="age-details" class="collapse">
+                            <p class="dd-details">Age Proof could be your birth certificate or any official document
+                                verifying your date of birth.</p>
+                        </div>
+                    </div>
+                    <div class="document-item">
+                        <i class="fas fa-university"></i>
+                        <p class="documents-text">Bank Account Details</p>
+                        
+                        <div id="bank-details" class="collapse">
+                            <p class="dd-details">Bank Account Details include your account number and bank branch
+                                information for financial transactions.</p>
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>
@@ -328,7 +451,8 @@
                     <div class="card">
                         <div class="card-body">
                             <h5 class="card-title">Step 1 <i class="fas fa-user-plus"></i></h5>
-                            <p class="card-text">Visit your nearest government office to collect the application form.</p>
+                            <p class="card-text">Visit your nearest government office to collect the application form.
+                            </p>
                         </div>
                     </div>
                 </div>
@@ -336,7 +460,8 @@
                     <div class="card">
                         <div class="card-body">
                             <h5 class="card-title">Step 2 <i class="fas fa-pencil-alt"></i></h5>
-                            <p class="card-text">Fill in the application form with all the necessary details and documents.</p>
+                            <p class="card-text">Fill in the application form with all the necessary details and
+                                documents.</p>
                         </div>
                     </div>
                 </div>
@@ -353,7 +478,7 @@
     </section>
 
     <!-- Contact Form Section -->
-    
+
     <!-- Footer Section -->
     <footer class="text-white py-4" style="background-color: #003366;">
         <div class="container">
@@ -363,7 +488,7 @@
                     <img src="/images/India PM.png" alt="PM of India" class="img-fluid rounded-circle shadow">
                     <p class="mt-2"><strong>Hon'ble PM of India</strong></p>
                 </div>
-    
+
                 <!-- Footer Details Section -->
                 <div class="col-md-6 text-center">
                     <h6 class="mb-2"><strong>Government of Gujarat</strong></h6>
@@ -377,7 +502,7 @@
                     </div>
                     <p class="mt-3">© 2025 All Rights Reserved | Designed & Developed by UpliftEngineers</p>
                 </div>
-    
+
                 <!-- CM Section -->
                 <div class="col-md-3 text-center">
                     <img src="/images/Gujarat CM (4).png" alt="CM of Gujarat" class="img-fluid rounded-circle shadow">
@@ -391,4 +516,5 @@
     <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.10.2/dist/umd/popper.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.min.js"></script>
 </body>
+
 </html>
