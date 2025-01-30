@@ -43,11 +43,47 @@
         .btn-primary:hover {
             background-color: #F9A602; /* Yellow */
         }
-        footer {
-            background-color: #002855;
+       /* Footer Styles */
+       footer {
+            background-color: #001a33;
             color: white;
-            padding: 1rem 0;
             text-align: center;
+            padding: 20px 0;
+        }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .navbar-nav .nav-item {
+                margin-left: 15px;
+            }
+
+            .hero h1 {
+                font-size: 2.5rem;
+            }
+
+            .hero p {
+                font-size: 1rem;
+            }
+
+            .container {
+                padding: 10px;
+            }
+
+            section h2 {
+                font-size: 2rem;
+            }
+
+            .form-control {
+                font-size: 1rem;
+            }
+
+            .btn-primary {
+                font-size: 1rem;
+            }
+
+            .grid-container {
+                grid-template-columns: 1fr;
+            }
         }
     </style>
 </head>
@@ -63,7 +99,7 @@
             <div class="collapse navbar-collapse" id="navbarNav">
                 <ul class="navbar-nav ms-auto">
                     <li class="nav-item"><a class="nav-link" href="Admin_dashboard.html">Home</a></li>
-                    <li class="nav-item"><a class="nav-link" href="manage_schemes.html">Manage Schemes</a></li>
+                    <li class="nav-item"><a class="nav-link" href="/pages/application-details.html">Manage Schemes</a></li>
                     <li class="nav-item"><a class="nav-link" href="all_application.html">Applications</a></li>
                     <li class="nav-item"><a class="nav-link" href="settings.html">Settings</a></li>
                 </ul>
