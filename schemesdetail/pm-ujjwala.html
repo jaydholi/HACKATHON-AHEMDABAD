@@ -4,285 +4,340 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>PM Ujjwala Yojana</title>
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/css/bootstrap.min.css" rel="stylesheet">
+    <title>PM UJJWALA YOJANA </title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" rel="stylesheet">
     <style>
+        /* Set overall page background to dark blue */
         body {
-            font-family: 'Arial', sans-serif;
-            background-color: #f8f9fa;
-            margin: 0;
-            padding: 0;
-        }
-
-        .navbar {
-            background-color: #00796b;
-            padding: 15px 0;
-        }
-
-        .navbar-brand {
+            font-family: Arial, sans-serif;
+            background-color: #001f3d;
+            /* Dark blue background */
             color: white;
-            font-size: 2rem;
-            font-weight: bold;
-            text-transform: uppercase;
+            /* White text color */
         }
 
-        .navbar-nav .nav-link {
-            color: white;
-            font-size: 1.1rem;
-            margin-right: 20px;
+        /* Navbar */
+        nav {
+            background-color: #001f3d;
+            /* Dark blue background */
         }
 
-        .navbar-nav .nav-link:hover {
-            color: #ffd54f;
+        nav .nav-link {
+            color: #FFD700;
+            /* Yellow color for nav links */
         }
 
-        .hero-section {
-            background: url('https://via.placeholder.com/1920x1080') no-repeat center center;
-            background-size: cover;
-            color: white;
-            height: 80vh;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            position: relative;
-            text-align: center;
-            padding: 0 20px;
+        nav .nav-link:hover {
+            color: #fff;
+            /* Hover effect to white */
         }
 
-        .hero-overlay {
-            position: absolute;
-            top: 0;
-            left: 0;
+        /* Section Containers */
+        .section-container {
+            padding: 60px 0;
+        }
+
+        /* Grid Layouts */
+        .section-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 20px;
+            justify-items: center;
+        }
+
+        /* Section Boxes */
+        .section-box {
+            background: #003366;
+            /* Blue background for section boxes */
+            padding: 30px;
+            border-radius: 8px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
             width: 100%;
-            height: 100%;
-            background: rgba(0, 0, 0, 0.5);
-        }
-
-        .hero-content {
-            position: relative;
-            z-index: 2;
-        }
-
-        .hero-content h2 {
-            font-size: 3.5rem;
-            margin-bottom: 20px;
-        }
-
-        .hero-content p {
-            font-size: 1.3rem;
-            margin-bottom: 30px;
-        }
-
-        .btn-primary {
-            background-color: #00796b;
-            border-color: #00796b;
-            color: white;
-            padding: 14px 30px;
-            font-size: 1.3rem;
-            border-radius: 30px;
-            text-transform: uppercase;
-        }
-
-        .btn-primary:hover {
-            background-color: #004d40;
-            border-color: #004d40;
-        }
-
-        .section {
-            padding: 60px 15px;
-        }
-
-        .section-title {
-            font-size: 2.5rem;
-            font-weight: bold;
+            max-width: 300px;
             text-align: center;
-            margin-bottom: 40px;
         }
 
-        .section-subtitle {
-            font-size: 1.2rem;
-            color: #666;
-            text-align: center;
-            margin-bottom: 30px;
+        .section-box i {
+            font-size: 40px;
+            color: #FFD700;
+            /* Yellow icons */
+            margin-bottom: 15px;
         }
 
-        .card {
+        /* Form Container */
+        .form-container {
+            max-width: 500px;
+            margin: 0 auto;
+            background-color: #003366;
+            padding: 40px;
+            border-radius: 8px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+
+        .form-container .btn {
+            background-color: #FFD700;
+            /* Yellow buttons */
             border: none;
-            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
         }
 
-        .card-header {
-            background-color: #00796b;
+        .form-container .btn:hover {
+            background-color: #ffc107;
+            /* Slightly darker yellow on hover */
+        }
+
+        .success-message {
+            margin-top: 20px;
+            display: none;
+            padding: 15px;
+            background-color: #28a745;
+            color: #fff;
+            border-radius: 5px;
+            font-size: 16px;
+        }
+
+        footer {
+            background-color: #001f3d;
             color: white;
-            font-weight: bold;
+            padding: 20px;
             text-align: center;
         }
 
-        .card-body ul {
-            list-style-type: none;
-            padding-left: 0;
-        }
-
-        .card-body ul li {
-            margin-bottom: 10px;
-            font-size: 1.1rem;
-        }
-
-        .footer {
-            background-color: #00796b;
-            color: white;
-            text-align: center;
-            padding: 25px 0;
-            margin-top: 40px;
-        }
-
-        .footer a {
-            color: #ffd54f;
+        footer a {
+            color: #FFD700;
+            /* Yellow color for footer links */
             text-decoration: none;
         }
 
-        .footer a:hover {
+        footer a:hover {
             text-decoration: underline;
         }
 
-        @media (max-width: 768px) {
-            .hero-section {
-                height: 60vh;
-            }
+        h1,
+        h2,
+        h3 {
+            color: #FFD700;
+            /* Yellow headings */
+        }
 
-            .hero-content h2 {
-                font-size: 2.5rem;
-            }
-
-            .hero-content p {
-                font-size: 1.1rem;
-            }
+        .container p {
+            color: #d1d1d1;
+            /* Lighter text for paragraphs */
         }
     </style>
 </head>
 
 <body>
 
-    <!-- Header -->
+    <!-- Navbar Section -->
     <nav class="navbar navbar-expand-lg navbar-dark">
-        <div class="container">
-            <a class="navbar-brand" href="#">PM Ujjwala Yojana</a>
+        <div class="container-fluid">
+            <a class="navbar-brand" href="#">PM UJJWALA YOJANA</a>
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
                 aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
             </button>
             <div class="collapse navbar-collapse" id="navbarNav">
                 <ul class="navbar-nav ms-auto">
-                    <li class="nav-item"><a class="nav-link" href="/index.html">Home</a></li>
-                  
-                    <li class="nav-item"><a class="nav-link" href="/pages/contact.html">Contact</a></li>
+                    <li class="nav-item">
+                        <a class="nav-link active" href="#hero">Home</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#eligibility">Eligibility</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#benefits">Benefits</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#documents">Documents</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#apply">Apply Now</a>
+                    </li>
                 </ul>
             </div>
         </div>
     </nav>
 
     <!-- Hero Section -->
-    <div class="hero-section">
-        <div class="hero-overlay"></div>
-        <div class="hero-content">
-            <h2>PM Ujjwala Yojana</h2>
-            <p>Providing LPG connections to families living below the poverty line.</p>
-            <a href="#apply" class="btn btn-primary">Apply Now</a>
-        </div>
-    </div>
+    <!-- Hero Section -->
+    <section id="hero" class="section-container"
+        style="position: relative; height: 100vh; background: url('https://via.placeholder.com/1600x900') no-repeat center center; background-size: cover;">
 
-    <!-- Overview Section -->
-    <div id="overview" class="section">
-        <h2 class="section-title">PM Ujjwala Yojana Overview</h2>
-        <p class="section-subtitle">The PM Ujjwala Yojana aims to provide LPG (Liquefied Petroleum Gas) connections to households living under the poverty line, empowering them with a cleaner and safer cooking method.</p>
+        <!-- Overlay -->
+        <div style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; background: rgba(1, 3, 77, 0.5);">
+        </div>
+
+        <!-- Hero Section -->
+        <div class="container text-center position-absolute top-50 start-50 translate-middle" style="z-index: 10;">
+            <h1 class="text-warning fw-bold display-4">
+                <i class="fas fa-fire me-2"></i>PM Ujjwala Yojana
+            </h1>
+            <p class="text-white fs-5 mt-3">
+                <i class="fas fa-gas-pump me-2 fs-4"></i>
+                A government scheme providing <strong>free LPG connections</strong> to women from economically weaker
+                sections.
+            </p>
+            <p class="text-white fs-5 mt-3">
+                <i class="fas fa-leaf me-2 fs-4"></i>
+                Empowering households with clean cooking fuel, improving health, and reducing pollution. Apply now to
+                avail the benefits!
+            </p>
+            <a href="#apply" class="btn btn-warning text-dark fw-bold fs-5 px-4 py-2 mt-3">
+                <i class="fas fa-pencil-alt me-2"></i>Apply Now
+            </a>
+        </div>
+
+    </section>
+
+
+
+    <!-- Eligibility Section -->
+    <section id="eligibility" class="section-container">
         <div class="container">
-            <div class="row">
-                <div class="col-md-6">
-                    <p>The government has launched this scheme to improve the health and well-being of women and children by reducing the health risks posed by traditional cooking methods such as wood, coal, and biomass.</p>
+            <h2>Eligibility Criteria</h2>
+            <p>The PM Ujjwala Yojana is designed to provide free LPG connections to women from economically weaker sections to promote clean cooking fuel.</p>
+            <div class="section-grid">
+                <div class="section-box">
+                    <i class="fas fa-female"></i>
+                    <h3>Women Beneficiaries</h3>
+                    <p>Only adult women from Below Poverty Line (BPL) families are eligible to apply for a free LPG connection under this scheme.</p>
                 </div>
-                <div class="col-md-6">
-                    <p>Under this scheme, LPG connections are provided to eligible households free of cost, along with financial assistance for the purchase of an LPG stove and refills. This initiative is expected to significantly impact rural households across India.</p>
+                <div class="section-box">
+                    <i class="fas fa-id-card"></i>
+                    <h3>Valid Identification</h3>
+                    <p>Applicants must provide valid **Aadhaar Card**, **Ration Card**, and **proof of residence** to avail of the benefits.</p>
+                </div>
+                <div class="section-box">
+                    <i class="fas fa-home"></i>
+                    <h3>Household Criteria</h3>
+                    <p>The applicant’s household should not already have an LPG connection in the name of any family member.</p>
+                </div>
+                <div class="section-box">
+                    <i class="fas fa-users-slash"></i>
+                    <h3>Exclusions</h3>
+                    <p>Households that already own an LPG connection or do not belong to the **economically weaker section** are **not eligible** for the scheme.</p>
                 </div>
             </div>
         </div>
-    </div>
+    </section>
+    
 
     <!-- Benefits Section -->
-    <div id="benefits" class="section bg-light">
-        <h2 class="section-title">Key Benefits</h2>
+    <section id="benefits" class="section-container">
         <div class="container">
-            <div class="row row-cols-1 row-cols-md-3 g-4">
-                <div class="col">
-                    <div class="card">
-                        <div class="card-header"><i class="fas fa-fire"></i> Cleaner Cooking</div>
-                        <div class="card-body">
-                            <ul>
-                                <li>Reduces the use of firewood, coal, and other traditional fuels</li>
-                                <li>Promotes a healthier environment for women and children</li>
-                            </ul>
-                        </div>
-                    </div>
+            <h2>Benefits of the Scheme</h2>
+            <p>PM Ujjwala Yojana aims to provide free LPG connections to economically weaker households, ensuring a smoke-free and healthier cooking environment.</p>
+            <div class="section-grid">
+                <div class="section-box">
+                    <i class="fas fa-gas-pump"></i>
+                    <h3>Free LPG Connection</h3>
+                    <p>Under this scheme, eligible families receive **a free LPG connection** along with initial financial assistance for refilling.</p>
                 </div>
-                <div class="col">
-                    <div class="card">
-                        <div class="card-header"><i class="fas fa-users"></i> Empowerment</div>
-                        <div class="card-body">
-                            <ul>
-                                <li>Empowers women with a safer and more efficient cooking method</li>
-                                <li>Improves the overall quality of life for families</li>
-                            </ul>
-                        </div>
-                    </div>
+                <div class="section-box">
+                    <i class="fas fa-heartbeat"></i>
+                    <h3>Improved Health</h3>
+                    <p>Promotes **smoke-free cooking**, reducing indoor air pollution and lowering health risks for women and children.</p>
                 </div>
-                <div class="col">
-                    <div class="card">
-                        <div class="card-header"><i class="fas fa-laptop-house"></i> Rural Development</div>
-                        <div class="card-body">
-                            <ul>
-                                <li>Helps reduce rural dependence on unsafe cooking fuels</li>
-                                <li>Improves economic productivity by saving time and health costs</li>
-                            </ul>
-                        </div>
-                    </div>
+                <div class="section-box">
+                    <i class="fas fa-leaf"></i>
+                    <h3>Eco-Friendly Cooking</h3>
+                    <p>Encourages the use of **clean fuel**, reducing reliance on firewood and contributing to a greener environment.</p>
+                </div>
+                <div class="section-box">
+                    <i class="fas fa-hand-holding-heart"></i>
+                    <h3>Women Empowerment</h3>
+                    <p>Empowers women by **reducing household drudgery**, allowing them to save time and engage in productive activities.</p>
                 </div>
             </div>
         </div>
-    </div>
+    </section>
+    
 
-    <!-- Application Section -->
-    <div id="apply" class="section">
-        <h2 class="section-title">Apply for PM Ujjwala Yojana</h2>
+
+    <!-- Required Documents Section -->
+    <section id="documents" class="section-container">
         <div class="container">
-            <form>
-                <div class="mb-3">
-                    <label for="name" class="form-label">Your Name</label>
-                    <input type="text" class="form-control" id="name" required>
+            <h2>Required Documents</h2>
+            <p>Ensure you have the following documents ready before applying for the PM Ujjwala Yojana:</p>
+            <div class="section-grid">
+                <div class="section-box">
+                    <i class="fas fa-id-card"></i>
+                    <h3>Aadhaar Card</h3>
+                    <p>Aadhaar card is mandatory for identity verification and linking with the Ujjwala Yojana system.</p>
                 </div>
-                <div class="mb-3">
-                    <label for="email" class="form-label">Your Email</label>
-                    <input type="email" class="form-control" id="email" required>
+                <div class="section-box">
+                    <i class="fas fa-address-card"></i>
+                    <h3>Proof of Address</h3>
+                    <p>Ration card, voter ID, or any government-issued address proof is required to verify residence.</p>
                 </div>
-                <div class="mb-3">
-                    <label for="phone" class="form-label">Your Phone Number</label>
-                    <input type="tel" class="form-control" id="phone" required>
+                <div class="section-box">
+                    <i class="fas fa-users"></i>
+                    <h3>Below Poverty Line (BPL) Certificate</h3>
+                    <p>Applicants must provide a **BPL certificate** or be listed under the SECC-2011 database for eligibility.</p>
                 </div>
-                <div class="mb-3">
-                    <label for="address" class="form-label">Your Address</label>
-                    <input type="text" class="form-control" id="address" required>
+                <div class="section-box">
+                    <i class="fas fa-university"></i>
+                    <h3>Bank Account Details</h3>
+                    <p>An active **bank account in the applicant’s name** is required to receive financial assistance for the LPG connection.</p>
                 </div>
-                <button type="submit" class="btn btn-primary">Submit Application</button>
-            </form>
+                <div class="section-box">
+                    <i class="fas fa-mobile-alt"></i>
+                    <h3>Mobile Number</h3>
+                    <p>Registered mobile number for receiving updates, alerts, and OTP verification during the application process.</p>
+                </div>
+            </div>
         </div>
-    </div>
+    </section>
+    
 
-    <!-- Footer -->
-    <div class="footer">
-        <p>&copy; 2025 PM Ujjwala Yojana. All rights reserved.</p>
-        <p><a href="#contact">Contact Us</a></p>
-    </div>
 
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/js/bootstrap.bundle.min.js"></script>
+    <!-- Apply Now Form Section -->
+    <section id="apply" class="section-container">
+        <div class="container form-container">
+            <h2>Apply Now</h2>
+            <form id="applicationForm" onsubmit="submitForm(event)">
+                <div class="mb-3">
+                    <label for="name" class="form-label">Full Name</label>
+                    <input type="text" class="form-control" id="name" placeholder="Enter your full name" required>
+                </div>
+                <div class="mb-3">
+                    <label for="dob" class="form-label">Date of Birth</label>
+                    <input type="date" class="form-control" id="dob" required>
+                </div>
+                <div class="mb-3">
+                    <label for="email" class="form-label">Email Address</label>
+                    <input type="email" class="form-control" id="email" placeholder="Enter your email" required>
+                </div>
+                <div class="mb-3">
+                    <label for="mobile" class="form-label">Mobile Number</label>
+                    <input type="tel" class="form-control" id="mobile" placeholder="Enter your mobile number" required>
+                </div>
+                <button type="submit" class="btn">Submit</button>
+            </form>
+            <div id="successMessage" class="success-message">Your form has been submitted successfully! We will contact
+                you soon.</div>
+        </div>
+    </section>
+
+    <!-- Footer Section -->
+    <footer>
+        <p>&copy; 2025 PM UJJWALA Scheme | Designed by Your Company</p>
+        <p><a href="#">Privacy Policy</a> | <a href="#">Terms of Service</a></p>
+    </footer>
+
+    <script>
+        function submitForm(event) {
+            event.preventDefault();
+            document.getElementById('successMessage').style.display = 'block';
+            setTimeout(function () {
+                document.getElementById('successMessage').style.display = 'none';
+            }, 3000);
+        }
+    </script>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
+
 </body>
 
 </html>
