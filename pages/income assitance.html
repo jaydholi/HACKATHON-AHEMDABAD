@@ -1,274 +1,360 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Income Assistance Program</title>
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Income Assistance Yojna</title>
+    <!-- Bootstrap 5 CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Font Awesome Icons -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css" rel="stylesheet">
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=swap" rel="stylesheet">
     <style>
-        /* General Body Styles */
         body {
-            font-family: Arial, sans-serif;
+            font-family: 'Roboto', sans-serif;
+            background-color: #003366;
             margin: 0;
             padding: 0;
-            background-color: #003366;
-            color: white;
+            color: yellow;
         }
 
         /* Navbar Styles */
         .navbar {
             background-color: #003366;
-            color: white;
-            padding: 1rem;
-            position: sticky;
-            top: 0;
-            width: 100%;
-            z-index: 100;
-            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            transition: background-color 0.5s ease;
         }
 
-        .navbar .nav-links {
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            list-style: none;
-            margin: 0;
-            padding: 0;
-        }
-
-        .navbar .nav-links a {
-            text-decoration: none;
-            color: white;
-            padding: 1rem 2rem;
+        .navbar-nav .nav-link {
+            color: yellow !important;
             font-size: 1.1rem;
-            text-transform: uppercase;
-            letter-spacing: 1px;
-            transition: background-color 0.3s ease;
+            font-weight: bold;
         }
 
-        .navbar .nav-links a:hover {
-            background-color: #ffcc00;
-            color: #003366;
-            border-radius: 5px;
+        .navbar-nav .nav-link:hover {
+            color: #f1c40f !important;
         }
 
-        /* Hero Section */
-        .hero {
-            background: url('https://via.placeholder.com/1920x600') no-repeat center center/cover;
-            color: white;
-            padding: 6rem 0;
+        /* Hero Section Styles */
+        .hero-section {
+            background: url('https://via.placeholder.com/1920x600') no-repeat center center;
+            background-size: cover;
+            color: yellow;
+            padding: 100px 0;
             text-align: center;
-            background-color: rgba(0, 51, 102, 0.8);
+            animation: fadeIn 1.5s ease-in-out;
         }
 
-        .hero h1 {
-            font-size: 3.5rem;
-            margin-bottom: 1rem;
-            letter-spacing: 1px;
+        .hero-section h1 {
+            font-size: 3rem;
+            font-weight: bold;
         }
 
-        .hero p {
-            font-size: 1.5rem;
-            margin-top: 1rem;
+        .hero-section p {
+            font-size: 1.3rem;
+            font-weight: 500;
+        }
+
+        .hero-section .btn {
+            font-size: 1.2rem;
+            padding: 10px 30px;
+            background-color: #f1c40f;
+            color: black;
+            border: none;
+            transition: background-color 0.3s;
+        }
+
+        .hero-section .btn:hover {
+            background-color: #f39c12;
         }
 
         /* Section Styles */
-        .section {
-            padding: 4rem 0;
+        section {
             background-color: #003366;
-            color: white;
+            padding: 60px 0;
+            animation: slideUp 1.5s ease-out;
         }
 
-        .container {
-            width: 85%;
-            margin: 0 auto;
-            max-width: 1200px;
+        .section-title {
+            font-size: 2.5rem;
+            font-weight: bold;
+            margin-bottom: 30px;
+            color: yellow;
+            text-align: center;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            animation: fadeIn 1s ease-in-out;
         }
 
-        /* Full-width section */
-        .full-width-section {
-            width: 100%;
-            margin: 0 auto;
+        .card {
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s;
+            margin-bottom: 30px;
+            background-color: yellow;
         }
 
-        /* Form Section */
-        .form-container {
-            display: flex;
-            flex-direction: column;
-            gap: 1.5rem;
-            max-width: 600px;
-            margin: 0 auto;
-            padding: 3rem;
-            background-color: #004080;
-            border-radius: 8px;
-            border: 2px solid #ffcc00;
+        .card:hover {
+            transform: translateY(-10px);
         }
 
-        .form-control {
-            padding: 14px;
-            font-size: 1.2rem;
-            width: 100%;
-            border: 1px solid #003366;
+        .card-body {
+            padding: 25px;
+        }
+
+        footer {
             background-color: #003366;
-            color: white;
-            border-radius: 6px;
-            transition: border-color 0.3s ease;
+            color: yellow;
+            padding: 30px 0;
+            text-align: center;
+            animation: fadeIn 1.5s ease-in-out;
         }
 
-        .form-control::placeholder {
-            color: #b3b3b3;
+        footer a {
+            color: yellow;
+            text-decoration: none;
         }
 
-        .form-control:focus {
-            border-color: #ffcc00;
-            background-color: #004d80;
+        footer a:hover {
+            color: #f1c40f;
         }
 
-        .btn-primary {
-            background-color: #ffcc00;
+        footer .social-icons a {
+            font-size: 1.5rem;
+            margin-right: 20px;
+        }
+
+        /* Grid Layout */
+        .two-column-grid .col-md-6 {
+            margin-bottom: 30px;
+        }
+
+        .three-column-grid .col-md-4 {
+            margin-bottom: 30px;
+        }
+
+        /* Section Separation */
+        .section-separator {
+            height: 10px;
+            background-color: #f1c40f;
+            margin: 30px 0;
+        }
+
+        /* Apply Section Modifications */
+        .how-to-apply-section .card {
+            background-color: yellow;
             color: #003366;
-            font-size: 1.3rem;
-            padding: 14px 30px;
-            border-radius: 6px;
+        }
+
+        .how-to-apply-section .card-body {
+            padding: 25px;
+        }
+
+        /* Section Text Modifications for Eligibility and Documents */
+        .eligibility-text, .documents-text {
+            color: #003366; /* Dark Blue */
+            font-weight: bold; /* Bold text */
+        }
+
+        /* Animation Keyframes */
+        @keyframes fadeIn {
+            0% {
+                opacity: 0;
+            }
+            100% {
+                opacity: 1;
+            }
+        }
+
+        @keyframes slideUp {
+            0% {
+                transform: translateY(50px);
+                opacity: 0;
+            }
+            100% {
+                transform: translateY(0);
+                opacity: 1;
+            }
+        }
+
+        /* Form Styles */
+        .contact-form .form-group input,
+        .contact-form .form-group textarea {
+            transition: transform 0.3s ease;
+        }
+
+        .contact-form .form-group input:focus,
+        .contact-form .form-group textarea:focus {
+            transform: translateY(-5px);
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+
+        .form-submit-btn {
+            background-color: #f1c40f;
+            color: black;
             border: none;
-            cursor: pointer;
+            padding: 10px 30px;
+            font-size: 1.2rem;
             transition: background-color 0.3s ease;
         }
 
-        .btn-primary:hover {
-            background-color: #e6b800;
-        }
-
-        /* Footer Styles */
-        .footer {
-            background-color: #003366;
-            color: white;
-            padding: 3rem 0;
-            text-align: center;
-            font-size: 1.1rem;
-            box-shadow: 0 -4px 8px rgba(0, 0, 0, 0.1);
-        }
-
-        .footer p {
-            margin: 0;
-        }
-
-        /* Responsive Media Queries */
-        @media (max-width: 768px) {
-            .hero h1 {
-                font-size: 2.5rem;
-            }
-
-            .hero p {
-                font-size: 1.1rem;
-            }
-
-            .form-container {
-                padding: 2rem;
-            }
-
-            .form-control {
-                font-size: 1.1rem;
-                padding: 12px;
-            }
-
-            .btn-primary {
-                font-size: 1.1rem;
-                padding: 12px 25px;
-            }
-        }
-
-        @media (max-width: 480px) {
-            .hero h1 {
-                font-size: 2rem;
-            }
-
-            .section-title {
-                font-size: 1.7rem;
-            }
-
-            .form-container {
-                padding: 1.5rem;
-            }
-
-            .form-control {
-                font-size: 1rem;
-                padding: 10px;
-            }
-
-            .btn-primary {
-                font-size: 1rem;
-                padding: 10px 20px;
-            }
+        .form-submit-btn:hover {
+            background-color: #f39c12;
         }
     </style>
 </head>
 
 <body>
 
-    <!-- Navbar -->
-    <nav class="navbar">
-        <ul class="nav-links">
-            <li><a href="#">Home</a></li>
-            <li><a href="#">About</a></li>
-            <li><a href="#">Apply</a></li>
-            <li><a href="#">Contact</a></li>
-        </ul>
+    <!-- Navbar Section -->
+    <nav class="navbar navbar-expand-lg navbar-dark fixed-top">
+        <div class="container">
+            <a class="navbar-brand" href="#">Income Assistance Yojna</a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
+                aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item">
+                        <a class="nav-link active" aria-current="page" href="#home">Home</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#about">About</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#eligibility">Eligibility</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#documents">Documents</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#apply">Apply</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#contact">Contact</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
     </nav>
 
     <!-- Hero Section -->
-    <section class="hero">
+    <section class="hero-section" id="home">
         <div class="container">
-            <h1>Income Assistance Program</h1>
-            <p>Get the support you need with our financial assistance program.</p>
+            <h1>Income Assistance Yojna</h1>
+            <p>Providing financial support to low-income families across Gujarat</p>
+            <a href="#about" class="btn">Learn More</a>
+        </div>
+    </section>
+    
+    <!-- Section Separator -->
+    <div class="section-separator"></div>
+
+    <!-- About Section -->
+    <section id="about">
+        <div class="container">
+            <h2 class="section-title">About the Yojna</h2>
+            <p>The Income Assistance Yojna is a government initiative aimed at providing financial assistance to eligible citizens from low-income households. The assistance helps to uplift the standard of living for the underprivileged members of society.</p>
         </div>
     </section>
 
-    <!-- Eligibility Criteria Section -->
-    <section class="section full-width-section">
-        <div class="container">
-            <h2 class="section-title">Eligibility Criteria</h2>
-            <p>To apply for the income assistance program, you must meet the following criteria:</p>
-            <ul>
-                <li>Resident of the region for at least 6 months.</li>
-                <li>Annual income must be below $30,000.</li>
-                <li>Not receiving any other government assistance.</li>
-                <li>Need temporary financial support due to unforeseen circumstances.</li>
-            </ul>
-        </div>
-    </section>
+    <!-- Section Separator -->
+    <div class="section-separator"></div>
 
-    <!-- Required Documents Section -->
-    <section class="section full-width-section">
+    <!-- Eligibility Section -->
+    <section id="eligibility">
         <div class="container">
-            <h2 class="section-title">Required Documents</h2>
-            <p>Ensure that you have the following documents ready before submitting your application:</p>
-            <ul>
-                <li>Government-issued photo ID (e.g., passport, driver’s license).</li>
-                <li>Proof of income (e.g., salary slip, tax return).</li>
-                <li>Bank statement for the last 3 months.</li>
-                <li>Proof of residence (e.g., utility bill, rental agreement).</li>
-                <li>Medical documentation (if applicable).</li>
-            </ul>
-        </div>
-    </section>
-
-    <!-- Application Form Section -->
-    <section class="section full-width-section">
-        <div class="container">
-            <h2 class="section-title">Application Form</h2>
-            <div class="form-container">
-                <input type="text" class="form-control" id="name" placeholder="Full Name" required>
-                <input type="email" class="form-control" id="email" placeholder="Email Address" required>
-                <input type="number" class="form-control" id="income" placeholder="Annual Income" required>
-                <input type="text" class="form-control" id="occupation" placeholder="Occupation" required>
-                <textarea class="form-control" id="reason" placeholder="Reason for Application" required></textarea>
-                <button type="button" class="btn-primary" onclick="validateForm()">Submit Application</button>
+            <h2 class="section-title">Eligibility Criteria <i class="fas fa-check-circle"></i></h2>
+            <div class="row">
+                <div class="col-md-4">
+                    <div class="card text-center">
+                        <div class="card-body">
+                            <h5 class="card-title">Resident of Gujarat</h5>
+                            <p class="card-text eligibility-text">Applicants must be a resident of Gujarat to apply for this scheme. Proof of residence may be required.</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="card text-center">
+                        <div class="card-body">
+                            <h5 class="card-title">Income Level</h5>
+                            <p class="card-text eligibility-text">Your annual income should be below the prescribed threshold for eligibility. Please refer to the income guidelines.</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="card text-center">
+                        <div class="card-body">
+                            <h5 class="card-title">Age Group</h5>
+                            <p class="card-text eligibility-text">Applicants must be between the age group of 18-60 years to qualify for the scheme.</p>
+                        </div>
+                    </div>
+                </div>
             </div>
         </div>
     </section>
 
-    <!-- Footer -->
+    <!-- Section Separator -->
+    <div class="section-separator"></div>
+
+    <!-- Documents Section -->
+    <section id="documents">
+        <div class="container">
+            <h2 class="section-title">Documents Required <i class="fas fa-file-alt"></i></h2>
+            <div class="row">
+                <div class="col-md-6">
+                    <p class="documents-text">1. Aadhar Card</p>
+                    <p class="documents-text">2. Income Certificate</p>
+                    <p class="documents-text">3. Proof of Residence</p>
+                </div>
+                <div class="col-md-6">
+                    <p class="documents-text">4. Age Proof</p>
+                    <p class="documents-text">5. Bank Account Details</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Section Separator -->
+    <div class="section-separator"></div>
+
+    <!-- How to Apply Section -->
+    <section id="apply" class="how-to-apply-section">
+        <div class="container">
+            <h2 class="section-title">How to Apply</h2>
+            <div class="row three-column-grid">
+                <div class="col-md-4">
+                    <div class="card">
+                        <div class="card-body">
+                            <h5 class="card-title">Step 1 <i class="fas fa-user-plus"></i></h5>
+                            <p class="card-text">Visit your nearest government office to collect the application form.</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="card">
+                        <div class="card-body">
+                            <h5 class="card-title">Step 2 <i class="fas fa-pencil-alt"></i></h5>
+                            <p class="card-text">Fill in the application form with all the necessary details and documents.</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="card">
+                        <div class="card-body">
+                            <h5 class="card-title">Step 3 <i class="fas fa-paper-plane"></i></h5>
+                            <p class="card-text">Submit the application form at the office for further processing.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Form Section -->
+    
+    <!-- Footer Section -->
     <footer class="text-white py-4" style="background-color: #003366;">
         <div class="container">
             <div class="row align-items-center text-center text-md-start">
@@ -301,25 +387,8 @@
         </div>
     </footer>
 
-    <!-- JavaScript for Form Validation -->
-    <script>
-        function validateForm() {
-            var name = document.getElementById('name').value;
-            var email = document.getElementById('email').value;
-            var income = document.getElementById('income').value;
-            var occupation = document.getElementById('occupation').value;
-            var reason = document.getElementById('reason').value;
-
-            if (!name || !email || !income || !occupation || !reason) {
-                alert('Please fill out all fields before submitting the application.');
-                return false;
-            }
-
-            alert('Application submitted successfully!');
-            return true;
-        }
-    </script>
-
+    <!-- Bootstrap 5 JS -->
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.10.2/dist/umd/popper.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.min.js"></script>
 </body>
-
 </html>
